@@ -58,14 +58,11 @@ class AutoHubApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: const [],
-      child: MaterialApp.router(
-        title: 'AutoHub Express',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.light,
-        routerConfig: appRouter,
-      ),
+    return MaterialApp.router(
+      title: 'AutoHub Express',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.light,
+      routerConfig: appRouter,
     );
   }
 }
