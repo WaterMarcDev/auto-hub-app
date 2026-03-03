@@ -1,4 +1,4 @@
-package com.autohubexpress.auto_hub_app
+package com.autohubexpress.app
 
 import io.flutter.embedding.android.FlutterActivity
 
