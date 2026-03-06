@@ -16,6 +16,8 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.0
   flutter_dotenv: ^6.0.0
+  flutter_native_splash: ^2.4.7
+  flutter_screenutil: ^5.9.3
   fpdart: ^1.1.0
   freezed_annotation: ^3.0.0
   get_it: ^9.2.1
@@ -41,3 +43,4 @@ flutter:
 
   assets:
     - .env
+    - assets/images/
