@@ -5,7 +5,6 @@ import 'package:auto_hub_app/features/splash/presentation/bloc/splash_state.dart
 import 'package:auto_hub_app/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatelessWidget {
@@ -13,9 +12,6 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Remove the native splash background now that our Flutter UI is ready
-    FlutterNativeSplash.remove();
-
     return BlocProvider(
       create: (context) {
         final cubit = getIt<SplashCubit>();

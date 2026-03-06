@@ -8,20 +8,13 @@ import 'package:injectable/injectable.dart';
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit() : super(const SplashState.initial());
 
-  /// Initializes the app and checks authentication status.
-  /// 
-  /// According to requirements (PRD-F01):
-  /// - Displays splash for ≤2s
-  /// - Navigates based on auth state and first-time user status.
+  /// Initializes the application and determines the starting route.
   Future<void> initializeApp() async {
-    // Artificial delay to satisfy the 1.5 - 2.0s splash requirement
-    // while we wait for actual initialization logic (like DB, Firebase, etc).
+    // Artificial delay to satisfy splash visibility requirements.
     await Future<void>.delayed(const Duration(seconds: 2));
     
-    // TODO(splash): Implement real auth checking and shared_prefs for first
-    // time. For now, default to unauthenticated and first-time to show 
-    // onboarding.
-    // emit(const SplashState.authenticated());
+    // TODO(splash): Implement actual authentication and first-time user checks.
+    // Defaulting to unauthenticated for initial development.
     emit(const SplashState.unauthenticated(isFirstTime: true));
   }
 }
