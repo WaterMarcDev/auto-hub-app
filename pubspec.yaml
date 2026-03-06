@@ -5,6 +5,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ^3.11.1
+  flutter: ^3.41.3
 
 dependencies:
   bloc: ^9.0.0
