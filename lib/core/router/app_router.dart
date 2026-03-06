@@ -1,5 +1,6 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
+import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,13 +10,32 @@ import 'package:go_router/go_router.dart';
 /// routes via this configuration. Auth guards and redirects will
 /// be added here as features are built.
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/splash',
   debugLogDiagnostics: true,
   routes: [
+    GoRoute(
+      path: '/splash',
+      name: 'splash',
+      builder: (context, state) => const SplashPage(),
+    ),
     GoRoute(
       path: '/',
       name: 'home',
       builder: (context, state) => const _PlaceholderHomePage(),
+    ),
+    GoRoute(
+      path: '/onboarding',
+      name: 'onboarding',
+      builder: (context, state) => const Scaffold(
+        body: Center(child: Text('Onboarding')),
+      ),
+    ),
+    GoRoute(
+      path: '/login',
+      name: 'login',
+      builder: (context, state) => const Scaffold(
+        body: Center(child: Text('Login')),
+      ),
     ),
   ],
 );
