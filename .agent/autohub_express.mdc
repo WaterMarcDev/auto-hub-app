@@ -190,10 +190,11 @@ Every feature follows this exact process:
 
 ## Branch Strategy
 
+- **Branch from main:** ALWAYS create new branches from `main` unless specified otherwise.
 - `main` — stable, working code only (merge through PRs)
 - `feature/[name]` — one branch per feature
 - `fix/[name]` — bug fixes
-- `chore/[name]` — maintenance tasks
+- `chore/[name]` — version bumps, dependency upgrades, maintenance
 - Commit style: Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`)
 
 ---
