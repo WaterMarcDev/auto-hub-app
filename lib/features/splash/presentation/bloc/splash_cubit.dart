@@ -11,7 +11,7 @@ class SplashCubit extends Cubit<SplashState> {
   /// Initializes the application and determines the starting route.
   Future<void> initializeApp() async {
     // Artificial delay to satisfy splash visibility requirements.
-    await Future<void>.delayed(const Duration(seconds: 2));
+    await Future<void>.delayed(const Duration(milliseconds: 3000));
     
     // TODO(splash): Implement actual authentication and first-time user checks.
     // Defaulting to unauthenticated for initial development.
