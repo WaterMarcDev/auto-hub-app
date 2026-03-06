@@ -1,0 +1,266 @@
+---
+description: AutoHub Express project rules — applies to all chats in this workspace
+globs:
+alwaysApply: true
+---
+
+# AutoHub Express — Centralized Agent Instructions
+
+## Identity
+
+- **App:** AutoHub Express
+- **Tagline:** Auto Parts, Recycling & More
+- **Website:** [autohub.express](https://autohub.express)
+- **Package ID:** `com.autohubexpress.app`
+- **Architecture:** Feature-first Clean Architecture with BLoC
+- **Flutter project root:** `auto_hub_app/`
+- **This is a private, closed-source commercial project.**
+
+---
+
+## New Chat Session Protocol
+
+Every new chat session MUST follow these steps before doing any work:
+
+1. **Check branch:** Run `git status` inside `auto_hub_app/` to confirm which branch you are on. Never work on `main` directly — always use a feature/fix/chore branch.
+2. **Understand context:** If the user references a feature, read its README at `lib/features/[feature_name]/README.md` if it exists, and check the requirements docs at `Mobile App Docs/`.
+3. **Review architecture:** Consult `flutter_project_agent_guide.md` (parent directory) for architecture and coding standards.
+4. **Follow the workflow:** Use the Feature Development Workflow below for any new feature work.
+
+---
+
+## Governing Documents
+
+Always consult these before making decisions:
+
+1. **Architecture & Coding Standards:** `../flutter_project_agent_guide.md`
+2. **App Requirements:** `../Mobile App Docs/AutoHub_Express_Mobile_App_Requirements.docx`
+3. **Feature Specs:** `../Mobile App Docs/AutoHub_F01_Splash_Onboarding_Login.docx` (and future feature spec files)
+
+---
+
+## Architecture Decisions (Locked)
+
+These are finalized. Do not re-ask or change without explicit user approval.
+
+| Decision | Choice |
+|---|---|
+| State management | BLoC (`flutter_bloc` + `bloc`) |
+| Navigation | GoRouter (`go_router`) |
+| DI | `get_it` + `injectable` |
+| Design system | Material 3 with custom AutoHub Express branding |
+| Fonts | Inter via `google_fonts` |
+| Colors | `AppColors` static constants — always use `AppColors.xxx` |
+| Networking | `dio` with interceptor pattern |
+| Serialization | `freezed` + `json_serializable` |
+| Linting | `very_good_analysis` |
+| Platforms | Android + iOS only |
+| Backend | REST API at `autohub.express` |
+| Environment | `flutter_dotenv` (`.env` file, bundled as asset) |
+| Error handling | `Either<Failure, Success>` pattern (`fpdart`) |
+| Logging | `logger` package (never use `print()`) |
+| Generated files | Commit `*.g.dart` and `*.freezed.dart` (solo project) |
+| Min Android SDK | API 24 (Android 7.0) |
+| Min iOS | 15.0 |
+| Orientation | Portrait only |
+
+---
+
+## Project Structure
+
+```
+auto_hub_app/lib/
+├── main.dart
+├── injection.dart          # get_it + injectable DI setup
+├── injection.config.dart   # generated DI config
+├── core/
+│   ├── constants/          # app_constants.dart
+│   ├── errors/             # failures.dart, exceptions.dart
+│   ├── extensions/
+│   ├── router/             # app_router.dart (GoRouter)
+│   ├── theme/              # app_colors.dart, app_text_styles.dart, app_theme.dart
+│   └── utils/
+├── features/
+│   └── [feature_name]/
+│       ├── data/
+│       │   ├── datasources/
+│       │   ├── models/
+│       │   └── repositories/
+│       ├── domain/
+│       │   ├── entities/
+│       │   ├── repositories/   (abstract)
+│       │   └── usecases/
+│       └── presentation/
+│           ├── bloc/
+│           ├── pages/
+│           └── widgets/
+└── shared/
+    ├── widgets/
+    └── services/
+```
+
+### Feature Modules
+
+(May reorganize in the future)
+
+| Module | Scope |
+|---|---|
+| `splash` | Splash screen, onboarding carousel |
+| `auth` | Login, sign up, social auth, guest, biometric |
+| `home` | Banners, categories, featured products |
+| `search` | YMM / VIN / keyword search, filters |
+| `product` | Gallery, pricing, compatibility, reviews |
+| `cart` | Cart, checkout, payment |
+| `orders` | Order tracking, history, reorder |
+| `junk_car` | Vehicle buyback form |
+| `premium_club` | Membership, exclusive discounts |
+| `blog` | Articles, search, share |
+| `contact` | Contact form, FAQ, live chat |
+| `services` | Recycling, salvage, inspection info |
+| `notifications` | Push notifications, preferences |
+| `garage` | Saved vehicles (YMM / VIN) |
+| `about` | Company info, trust badges |
+| `legal` | Terms, privacy, shipping, refund policies |
+
+---
+
+## Feature Development Workflow
+
+Every feature follows this exact process:
+
+### 1. Pick Feature
+- Features are built in priority order as directed by the user
+- Check existing feature directories and README descriptions for context
+
+### 2. Create Feature Branch
+- Branch from `main`: `feature/[feature-name]`
+- All work for this feature happens on this branch
+
+### 3. Build (Domain-First)
+1. **Domain** — entities, repository interfaces, use cases
+2. **Data** — models (freezed), repository implementations, datasources (Dio)
+3. **State** — BLoC/Cubit with all states (loading, success, error, empty)
+4. **UI** — pages and widgets consuming BLoC state (no business logic in UI)
+5. **DI** — register all new dependencies in `injection.dart` via `@injectable` annotations
+6. **Routes** — add new routes to `core/router/app_router.dart`
+7. **Tests** — unit tests for domain and BLoC layers at minimum
+
+### 4. Verify
+- Run `flutter analyze` — must pass with zero issues
+- Run `flutter test` — all tests must pass
+- Run `dart run build_runner build --delete-conflicting-outputs` if models changed
+
+### 5. Complete
+- Commit with conventional commits: `feat:`, `fix:`, `chore:`, `docs:`
+- Push the feature branch and raise a PR against `main`
+- **Never merge directly to `main`** — always through PR
+
+---
+
+## BLoC Standards
+
+| Scenario | Use |
+|---|---|
+| Simple state (toggle, counter) | `Cubit<State>` |
+| Complex event-driven logic | `Bloc<Event, State>` |
+| Async data / API calls | `Bloc` or `Cubit` with `emit` |
+| Form state | `Cubit` with validation logic |
+
+### Rules
+- Every BLoC/Cubit state class must handle: **loading, success, error, empty**
+- Use `equatable` for all state and event classes
+- Use `freezed` for complex state objects
+- BLoC naming: `[Feature]Bloc` / `[Feature]Cubit`, `[Feature]State`, `[Feature]Event`
+- Event naming: past-tense noun phrases (e.g., `ProductSearched`, `CartItemAdded`)
+- Register BLoCs via `@injectable` — never instantiate inside widgets
+
+---
+
+## Networking Standards
+
+- HTTP client: `dio` with interceptor pattern
+- Interceptors: auth token injection, error normalization, logging (dev only)
+- All API response models use `freezed` + `json_serializable`
+- Never parse JSON manually
+- Timeouts: connect 10s, receive 15s
+- For large payloads: parse in isolate via `Isolate.run()` or `compute()`
+- Base URL loaded from `.env` via `flutter_dotenv`
+
+---
+
+## Branch Strategy
+
+- `main` — stable, working code only (merge through PRs)
+- `feature/[name]` — one branch per feature
+- `fix/[name]` — bug fixes
+- `chore/[name]` — maintenance tasks
+- Commit style: Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`)
+
+---
+
+## Git & Push Rules
+
+- **Never add metadata trailers** to commit messages (no `Made-with`, `Signed-off-by`, or similar).
+- **Never force-push to `main`** unless explicitly asked by the user.
+- **Never push to `main` directly:** Always use a PR-based workflow.
+- **Never merge directly to `main`:** Always raise a Pull Request and merge through the GitHub remote.
+- **Always run `flutter analyze`** before committing. Zero issues required.
+
+---
+
+## Hard Constraints
+
+Never do any of the following without explicit user approval:
+
+- Use deprecated packages or packages with <100 pub points
+- Commit API keys, secrets, or tokens — use `.env` file
+- Use `dynamic` type — allowed only at external boundaries (raw JSON, platform channels) and must be immediately typed
+- Skip error/loading/empty states in UI
+- Create God classes (>300 lines logic) or God widgets
+- Add a new major dependency without proposing alternatives
+- Mix business logic with UI code
+- Use `print()` — use `logger` package
+- Push directly to `main` — use feature branches
+- Hardcode screen dimensions
+- Make native iOS/Android config changes without warning
+- Use `setState` for anything beyond truly local UI with no business logic
+- Use `Navigator.push` directly — use `go_router` named routes only
+
+---
+
+## UI/UX Quick Reference
+
+Will be Updated Soon
+
+---
+
+## Testing Standards
+
+| Layer | Type | Target |
+|---|---|---|
+| Domain (usecases, entities) | Unit | 90%+ |
+| Data (repos, datasources) | Unit + Mock | 80%+ |
+| BLoC/Cubit | Unit (`bloc_test`) | 80%+ |
+| Widgets | Widget test | Critical paths |
+
+- Use `mocktail` for mocking
+- Use `bloc_test` for BLoC/Cubit testing
+- Use `flutter_test` for widget tests
+
+---
+
+## Platform Config
+
+| Setting | Value |
+|---|---|
+| Android applicationId | `com.autohubexpress.app` |
+| Android minSdk | 24 (Android 7.0) |
+| Android NDK | `27.0.12077973` |
+| iOS bundle ID | `com.autohubexpress.app` |
+| iOS min deployment | 15.0 |
+| Orientation | Portrait only |
+| App label | AutoHub Express |
+
+---
+
+*This file is the base contract for all agent interactions with this project. Feature-specific requirements will be provided via the docs directory and user instructions.*
