@@ -1,25 +1,33 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthButton extends StatelessWidget {
 
   const AuthButton({
-    required this.text, required this.onPressed, super.key,
+    required this.text,
+    required this.onPressed,
+    super.key,
     this.isPrimary = true,
+    this.enabled = true,
   });
   final String text;
   final VoidCallback onPressed;
   final bool isPrimary;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
+    final bool isEnabled = enabled;
+    final bool showPrimary = isPrimary && isEnabled;
+
     return Container(
       width: double.infinity,
-      height: 57.5,
+      height: 56.h,
       decoration: BoxDecoration(
-        color: isPrimary ? null : AppColors.onboardingSurfaceLight,
-        gradient: isPrimary
+        color: showPrimary ? null : AppColors.onboardingSurfaceLight,
+        gradient: showPrimary
             ? const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -29,12 +37,12 @@ class AuthButton extends StatelessWidget {
                 ],
               )
             : null,
-        borderRadius: BorderRadius.circular(16.41),
+        borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
           color: Colors.white.withValues(alpha: 0.06),
-          width: 0.82,
+          width: 1.w,
         ),
-        boxShadow: isPrimary
+        boxShadow: showPrimary
             ? [
                 BoxShadow(
                   color: AppColors.onboardingCyan.withValues(alpha: 0.35),
@@ -47,14 +55,14 @@ class AuthButton extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: onPressed,
-          borderRadius: BorderRadius.circular(16.41),
+          onTap: isEnabled ? onPressed : null,
+          borderRadius: BorderRadius.circular(16.r),
           child: Center(
             child: Text(
               text,
               style: AppTextStyles.labelLarge.copyWith(
-                color: isPrimary ? Colors.white : const Color(0xFF484F58),
-                fontSize: 15.38,
+                color: showPrimary ? Colors.white : const Color(0xFF484F58),
+                fontSize: 15.sp,
                 fontWeight: FontWeight.w700,
               ),
             ),

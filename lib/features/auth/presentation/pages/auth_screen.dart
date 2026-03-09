@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
@@ -9,6 +7,7 @@ import 'package:auto_hub_app/features/auth/presentation/widgets/auth_toggle_tab.
 import 'package:auto_hub_app/features/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,7 +20,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  late PageController _pageController;
   late int _currentIndex;
 
   final TextEditingController _loginEmailController = TextEditingController();
@@ -36,16 +34,28 @@ class _AuthScreenState extends State<AuthScreen> {
   final bool _obscureLoginPassword = true;
   final bool _obscureSignupPassword = true;
 
+  bool _isLoginValid = false;
+  bool _isSignupValid = false;
+
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.initialTabIndex;
-    _pageController = PageController(initialPage: widget.initialTabIndex);
+
+    _loginEmailController.addListener(_updateLoginValidity);
+    _loginPasswordController.addListener(_updateLoginValidity);
+    _signupNameController.addListener(_updateSignupValidity);
+    _signupEmailController.addListener(_updateSignupValidity);
+    _signupPasswordController.addListener(_updateSignupValidity);
   }
 
   @override
   void dispose() {
-    _pageController.dispose();
+    _loginEmailController.removeListener(_updateLoginValidity);
+    _loginPasswordController.removeListener(_updateLoginValidity);
+    _signupNameController.removeListener(_updateSignupValidity);
+    _signupEmailController.removeListener(_updateSignupValidity);
+    _signupPasswordController.removeListener(_updateSignupValidity);
     _loginEmailController.dispose();
     _loginPasswordController.dispose();
     _signupNameController.dispose();
@@ -58,13 +68,21 @@ class _AuthScreenState extends State<AuthScreen> {
     setState(() {
       _currentIndex = index;
     });
-    unawaited(
-      _pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      ),
-    );
+  }
+
+  void _updateLoginValidity() {
+    setState(() {
+      _isLoginValid = _loginEmailController.text.trim().isNotEmpty &&
+          _loginPasswordController.text.trim().isNotEmpty;
+    });
+  }
+
+  void _updateSignupValidity() {
+    setState(() {
+      _isSignupValid = _signupNameController.text.trim().isNotEmpty &&
+          _signupEmailController.text.trim().isNotEmpty &&
+          _signupPasswordController.text.trim().isNotEmpty;
+    });
   }
 
   @override
@@ -73,11 +91,11 @@ class _AuthScreenState extends State<AuthScreen> {
       backgroundColor: AppColors.onboardingBackground,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.6),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               // Back Button
               Align(
                 alignment: Alignment.centerLeft,
@@ -88,24 +106,24 @@ class _AuthScreenState extends State<AuthScreen> {
                     }
                   },
                   child: Container(
-                    width: 36.9,
-                    height: 36.9,
+                    width: 36.w,
+                    height: 36.w,
                     decoration: BoxDecoration(
                       color: AppColors.onboardingSurfaceLight,
-                      borderRadius: BorderRadius.circular(16.41),
+                      borderRadius: BorderRadius.circular(16.r),
                       border: Border.all(
                         color: Colors.white.withValues(alpha: 0.08),
-                        width: 0.82,
+                        width: 1.w,
                       ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.3),
-                          blurRadius: 4.1,
-                          offset: const Offset(0, 1.03),
+                          blurRadius: 4.r,
+                          offset: Offset(0, 1.h),
                         ),
                       ],
                     ),
-                    padding: const EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10.w),
                     child: SvgPicture.asset(
                       AppIcons.arrowLeft,
                       colorFilter: const ColorFilter.mode(
@@ -116,8 +134,8 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 32),
-              
+              SizedBox(height: 32.h),
+
               // Header Texts (Animated based on tab)
               AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
@@ -131,16 +149,16 @@ class _AuthScreenState extends State<AuthScreen> {
                         'Join 94K+ buyers on AutoHub Express',
                       ),
               ),
-              const SizedBox(height: 32),
-              
+              SizedBox(height: 32.h),
+
               // Auth Toggle
               AuthToggleTab(
                 isSignIn: _currentIndex == 0,
                 onSignInTap: () => _switchTab(0),
                 onSignUpTap: () => _switchTab(1),
               ),
-              const SizedBox(height: 24),
-              
+              SizedBox(height: 24.h),
+
               // Social Buttons
               SocialButton(
                 text: _currentIndex == 0
@@ -153,7 +171,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 borderColor: Colors.white.withValues(alpha: 0.1),
                 onPressed: () {},
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               SocialButton(
                 text: _currentIndex == 0
                     ? 'Continue with Facebook'
@@ -164,8 +182,8 @@ class _AuthScreenState extends State<AuthScreen> {
                 shadowColor: const Color(0xFF1877F2).withValues(alpha: 0.35),
                 onPressed: () {},
               ),
-              const SizedBox(height: 24),
-              
+              SizedBox(height: 24.h),
+
               // Divider
               Row(
                 children: [
@@ -176,12 +194,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
                     child: Text(
                       'or continue with email',
                       style: AppTextStyles.bodySmall.copyWith(
                         color: const Color(0xFF484F58),
-                        fontSize: 12.3,
+                        fontSize: 12.sp,
                       ),
                     ),
                   ),
@@ -193,26 +211,21 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
-              
-              // Form PageView
-              SizedBox(
-                height: 250, // Fixed height for form area
-                child: PageView(
-                  controller: _pageController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
-                  children: [
-                    _buildLoginForm(),
-                    _buildSignupForm(),
-                  ],
+              SizedBox(height: 24.h),
+
+              // Form content (auto-sizes to its content)
+              AnimatedSize(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child: _currentIndex == 0
+                      ? _buildLoginForm()
+                      : _buildSignupForm(),
                 ),
               ),
-              
+              SizedBox(height: 8.h),
+
               // Continue as Guest
               Center(
                 child: RichText(
@@ -220,26 +233,27 @@ class _AuthScreenState extends State<AuthScreen> {
                     text: 'Continue as ',
                     style: AppTextStyles.bodyMedium.copyWith(
                       color: const Color(0xFF484F58),
-                      fontSize: 13.3,
+                      fontSize: 13.sp,
                     ),
                     children: [
                       TextSpan(
                         text: 'Guest',
                         style: AppTextStyles.bodyMedium.copyWith(
                           color: AppColors.onboardingCyan,
-                          fontSize: 13.3,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.w600,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          context.go('/');
-                        },
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.go('/');
+                          },
                       ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
-              
+              SizedBox(height: 24.h),
+
               // Terms & Privacy
               RichText(
                 textAlign: TextAlign.center,
@@ -247,14 +261,14 @@ class _AuthScreenState extends State<AuthScreen> {
                   text: "By continuing, you agree to AutoHub Express's ",
                   style: AppTextStyles.bodySmall.copyWith(
                     color: const Color(0xFF484F58),
-                    fontSize: 10.2,
+                    fontSize: 10.sp,
                   ),
                   children: [
                     TextSpan(
                       text: 'Terms of Service',
                       style: AppTextStyles.bodySmall.copyWith(
                         color: AppColors.onboardingCyan,
-                        fontSize: 10.2,
+                        fontSize: 10.sp,
                       ),
                       recognizer: TapGestureRecognizer()..onTap = () {},
                     ),
@@ -263,14 +277,14 @@ class _AuthScreenState extends State<AuthScreen> {
                       text: 'Privacy Policy',
                       style: AppTextStyles.bodySmall.copyWith(
                         color: AppColors.onboardingCyan,
-                        fontSize: 10.2,
+                        fontSize: 10.sp,
                       ),
                       recognizer: TapGestureRecognizer()..onTap = () {},
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
             ],
           ),
         ),
@@ -280,28 +294,28 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Widget _buildHeader(String title, String subtitle) {
     return Column(
-        key: ValueKey<String>(title),
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.displayLarge.copyWith(
-              color: AppColors.onboardingTextPrimary,
-              fontSize: 26.6,
-              height: 1.2,
-              letterSpacing: -0.82,
-              fontWeight: FontWeight.w900,
-            ),
+      key: ValueKey<String>(title),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          title,
+          style: AppTextStyles.displayLarge.copyWith(
+            color: AppColors.onboardingTextPrimary,
+            fontSize: 26.sp,
+            height: 1.2,
+            letterSpacing: -0.8,
+            fontWeight: FontWeight.w900,
           ),
-          const SizedBox(height: 8),
-          Text(
-            subtitle,
-            style: AppTextStyles.bodyMedium.copyWith(
-              color: AppColors.onboardingTextSecondary,
-              fontSize: 13.3,
-            ),
+        ),
+        SizedBox(height: 8.h),
+        Text(
+          subtitle,
+          style: AppTextStyles.bodyMedium.copyWith(
+            color: AppColors.onboardingTextSecondary,
+            fontSize: 13.sp,
           ),
-        ],
+        ),
+      ],
     );
   }
 
@@ -311,16 +325,18 @@ class _AuthScreenState extends State<AuthScreen> {
         AuthTextField(
           hintText: 'Email address',
           prefixIcon: SvgPicture.asset(AppIcons.mail),
+          controller: _loginEmailController,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         AuthTextField(
           hintText: 'Password',
           prefixIcon: SvgPicture.asset(AppIcons.lock),
           isPassword: _obscureLoginPassword,
           suffixIconPath: AppIcons.eyeOutline,
           suffixIconPathActive: AppIcons.eyeDot,
+          controller: _loginPasswordController,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         Align(
           alignment: Alignment.centerRight,
           child: TextButton(
@@ -334,17 +350,21 @@ class _AuthScreenState extends State<AuthScreen> {
               'Forgot password?',
               style: AppTextStyles.labelLarge.copyWith(
                 color: AppColors.onboardingCyan,
-                fontSize: 12.3,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
               ),
             ),
           ),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24.h),
         AuthButton(
           text: 'Sign In',
-          isPrimary: false,
-          onPressed: () {},
+          isPrimary: true,
+          enabled: _isLoginValid,
+          onPressed: () {
+            if (!_isLoginValid) return;
+            // TODO: trigger sign-in logic
+          },
         ),
       ],
     );
@@ -353,28 +373,35 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget _buildSignupForm() {
     return Column(
       children: [
-        const AuthTextField(
+        AuthTextField(
           hintText: 'Full name',
-          prefixIcon: Text('👤', style: TextStyle(fontSize: 14.36)),
+          prefixIcon: SvgPicture.asset(AppIcons.user),
+          controller: _signupNameController,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         AuthTextField(
           hintText: 'Email address',
           prefixIcon: SvgPicture.asset(AppIcons.mail),
+          controller: _signupEmailController,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         AuthTextField(
           hintText: 'Password',
           prefixIcon: SvgPicture.asset(AppIcons.lock),
           isPassword: _obscureSignupPassword,
           suffixIconPath: AppIcons.eyeOutline,
           suffixIconPathActive: AppIcons.eyeDot,
+          controller: _signupPasswordController,
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24.h),
         AuthButton(
           text: 'Create Account',
-          isPrimary: false,
-          onPressed: () {},
+          isPrimary: true,
+          enabled: _isSignupValid,
+          onPressed: () {
+            if (!_isSignupValid) return;
+            // TODO: trigger sign-up logic
+          },
         ),
       ],
     );
