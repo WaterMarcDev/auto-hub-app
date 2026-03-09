@@ -1,5 +1,6 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
+import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -26,9 +27,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/onboarding',
       name: 'onboarding',
-      builder: (context, state) => const Scaffold(
-        body: Center(child: Text('Onboarding')),
-      ),
+      builder: (context, state) => const OnboardingPage(),
     ),
     GoRoute(
       path: '/login',

@@ -71,4 +71,33 @@ abstract final class AppColors {
 
   /// Input border color.
   static const Color inputBorder = Color(0xFFD1D5DB);
+
+  // ── Onboarding / Dark Mode Colors ─────────────────────────────────────
+
+  /// Onboarding dark background.
+  static const Color onboardingBackground = Color(0xFF0D1117);
+
+  /// Onboarding card surface.
+  static const Color onboardingSurface = Color(0xFF1C2330);
+
+  /// Onboarding lighter surface.
+  static const Color onboardingSurfaceLight = Color(0xFF161B22);
+
+  /// Onboarding primary cyan accent.
+  static const Color onboardingCyan = Color(0xFF0DA0CE);
+
+  /// Onboarding primary cyan dark gradient stop.
+  static const Color onboardingCyanDark = Color(0xFF0B8FB5);
+
+  /// Onboarding success/highlight green.
+  static const Color onboardingGreen = Color(0xFF34D399);
+
+  /// Onboarding purple highlight.
+  static const Color onboardingPurple = Color(0xFFA78BFA);
+
+  /// Onboarding primary text (white/light blue-gray).
+  static const Color onboardingTextPrimary = Color(0xFFF0F6FC);
+
+  /// Onboarding secondary text (gray).
+  static const Color onboardingTextSecondary = Color(0xFF8B929A);
 }
