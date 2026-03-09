@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_hub_app/core/constants/app_images.dart';
 import 'package:auto_hub_app/features/splash/presentation/bloc/splash_cubit.dart';
 import 'package:auto_hub_app/features/splash/presentation/bloc/splash_state.dart';
 import 'package:auto_hub_app/injection.dart';
@@ -98,7 +99,7 @@ class _SplashPageState extends State<SplashPage>
         padding: EdgeInsets.all(2.w),
         child: ClipOval(
           child: Image.asset(
-            'assets/images/splash_logo.png',
+            AppImages.splashLogo,
             fit: BoxFit.cover,
           ),
         ),
