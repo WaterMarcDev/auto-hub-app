@@ -59,7 +59,8 @@ class WreckToCashView extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Text(
-            'Got a junk car? Get an instant cash offer, free towing, and fast payment — all through AutoHub Express.',
+            'Got a junk car? Get an instant cash offer, free towing, and fast '
+            'payment — all through AutoHub Express.',
             style: AppTextStyles.bodyMedium.copyWith(
               color: AppColors.onboardingTextSecondary,
               fontSize: 14.sp,

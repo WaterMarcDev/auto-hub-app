@@ -59,7 +59,8 @@ class WelcomeView extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Text(
-            "America's #1 junkyard & auto-parts marketplace — connecting buyers with verified salvage yards nationwide.",
+            "America's #1 junkyard & auto-parts marketplace — connecting "
+            'buyers with verified salvage yards nationwide.',
             style: AppTextStyles.bodyMedium.copyWith(
               color: AppColors.onboardingTextSecondary,
               fontSize: 14.sp,

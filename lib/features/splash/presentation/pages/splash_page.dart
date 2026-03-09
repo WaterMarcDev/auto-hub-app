@@ -40,7 +40,7 @@ class _SplashPageState extends State<SplashPage>
     _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: const Interval(0.2, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.2, 1, curve: Curves.easeIn),
       ),
     );
 
@@ -51,14 +51,14 @@ class _SplashPageState extends State<SplashPage>
     _outerRingScale = Tween<double>(begin: 112, end: 225).animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: const Interval(0.1, 1.0, curve: Curves.easeOutCubic),
+        curve: const Interval(0.1, 1, curve: Curves.easeOutCubic),
       ),
     );
 
     // Start the animation slightly after the page loads
     Future.delayed(const Duration(milliseconds: 200), () {
       if (mounted) {
-        _animationController.forward();
+        unawaited(_animationController.forward());
       }
     });
   }
@@ -188,7 +188,8 @@ class _SplashPageState extends State<SplashPage>
                             ),
                           ),
                         ),
-                        // Central logo (passed as child so it is not rebuilt every frame)
+                        // Central logo (passed as child so it is not
+                        // rebuilt every frame)
                         child!,
                       ],
                     );
