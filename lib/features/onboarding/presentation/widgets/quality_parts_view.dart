@@ -25,7 +25,7 @@ class QualityPartsView extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height: 24.h),
 
           // Text Content
           Row(

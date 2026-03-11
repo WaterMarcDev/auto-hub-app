@@ -19,7 +19,7 @@ class WreckToCashView extends StatelessWidget {
           // Graphic: truck circle + 3 step cards + payout strip
           Center(
             child: SizedBox(
-              width: 280.w,
+              height: 250.h,
               child: Image.asset(
                 AppImages.onboardingPage4,
                 fit: BoxFit.contain,

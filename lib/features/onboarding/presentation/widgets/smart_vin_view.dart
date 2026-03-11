@@ -19,7 +19,7 @@ class SmartVinView extends StatelessWidget {
           // VIN card section
           Center(
             child: SizedBox(
-              width: 242.w,
+              height: 250.h,
               child: Image.asset(
                 AppImages.onboardingPage3,
                 fit: BoxFit.contain,
