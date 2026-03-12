@@ -1,9 +1,7 @@
-import 'package:auto_hub_app/core/theme/app_colors.dart';
-import 'package:auto_hub_app/core/theme/app_text_styles.dart';
+import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 /// Application router configuration using GoRouter.
@@ -23,7 +21,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/',
       name: 'home',
-      builder: (context, state) => const _PlaceholderHomePage(),
+      builder: (context, state) => const MainShell(),
     ),
     GoRoute(
       path: '/onboarding',
@@ -42,50 +40,3 @@ final GoRouter appRouter = GoRouter(
     ),
   ],
 );
-
-/// Temporary placeholder home page.
-///
-/// This will be replaced once actual feature screens are built.
-class _PlaceholderHomePage extends StatelessWidget {
-  const _PlaceholderHomePage();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('AutoHub Express'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.build_circle_outlined,
-              size: 80,
-              color: AppColors.primary.withValues(alpha: 0.3),
-            ),
-            const SizedBox(height: 24),
-            Text(
-              'AutoHub Express',
-              style: AppTextStyles.headlineLarge,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Auto Parts, Recycling & More',
-              style: AppTextStyles.bodyMedium.copyWith(
-                color: AppColors.textSecondary,
-              ),
-            ),
-            const SizedBox(height: 32),
-            Text(
-              'Base setup complete ✓',
-              style: AppTextStyles.bodySmall.copyWith(
-                color: AppColors.success,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
