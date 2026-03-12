@@ -38,9 +38,9 @@ class OnboardingBottomNav extends StatelessWidget {
                 boxShadow: isActive
                     ? [
                         BoxShadow(
-                          color: AppColors.onboardingCyan.withValues(alpha: 0.7),
+                          color: AppColors.onboardingCyan
+                              .withValues(alpha: 0.7),
                           blurRadius: 10,
-                          offset: Offset.zero,
                         ),
                       ]
                     : null,

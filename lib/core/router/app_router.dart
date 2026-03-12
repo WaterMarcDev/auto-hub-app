@@ -1,5 +1,6 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
+import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +33,12 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/login',
       name: 'login',
-      builder: (context, state) => const Scaffold(
-        body: Center(child: Text('Login')),
-      ),
+      builder: (context, state) => const AuthScreen(),
+    ),
+    GoRoute(
+      path: '/signup',
+      name: 'signup',
+      builder: (context, state) => const AuthScreen(initialTabIndex: 1),
     ),
   ],
 );

@@ -25,8 +25,8 @@ class QualityPartsView extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 16.h),
-          
+          SizedBox(height: 24.h),
+
           // Text Content
           Row(
             children: [
@@ -59,7 +59,8 @@ class QualityPartsView extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Text(
-            "Browse thousands of OEM-grade auto parts from verified salvage yards across the United States.",
+            'Browse thousands of OEM-grade auto parts from verified '
+            'salvage yards across the United States.',
             style: AppTextStyles.bodyMedium.copyWith(
               color: AppColors.onboardingTextSecondary,
               fontSize: 14.sp,
@@ -67,9 +68,12 @@ class QualityPartsView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24.h),
-          
+
           // Bullet points
-          _buildFeatureBullet(Icons.category, '18,000+ parts across 8 categories'),
+          _buildFeatureBullet(
+            Icons.category,
+            '18,000+ parts across 8 categories',
+          ),
           SizedBox(height: 12.h),
           _buildFeatureBullet(Icons.verified, 'Every yard verified & rated'),
           SizedBox(height: 12.h),
@@ -109,4 +113,3 @@ class QualityPartsView extends StatelessWidget {
     );
   }
 }
-

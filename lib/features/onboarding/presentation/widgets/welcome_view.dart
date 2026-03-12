@@ -14,11 +14,11 @@ class WelcomeView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 60.h),
+          SizedBox(height: 48.h),
           // Graphic section
           Center(
             child: SizedBox(
-              height: 260.h,
+              height: 250.h,
               child: Image.asset(
                 AppImages.onboardingPage1,
                 fit: BoxFit.contain,
@@ -26,7 +26,7 @@ class WelcomeView extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 48.h),
+          SizedBox(height: 24.h),
           // Text Content
           Row(
             children: [
@@ -59,7 +59,8 @@ class WelcomeView extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Text(
-            "America's #1 junkyard & auto-parts marketplace — connecting buyers with verified salvage yards nationwide.",
+            "America's #1 junkyard & auto-parts marketplace — connecting "
+            'buyers with verified salvage yards nationwide.',
             style: AppTextStyles.bodyMedium.copyWith(
               color: AppColors.onboardingTextSecondary,
               fontSize: 14.sp,

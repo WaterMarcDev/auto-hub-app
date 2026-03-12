@@ -19,7 +19,7 @@ class WreckToCashView extends StatelessWidget {
           // Graphic: truck circle + 3 step cards + payout strip
           Center(
             child: SizedBox(
-              width: 280.w,
+              height: 250.h,
               child: Image.asset(
                 AppImages.onboardingPage4,
                 fit: BoxFit.contain,
@@ -59,7 +59,8 @@ class WreckToCashView extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Text(
-            'Got a junk car? Get an instant cash offer, free towing, and fast payment — all through AutoHub Express.',
+            'Got a junk car? Get an instant cash offer, free towing, and fast '
+            'payment — all through AutoHub Express.',
             style: AppTextStyles.bodyMedium.copyWith(
               color: AppColors.onboardingTextSecondary,
               fontSize: 14.sp,

@@ -19,7 +19,7 @@ class SmartVinView extends StatelessWidget {
           // VIN card section
           Center(
             child: SizedBox(
-              width: 242.w,
+              height: 250.h,
               child: Image.asset(
                 AppImages.onboardingPage3,
                 fit: BoxFit.contain,
@@ -59,7 +59,8 @@ class SmartVinView extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Text(
-            'Enter your 17-digit VIN number and instantly find exact-fit compatible parts for your specific vehicle.',
+            'Enter your 17-digit VIN number and instantly find exact-fit '
+            'compatible parts for your specific vehicle.',
             style: AppTextStyles.bodyMedium.copyWith(
               color: AppColors.onboardingTextSecondary,
               fontSize: 14.sp,

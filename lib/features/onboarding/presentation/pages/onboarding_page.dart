@@ -1,13 +1,14 @@
+import 'dart:async';
+
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
+import 'package:auto_hub_app/features/onboarding/presentation/widgets/onboarding_bottom_nav.dart';
+import 'package:auto_hub_app/features/onboarding/presentation/widgets/quality_parts_view.dart';
+import 'package:auto_hub_app/features/onboarding/presentation/widgets/smart_vin_view.dart';
+import 'package:auto_hub_app/features/onboarding/presentation/widgets/welcome_view.dart';
+import 'package:auto_hub_app/features/onboarding/presentation/widgets/wreck_to_cash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
-import '../widgets/onboarding_bottom_nav.dart';
-import '../widgets/welcome_view.dart';
-import '../widgets/quality_parts_view.dart';
-import '../widgets/smart_vin_view.dart';
-import '../widgets/wreck_to_cash_view.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -29,9 +30,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   void _onNext() {
     if (_currentIndex < _pageCount - 1) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOutCubic,
+      unawaited(
+        _pageController.nextPage(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOutCubic,
+        ),
       );
     } else {
       _finishOnboarding();
@@ -44,7 +47,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   void _finishOnboarding() {
     // Navigate away when onboarding is done
-    // TODO: Update shared prefs / persistent storage in the future
+    // TODO(autohub): Update shared prefs / persistent storage in the future
     context.goNamed('login');
   }
 
@@ -94,13 +97,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   child: GestureDetector(
                     onTap: _onSkip,
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 8.h,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 0.06),
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
                           color: Colors.white.withValues(alpha: 0.1),
-                          width: 1,
                         ),
                       ),
                       child: Text(
