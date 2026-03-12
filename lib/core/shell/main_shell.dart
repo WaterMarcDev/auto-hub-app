@@ -51,7 +51,7 @@ class _MainShellState extends State<MainShell> {
 
   Widget _buildNavBar() {
     return Container(
-      height: 92.h,
+      height: 76.h,
       decoration: const BoxDecoration(
         color: Color(0xFF0D1117),
         border: Border(
@@ -91,7 +91,7 @@ class _MainShellState extends State<MainShell> {
       behavior: HitTestBehavior.opaque,
       child: SizedBox(
         width: 72.w,
-        height: 72.h,
+        height: 66.h,
         child: Column(
           children: [
             SizedBox(height: 6.h),
