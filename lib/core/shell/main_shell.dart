@@ -22,6 +22,7 @@ class MainShell extends StatefulWidget {
 
 class _MainShellState extends State<MainShell> {
   int _currentIndex = 0;
+  late final List<Widget> _pages;
 
   static const List<_NavItem> _items = [
     _NavItem('Home', 'assets/icons/ic_nav_home.svg'),
@@ -30,12 +31,21 @@ class _MainShellState extends State<MainShell> {
     _NavItem('Profile', 'assets/icons/ic_nav_profile.svg'),
   ];
 
-  static const List<Widget> _pages = [
-    HomePage(),
-    BrowsePage(),
-    SavedPage(),
-    ProfilePage(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      const HomePage(),
+      const BrowsePage(),
+      SavedPage(onBrowseTap: () => _goToTab(1)),
+      const ProfilePage(),
+    ];
+  }
+
+  void _goToTab(int index) {
+    if (_currentIndex == index) return;
+    setState(() => _currentIndex = index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +97,7 @@ class _MainShellState extends State<MainShell> {
     final item = _items[index];
 
     return GestureDetector(
-      onTap: () => setState(() => _currentIndex = index),
+      onTap: () => _goToTab(index),
       behavior: HitTestBehavior.opaque,
       child: SizedBox(
         width: 72.w,
