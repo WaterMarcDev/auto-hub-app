@@ -1,9 +1,9 @@
+import 'package:auto_hub_app/features/home/presentation/widgets/home_part_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:auto_hub_app/features/home/presentation/widgets/home_part_card.dart';
 
 class HomeRecentListings extends StatelessWidget {
   const HomeRecentListings({super.key});
@@ -134,7 +134,10 @@ class HomeRecentListings extends StatelessWidget {
           itemCount: _items.length,
           separatorBuilder: (_, __) => SizedBox(height: 16.h),
           itemBuilder: (context, index) {
-            return HomePartCardVertical(item: _items[index]);
+            return GestureDetector(
+              onTap: () => context.push('/part-details'),
+              child: HomePartCardVertical(item: _items[index]),
+            );
           },
         ),
       ],
