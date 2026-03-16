@@ -279,7 +279,7 @@ class SavedPage extends StatelessWidget {
               ],
             ),
           ),
-          ],
+        ],
       ),
     );
   }
