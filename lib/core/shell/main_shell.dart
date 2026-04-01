@@ -60,8 +60,10 @@ class _MainShellState extends State<MainShell> {
   }
 
   Widget _buildNavBar() {
+    final bottomInset = MediaQuery.of(context).viewPadding.bottom;
+
     return Container(
-      height: 76.h,
+      height: 76.h + bottomInset,
       decoration: const BoxDecoration(
         color: Color(0xFF0D1117),
         border: Border(
@@ -79,7 +81,7 @@ class _MainShellState extends State<MainShell> {
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.w),
+        padding: EdgeInsets.fromLTRB(15.w, 0, 15.w, bottomInset),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
