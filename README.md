@@ -6,7 +6,7 @@
 
 | Layer | Choice |
 |---|---|
-| Framework | Flutter 3.29.2 / Dart 3.7.2 |
+| Framework | Flutter 3.41.3 / Dart 3.11.1 |
 | State Management | BLoC |
 | DI | get_it + injectable |
 | Navigation | go_router |

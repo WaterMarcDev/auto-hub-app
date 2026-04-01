@@ -1,9 +1,9 @@
+import 'package:auto_hub_app/features/home/presentation/widgets/home_part_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:auto_hub_app/features/home/presentation/widgets/home_part_card.dart';
 
 class HomeFeaturedParts extends StatelessWidget {
   const HomeFeaturedParts({super.key});
@@ -123,7 +123,10 @@ class HomeFeaturedParts extends StatelessWidget {
             itemCount: _items.length,
             separatorBuilder: (_, __) => SizedBox(width: 16.w),
             itemBuilder: (context, index) {
-              return HomePartCardHorizontal(item: _items[index]);
+              return GestureDetector(
+                onTap: () => context.push('/part-details'),
+                child: HomePartCardHorizontal(item: _items[index]),
+              );
             },
           ),
         ),
