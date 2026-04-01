@@ -119,51 +119,46 @@ class ProfilePage extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 padding: EdgeInsets.only(bottom: 24.h),
-                child: Center(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 420),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 18.h),
-                          const _ProfileIdentityHeader(
-                            name: 'Mike Johnson',
-                            initials: 'MJ',
-                          ),
-                          SizedBox(height: 27.h),
-                          for (var index = 0; index < sections.length; index++)
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 12.h),
-                              child: ProfileMenuSectionCard(
-                                section: sections[index],
-                              ),
-                            ),
-                          _SignOutButton(
-                            onTap: () {
-                              ScaffoldMessenger.of(context)
-                                ..hideCurrentSnackBar()
-                                ..showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                      'Sign out action coming soon',
-                                    ),
-                                  ),
-                                );
-                            },
-                          ),
-                          SizedBox(height: 10.h),
-                          Text(
-                            'AutoHub Express v2.4.1 · Salvage & Parts',
-                            textAlign: TextAlign.center,
-                            style: AppTextStyles.bodySmall.copyWith(
-                              color: const Color(0xFF2D333B),
-                              fontSize: 10.sp,
-                            ),
-                          ),
-                        ],
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 18.h),
+                      const _ProfileIdentityHeader(
+                        name: 'Mike Johnson',
+                        initials: 'MJ',
                       ),
-                    ),
+                      SizedBox(height: 27.h),
+                      for (var index = 0; index < sections.length; index++)
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 12.h),
+                          child: ProfileMenuSectionCard(
+                            section: sections[index],
+                          ),
+                        ),
+                      _SignOutButton(
+                        onTap: () {
+                          ScaffoldMessenger.of(context)
+                            ..hideCurrentSnackBar()
+                            ..showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Sign out action coming soon',
+                                ),
+                              ),
+                            );
+                        },
+                      ),
+                      SizedBox(height: 10.h),
+                      Text(
+                        'AutoHub Express v2.4.1 · Salvage & Parts',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: const Color(0xFF2D333B),
+                          fontSize: 10.sp,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
