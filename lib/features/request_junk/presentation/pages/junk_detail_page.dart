@@ -1,6 +1,6 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/request_junk/models/junk.dart';
+import 'package:auto_hub_app/features/request_junk/models/junk_models.dart';
 import 'package:auto_hub_app/features/request_junk/widgets/junk_overview_card.dart';
 import 'package:auto_hub_app/features/request_junk/widgets/pickup_details_card.dart';
 import 'package:auto_hub_app/features/request_junk/widgets/salvage_yard_card.dart';

@@ -1,6 +1,6 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/request_junk/models/junk.dart';
+import 'package:auto_hub_app/features/request_junk/models/junk_models.dart';
 import 'package:auto_hub_app/features/request_junk/widgets/status_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
