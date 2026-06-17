@@ -15,4 +15,13 @@ class AppIcons {
   static const String eyeOutline = 'assets/icons/ic_eye_outline.svg';
   static const String eyeDot = 'assets/icons/ic_eye_dot.svg';
   static const String user = 'assets/icons/ic_user.svg';
+  static const String profileActivity = 'assets/icons/ic_profile_activity.svg';
+  static const String profileCard = 'assets/icons/ic_profile_card.svg';
+  static const String profileChat = 'assets/icons/ic_profile_chat.svg';
+  static const String profileEdit = 'assets/icons/ic_profile_edit.svg';
+  static const String profileHeart = 'assets/icons/ic_profile_heart.svg';
+  static const String profileHelp = 'assets/icons/ic_profile_help.svg';
+  static const String profileLogout = 'assets/icons/ic_profile_logout.svg';
+  static const String profileSettings = 'assets/icons/ic_profile_settings.svg';
+  static const String profileVerified = 'assets/icons/ic_profile_verified.svg';
 }
