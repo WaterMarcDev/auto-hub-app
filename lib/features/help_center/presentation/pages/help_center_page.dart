@@ -1,17 +1,50 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/help_center/presentation/widgets/call_support_dialog.dart';
-import 'package:auto_hub_app/features/help_center/presentation/widgets/email_support_dialog.dart';
+import 'package:auto_hub_app/features/help_center/models/help_article.dart';
+import 'package:auto_hub_app/features/help_center/presentation/widgets/category_chip.dart';
+import 'package:auto_hub_app/features/help_center/presentation/widgets/help_article_tile.dart';
+import 'package:auto_hub_app/features/help_center/presentation/widgets/help_search_field.dart';
+import 'package:auto_hub_app/features/help_center/presentation/widgets/quick_help_card.dart';
+import 'package:auto_hub_app/features/help_center/presentation/widgets/submit_ticket_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class HelpCenterPage extends StatelessWidget {
+class HelpCenterPage extends StatefulWidget {
   const HelpCenterPage({super.key});
 
   @override
+  State<HelpCenterPage> createState() => _HelpCenterPageState();
+}
+
+class _HelpCenterPageState extends State<HelpCenterPage> {
+  String _searchQuery = '';
+  String _selectedCategory = 'All';
+  String? _expandedArticleId;
+  final Map<String, bool?> _feedbackStatus = {};
+
+  final List<String> _categories = [
+    'All',
+    'Orders',
+    'Parts',
+    'Junking',
+    'Payments',
+  ];
+
+  @override
   Widget build(BuildContext context) {
+    // Filter articles based on query and category
+    final filteredArticles = HelpArticle.defaultArticles.where((article) {
+      final matchesCategory =
+          _selectedCategory == 'All' ||
+          article.category.toLowerCase() == _selectedCategory.toLowerCase();
+      final matchesSearch =
+          _searchQuery.isEmpty ||
+          article.title.toLowerCase().contains(_searchQuery.toLowerCase()) ||
+          article.content.toLowerCase().contains(_searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    }).toList();
+
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,
       body: SafeArea(
@@ -22,15 +55,87 @@ class HelpCenterPage extends StatelessWidget {
             _buildAppBar(context),
             Expanded(
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildSupportHoursCard(),
+                    SizedBox(height: 12.h),
+                    // Search Bar
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: HelpSearchField(
+                        value: _searchQuery,
+                        onChanged: (value) {
+                          setState(() {
+                            _searchQuery = value;
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(height: 16.h),
+                    // Categories Scroll
+                    _buildCategoryChips(),
+                    SizedBox(height: 16.h),
+                    // Quick Action Cards
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: QuickHelpCard(
+                              icon: Icons.chat_bubble_outline_rounded,
+                              iconColor: AppColors.onboardingCyan,
+                              iconBgColor: AppColors.onboardingCyan.withValues(
+                                alpha: 0.1,
+                              ),
+                              title: 'Submit Ticket',
+                              description: 'Get help from our team',
+                              onTap: () {
+                                _showSubmitTicketBottomSheet(context);
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 16.w),
+                          Expanded(
+                            child: QuickHelpCard(
+                              icon: Icons.menu_book_outlined,
+                              iconColor: AppColors.onboardingPurple,
+                              iconBgColor: AppColors.onboardingPurple
+                                  .withValues(
+                                    alpha: 0.1,
+                                  ),
+                              title: 'User Guide',
+                              description: 'Learn how to use the app',
+                              onTap: () {
+                                ScaffoldMessenger.of(context)
+                                  ..hideCurrentSnackBar()
+                                  ..showSnackBar(
+                                    SnackBar(
+                                      backgroundColor:
+                                          AppColors.onboardingSurfaceLight,
+                                      content: Text(
+                                        'User Guide is opening...',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14.sp,
+                                        ),
+                                      ),
+                                      duration: const Duration(seconds: 2),
+                                    ),
+                                  );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     SizedBox(height: 24.h),
-                    _buildGetInTouchSection(context),
-                    SizedBox(height: 24.h),
-                    _buildRecentTicketsSection(),
+                    // Articles Section
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: _buildArticlesList(filteredArticles),
+                    ),
+                    SizedBox(height: 32.h),
                   ],
                 ),
               ),
@@ -39,56 +144,6 @@ class HelpCenterPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _makePhoneCall(BuildContext context) async {
-    final Uri url = Uri(scheme: 'tel', path: '+18005552886');
-    try {
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url);
-      } else {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(content: Text('Could not launch phone dialer')),
-            );
-        }
-      }
-    } catch (e) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context)
-          ..hideCurrentSnackBar()
-          ..showSnackBar(
-            SnackBar(content: Text('Error: $e')),
-          );
-      }
-    }
-  }
-
-  Future<void> _sendEmail(BuildContext context) async {
-    final Uri url = Uri(scheme: 'mailto', path: 'support@autohub.express');
-    try {
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url);
-      } else {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(content: Text('Could not launch email client')),
-            );
-        }
-      }
-    } catch (e) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context)
-          ..hideCurrentSnackBar()
-          ..showSnackBar(
-            SnackBar(content: Text('Error: $e')),
-          );
-      }
-    }
   }
 
   Widget _buildAppBar(BuildContext context) {
@@ -123,7 +178,7 @@ class HelpCenterPage extends StatelessWidget {
           ),
           SizedBox(width: 16.w),
           Text(
-            'Contact Support',
+            'Help Center',
             style: AppTextStyles.headlineLarge.copyWith(
               color: AppColors.onboardingTextPrimary,
               fontSize: 22.sp,
@@ -136,299 +191,174 @@ class HelpCenterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSupportHoursCard() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      decoration: BoxDecoration(
-        color: AppColors.onboardingGreen.withValues(alpha: 0.04),
-        borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(
-          color: AppColors.onboardingGreen.withValues(alpha: 0.15),
-          width: 0.8,
-        ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(
-            Icons.access_time_rounded,
-            color: AppColors.onboardingGreen,
-            size: 20.sp,
-          ),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Support Hours',
-                  style: TextStyle(
-                    color: AppColors.onboardingGreen,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 4.h),
-                Text(
-                  'Mon-Fri 8AM-8PM · Sat 9AM-5PM CT',
-                  style: AppTextStyles.bodySmall.copyWith(
-                    color: AppColors.onboardingTextSecondary,
-                    fontSize: 12.sp,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+  Widget _buildCategoryChips() {
+    return SizedBox(
+      height: 42.h,
+      child: ListView.builder(
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        itemCount: _categories.length,
+        itemBuilder: (context, index) {
+          final category = _categories[index];
+          return CategoryChip(
+            label: category,
+            isSelected: _selectedCategory == category,
+            onTap: () {
+              setState(() {
+                _selectedCategory = category;
+              });
+            },
+          );
+        },
       ),
     );
   }
 
-  Widget _buildGetInTouchSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'GET IN TOUCH',
-          style: AppTextStyles.labelSmall.copyWith(
-            color: AppColors.onboardingTextSecondary,
-            fontSize: 10.sp,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.8,
+  Widget _buildArticlesList(List<HelpArticle> articles) {
+    if (articles.isEmpty) {
+      return Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 40.h),
+        decoration: BoxDecoration(
+          color: AppColors.onboardingSurface,
+          borderRadius: BorderRadius.circular(24.r),
+          border: Border.all(
+            color: Colors.white.withValues(alpha: 0.07),
+            width: 0.8,
           ),
         ),
-        SizedBox(height: 12.h),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.onboardingSurfaceLight,
-            borderRadius: BorderRadius.circular(24.r),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.07),
-              width: 0.8,
-            ),
-          ),
-          clipBehavior: Clip.hardEdge,
-          child: Column(
-            children: [
-              _ContactTile(
-                icon: Icons.chat_bubble_outline_rounded,
-                iconColor: AppColors.onboardingCyan,
-                iconBgColor: AppColors.onboardingCyan.withValues(alpha: 0.1),
-                title: 'Live Chat',
-                subtitle: 'Avg. response: 2 min',
-                showOnlineBadge: true,
-                onTap: () {
-                  context.push('/live-chats');
-                },
-              ),
-              Divider(
-                color: Colors.white.withValues(alpha: 0.05),
-                height: 1.h,
-              ),
-              _ContactTile(
-                icon: Icons.mail_outline_rounded,
-                iconColor: AppColors.onboardingPurple,
-                iconBgColor: AppColors.onboardingPurple.withValues(alpha: 0.1),
-                title: 'Email Support',
-                subtitle: 'support@autohub.express',
-                onTap: () {
-                  showDialog<void>(
-                    context: context,
-                    builder: (context) => EmailSupportDialog(
-                      onConfirm: () => _sendEmail(context),
-                    ),
-                  );
-                },
-              ),
-              Divider(
-                color: Colors.white.withValues(alpha: 0.05),
-                height: 1.h,
-              ),
-              _ContactTile(
-                icon: Icons.phone_outlined,
-                iconColor: AppColors.onboardingGreen,
-                iconBgColor: AppColors.onboardingGreen.withValues(alpha: 0.1),
-                title: 'Phone Support',
-                subtitle: '+1 (800) 555-AUTO',
-                onTap: () {
-                  showDialog<void>(
-                    context: context,
-                    builder: (context) => CallSupportDialog(
-                      onConfirm: () => _makePhoneCall(context),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRecentTicketsSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'RECENT TICKETS',
-          style: AppTextStyles.labelSmall.copyWith(
-            color: AppColors.onboardingTextSecondary,
-            fontSize: 10.sp,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.8,
-          ),
-        ),
-        SizedBox(height: 12.h),
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 24.h),
-          decoration: BoxDecoration(
-            color: AppColors.onboardingSurfaceLight,
-            borderRadius: BorderRadius.circular(24.r),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.07),
-              width: 0.8,
-            ),
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            'No recent support tickets',
-            style: AppTextStyles.bodyMedium.copyWith(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.search_off_rounded,
               color: AppColors.onboardingTextSecondary,
-              fontSize: 13.sp,
+              size: 48.sp,
+            ),
+            SizedBox(height: 12.h),
+            Text(
+              'No articles found',
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: AppColors.onboardingTextSecondary,
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            SizedBox(height: 4.h),
+            Text(
+              'Try searching for something else.',
+              style: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.onboardingTextSecondary.withValues(alpha: 0.7),
+                fontSize: 12.sp,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 4.w, bottom: 12.h),
+          child: Text(
+            '${articles.length} ${articles.length == 1 ? "ARTICLE" : "ARTICLES"} FOUND',
+            style: AppTextStyles.labelSmall.copyWith(
+              color: AppColors.onboardingTextSecondary,
+              fontSize: 11.sp,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.8,
             ),
           ),
         ),
-      ],
-    );
-  }
-}
-
-class _ContactTile extends StatelessWidget {
-  const _ContactTile({
-    required this.icon,
-    required this.iconColor,
-    required this.iconBgColor,
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
-    this.showOnlineBadge = false,
-  });
-
-  final IconData icon;
-  final Color iconColor;
-  final Color iconBgColor;
-  final String title;
-  final String subtitle;
-  final VoidCallback onTap;
-  final bool showOnlineBadge;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-          child: Row(
-            children: [
-              Container(
-                width: 36.r,
-                height: 36.r,
-                decoration: BoxDecoration(
-                  color: iconBgColor,
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                alignment: Alignment.center,
-                child: Icon(
-                  icon,
-                  color: iconColor,
-                  size: 18.sp,
-                ),
-              ),
-              SizedBox(width: 14.w),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          title,
-                          style: AppTextStyles.bodyMedium.copyWith(
+        Container(
+          decoration: BoxDecoration(
+            color: AppColors.onboardingSurface,
+            borderRadius: BorderRadius.circular(24.r),
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.07),
+              width: 0.8,
+            ),
+          ),
+          child: ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.zero,
+            itemCount: articles.length,
+            separatorBuilder: (context, index) => Divider(
+              color: Colors.white.withValues(alpha: 0.05),
+              height: 1.h,
+            ),
+            itemBuilder: (context, index) {
+              final article = articles[index];
+              return HelpArticleTile(
+                article: article,
+                isExpanded: _expandedArticleId == article.id,
+                onToggle: () {
+                  setState(() {
+                    if (_expandedArticleId == article.id) {
+                      _expandedArticleId = null;
+                    } else {
+                      _expandedArticleId = article.id;
+                    }
+                  });
+                },
+                wasHelpful: _feedbackStatus[article.id],
+                onFeedback: (helpful) {
+                  setState(() {
+                    _feedbackStatus[article.id] = helpful;
+                  });
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBar(
+                        backgroundColor: AppColors.onboardingSurfaceLight,
+                        content: Text(
+                          'Thank you for your feedback!',
+                          style: TextStyle(
                             color: Colors.white,
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w700,
+                            fontSize: 14.sp,
                           ),
                         ),
-                        if (showOnlineBadge) ...[
-                          SizedBox(width: 8.w),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 6.w,
-                              vertical: 2.h,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppColors.onboardingGreen.withValues(
-                                alpha: 0.1,
-                              ),
-                              borderRadius: BorderRadius.circular(6.r),
-                              border: Border.all(
-                                color: AppColors.onboardingGreen.withValues(
-                                  alpha: 0.2,
-                                ),
-                                width: 0.6,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  width: 5.r,
-                                  height: 5.r,
-                                  decoration: const BoxDecoration(
-                                    color: AppColors.onboardingGreen,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                                SizedBox(width: 4.w),
-                                Text(
-                                  'ONLINE',
-                                  style: TextStyle(
-                                    color: AppColors.onboardingGreen,
-                                    fontSize: 8.sp,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                    SizedBox(height: 4.h),
-                    Text(
-                      subtitle,
-                      style: AppTextStyles.bodySmall.copyWith(
-                        color: AppColors.onboardingTextSecondary,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500,
+                        duration: const Duration(seconds: 2),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.chevron_right_rounded,
-                color: Colors.white.withValues(alpha: 0.3),
-                size: 20.sp,
-              ),
-            ],
+                    );
+                },
+              );
+            },
           ),
         ),
-      ),
+      ],
     );
+  }
+
+  void _showSubmitTicketBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const SubmitTicketBottomSheet(),
+    ).then((result) {
+      if (result != null && result is Map<String, String>) {
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            SnackBar(
+              backgroundColor: AppColors.onboardingSurfaceLight,
+              content: Text(
+                'Ticket submitted successfully! We\'ll get back to you soon.',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14.sp,
+                ),
+              ),
+              duration: const Duration(seconds: 3),
+            ),
+          );
+      }
+    });
   }
 }
