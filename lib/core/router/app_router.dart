@@ -1,8 +1,11 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
+import 'package:auto_hub_app/features/help_center/presentation/pages/help_center_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/junk_detail_page.dart';
+import 'package:auto_hub_app/features/help_center/presentation/pages/chat_page.dart';
+import 'package:auto_hub_app/features/help_center/presentation/pages/live_chats.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/my_request_junk.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/new_junk_request.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
@@ -75,6 +78,24 @@ final GoRouter appRouter = GoRouter(
       path: '/new-junk-request',
       name: 'new-junk-request',
       builder: (context, state) => const NewJunkRequest(),
+    ),
+    GoRoute(
+      path: '/help-center',
+      name: 'help-center',
+      builder: (context, state) => const HelpCenterPage(),
+    ),
+    GoRoute(
+      path: '/live-chats',
+      name: 'live-chats',
+      builder: (context, state) => const LiveChatPage(),
+    ),
+    GoRoute(
+      path: '/chat',
+      name: 'chat',
+      builder: (context, state) {
+        final chatRoomId = state.uri.queryParameters['chatRoomId'] ?? '';
+        return ChatPage(chatRoomId: chatRoomId);
+      },
     ),
   ],
 );

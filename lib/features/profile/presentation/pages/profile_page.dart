@@ -41,7 +41,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Messages',
             iconPath: AppIcons.profileChat,
             iconBackgroundColor: const Color(0x1FFBBF24),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('help-center'),
           ),
         ],
       ),
@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Help Center',
             iconPath: AppIcons.profileHelp,
             iconBackgroundColor: const Color(0x1F60A5FA),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('help-center'),
           ),
           ProfileMenuItemData(
             title: 'Contact Support',
