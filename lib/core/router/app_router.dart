@@ -5,6 +5,8 @@ import 'package:auto_hub_app/features/product/presentation/pages/part_details_pa
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
+import 'package:auto_hub_app/features/messages/presentation/page/chat_page.dart';
+import 'package:auto_hub_app/features/messages/presentation/page/live_chats_page.dart';
 import 'package:go_router/go_router.dart';
 
 /// Application router configuration using GoRouter.
@@ -52,6 +54,19 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => VinResultPage(
         result: state.extra! as VinDecodeResult,
       ),
+    ),
+    GoRoute(
+      path: '/live-chats',
+      name: 'live-chats',
+      builder: (context, state) => const LiveChatPage(),
+    ),
+    GoRoute(
+      path: '/chat',
+      name: 'chat',
+      builder: (context, state) {
+        final chatRoomId = state.uri.queryParameters['chatRoomId'] ?? '';
+        return ChatPage(chatRoomId: chatRoomId);
+      },
     ),
   ],
 );

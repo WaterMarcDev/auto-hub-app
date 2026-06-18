@@ -9,11 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  List<ProfileMenuSectionData> _buildSections(VoidCallback onMenuTap) {
+  List<ProfileMenuSectionData> _buildSections(BuildContext context, VoidCallback onMenuTap) {
     return [
       ProfileMenuSectionData(
         title: 'MY ACTIVITY',
@@ -40,7 +41,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Messages',
             iconPath: AppIcons.profileChat,
             iconBackgroundColor: const Color(0x1FFBBF24),
-            onTap: onMenuTap,
+            onTap: () => context.push('/live-chats'),
           ),
         ],
       ),
@@ -95,7 +96,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sections = _buildSections(() {
+    final sections = _buildSections(context, () {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(
