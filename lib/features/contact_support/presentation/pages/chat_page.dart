@@ -7,19 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage({
-    required this.chatRoomId,
+class LiveChatPage extends StatefulWidget {
+  const LiveChatPage({
     super.key,
   });
 
-  final String chatRoomId;
-
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<LiveChatPage> createState() => _LiveChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _LiveChatPageState extends State<LiveChatPage> {
+  final String chatRoomId = '1';
   // We keep messages in reverse order (newest at index 0) for smooth ListView reversing
   List<_ChatMessage> _messages = [];
 
@@ -30,7 +28,7 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _loadMessages() {
-    if (widget.chatRoomId == '1') {
+    if (chatRoomId == '1') {
       _messages = [
         const _ChatMessage(
           text: 'Let me look into that for you.',
@@ -73,7 +71,7 @@ class _ChatPageState extends State<ChatPage> {
           isSender: true,
         ),
       ];
-    } else if (widget.chatRoomId == '2') {
+    } else if (chatRoomId == '2') {
       _messages = [
         const _ChatMessage(
           text: 'Yes, the alternator is still available.',
@@ -86,7 +84,7 @@ class _ChatPageState extends State<ChatPage> {
           isSender: true,
         ),
       ];
-    } else if (widget.chatRoomId == '3') {
+    } else if (chatRoomId == '3') {
       _messages = [
         const _ChatMessage(
           text: "We'll arrive between 9-11am.",
@@ -116,7 +114,7 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   _ChatRoomInfo _getRoomInfo() {
-    switch (widget.chatRoomId) {
+    switch (chatRoomId) {
       case '1':
         return const _ChatRoomInfo(
           name: 'AutoHub Support',

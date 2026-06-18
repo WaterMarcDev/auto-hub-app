@@ -218,7 +218,7 @@ class ContactSupportPage extends StatelessWidget {
                 subtitle: 'Avg. response: 2 min',
                 showOnlineBadge: true,
                 onTap: () {
-                  context.push('/live-chats');
+                  context.pushNamed('chat');
                 },
               ),
               Divider(
