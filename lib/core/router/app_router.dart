@@ -5,6 +5,8 @@ import 'package:auto_hub_app/features/product/presentation/pages/part_details_pa
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
+import 'package:auto_hub_app/features/account_details/presenatation/pages/account_details.dart';
+import 'package:auto_hub_app/features/account_details/presenatation/pages/edit_account_deatils.dart';
 import 'package:go_router/go_router.dart';
 
 /// Application router configuration using GoRouter.
@@ -52,6 +54,16 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => VinResultPage(
         result: state.extra! as VinDecodeResult,
       ),
+    ),
+    GoRoute(
+      path: '/account-details',
+      name: 'account-details',
+      builder: (context, state) => const AccountDetailsPage(),
+    ),
+    GoRoute(
+      path: '/edit-account-details',
+      name: 'edit-account-details',
+      builder: (context, state) => const EditAccountDetailsPage(),
     ),
   ],
 );
