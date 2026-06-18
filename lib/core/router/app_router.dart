@@ -2,6 +2,7 @@ import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
+import 'package:auto_hub_app/features/settings/presentation/pages/settings_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
@@ -52,6 +53,11 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => VinResultPage(
         result: state.extra! as VinDecodeResult,
       ),
+    ),
+    GoRoute(
+      path: '/settings',
+      name: 'settings',
+      builder: (context, state) => const SettingsPage(),
     ),
   ],
 );
