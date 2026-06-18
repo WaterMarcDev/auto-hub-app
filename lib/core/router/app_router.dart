@@ -1,5 +1,8 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/live_chats_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
@@ -52,6 +55,24 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => VinResultPage(
         result: state.extra! as VinDecodeResult,
       ),
+    ),
+    GoRoute(
+      path: '/contact-support',
+      name: 'contact-support',
+      builder: (context, state) => const ContactSupportPage(),
+    ),
+    GoRoute(
+      path: '/live-chats',
+      name: 'live-chats',
+      builder: (context, state) => const LiveChatPage(),
+    ),
+    GoRoute(
+      path: '/chat',
+      name: 'chat',
+      builder: (context, state) {
+        final chatRoomId = state.uri.queryParameters['chatRoomId'] ?? '';
+        return ChatPage(chatRoomId: chatRoomId);
+      },
     ),
   ],
 );
