@@ -100,4 +100,14 @@ abstract final class AppColors {
 
   /// Onboarding secondary text (gray).
   static const Color onboardingTextSecondary = Color(0xFF8B929A);
+
+  /// Onboarding/dark mode inactive element/border color.
+  static const Color onboardingInactive = Color(0xFF222831);
+
+  /// Onboarding/dark mode muted gray text/icon color.
+  static const Color onboardingTextMuted = Color(0xFF484F58);
+
+  /// Onboarding/dark mode error surface (for destructive actions).
+  static const Color onboardingErrorSurface = Color(0xFF1C1A1E);
 }
+

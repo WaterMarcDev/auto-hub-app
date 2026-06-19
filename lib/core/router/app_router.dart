@@ -1,5 +1,7 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
+import 'package:auto_hub_app/features/my_order/presentation/pages/my_orders.dart';
+import 'package:auto_hub_app/features/my_order/presentation/pages/order_details_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
@@ -52,6 +54,19 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => VinResultPage(
         result: state.extra! as VinDecodeResult,
       ),
+    ),
+    GoRoute(
+      path: '/my-orders',
+      name: 'my-orders',
+      builder: (context, state) => const MyOrdersPage(),
+    ),
+    GoRoute(
+      path: '/order-details',
+      name: 'order-details',
+      builder: (context, state) {
+        final orderId = state.extra! as String;
+        return OrderDetailsPage(orderId: orderId);
+      },
     ),
   ],
 );
