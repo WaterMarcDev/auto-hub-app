@@ -1,24 +1,39 @@
+import 'dart:async';
+
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FilterBottomSheet extends StatefulWidget {
   const FilterBottomSheet({
-    super.key,
     required this.initialMakes,
     required this.initialCategories,
     required this.initialConditions,
     required this.initialMaxPrice,
     required this.onApply,
     required this.calculateResultsCount,
+    super.key,
   });
 
   final List<String> initialMakes;
   final List<String> initialCategories;
   final List<String> initialConditions;
   final double initialMaxPrice;
-  final Function(List<String> makes, List<String> categories, List<String> conditions, double maxPrice) onApply;
-  final int Function(List<String> makes, List<String> categories, List<String> conditions, double maxPrice) calculateResultsCount;
+  final void Function(
+    List<String> makes,
+    List<String> categories,
+    List<String> conditions,
+    double maxPrice,
+  )
+  onApply;
+  final Future<int> Function(
+    List<String> makes,
+    List<String> categories,
+    List<String> conditions,
+    double maxPrice,
+  )
+  calculateResultsCount;
 
   @override
   State<FilterBottomSheet> createState() => _FilterBottomSheetState();
@@ -31,17 +46,39 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   late double _maxPrice;
 
   final List<String> _allMakes = [
-    'All Makes', 'Honda', 'Ford', 'Chevrolet', 'Toyota', 'BMW', 'Nissan', 'Subaru'
+    'All Makes',
+    'Honda',
+    'Ford',
+    'Chevrolet',
+    'Toyota',
+    'BMW',
+    'Nissan',
+    'Subaru',
   ];
 
   final List<String> _allCategories = [
-    'All Categories', 'Engine', 'Transmission', 'Electrical', 'Body',
-    'Interior', 'Cooling', 'Suspension', 'Brakes', 'Exhaust'
+    'All Categories',
+    'Engine',
+    'Transmission',
+    'Electrical',
+    'Body',
+    'Interior',
+    'Cooling',
+    'Suspension',
+    'Brakes',
+    'Exhaust',
   ];
 
   final List<String> _allConditions = [
-    'All', 'Excellent', 'Good', 'Fair', 'Salvage'
+    'All',
+    'Excellent',
+    'Good',
+    'Fair',
+    'Salvage',
   ];
+
+  int _currentCount = 0;
+  bool _isCalculating = false;
 
   @override
   void initState() {
@@ -56,6 +93,25 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     if (_selectedConditions.isEmpty) _selectedConditions.add('All');
 
     _maxPrice = widget.initialMaxPrice;
+    unawaited(_updateCount());
+  }
+
+  Future<void> _updateCount() async {
+    setState(() {
+      _isCalculating = true;
+    });
+    final count = await widget.calculateResultsCount(
+      _selectedMakes,
+      _selectedCategories,
+      _selectedConditions,
+      _maxPrice,
+    );
+    if (mounted) {
+      setState(() {
+        _currentCount = count;
+        _isCalculating = false;
+      });
+    }
   }
 
   void _resetAll() {
@@ -65,17 +121,17 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       _selectedConditions = ['All'];
       _maxPrice = 2000.0;
     });
+    unawaited(_updateCount());
   }
 
   void _toggleFilter(List<String> currentList, String option, String allLabel) {
     setState(() {
       if (option == allLabel) {
-        currentList.clear();
-        currentList.add(allLabel);
+        currentList..clear()
+        ..add(allLabel);
       } else {
         currentList.remove(allLabel);
-        if (currentList.contains(option)) {
-          currentList.remove(option);
+        if (currentList.remove(option)) {
           if (currentList.isEmpty) {
             currentList.add(allLabel);
           }
@@ -84,24 +140,17 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         }
       }
     });
+    unawaited(_updateCount());
   }
 
   @override
   Widget build(BuildContext context) {
-    final int count = widget.calculateResultsCount(
-      _selectedMakes,
-      _selectedCategories,
-      _selectedConditions,
-      _maxPrice,
-    );
-
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF12161A),
+        color: AppColors.onboardingBackground,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
         border: Border.all(
           color: const Color(0x12FFFFFF),
-          width: 1,
         ),
       ),
       child: SafeArea(
@@ -116,7 +165,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 width: 40.w,
                 height: 4.h,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.white.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(2.r),
                 ),
               ),
@@ -142,7 +191,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                       style: GoogleFonts.inter(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF00A8CC),
+                        color: AppColors.info,
                       ),
                     ),
                   ),
@@ -167,7 +216,11 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     // CATEGORY
                     _buildSectionHeader('CATEGORY'),
                     SizedBox(height: 10.h),
-                    _buildChipsWrap(_allCategories, _selectedCategories, 'All Categories'),
+                    _buildChipsWrap(
+                      _allCategories,
+                      _selectedCategories,
+                      'All Categories',
+                    ),
                     SizedBox(height: 24.h),
 
                     // CONDITION
@@ -186,7 +239,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           style: GoogleFonts.inter(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w700,
-                            color: const Color(0xFF00A8CC),
+                            color: AppColors.info,
                           ),
                         ),
                       ],
@@ -194,22 +247,29 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     SizedBox(height: 12.h),
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
-                        activeTrackColor: const Color(0xFF00A8CC),
-                        inactiveTrackColor: Colors.white.withOpacity(0.1),
-                        thumbColor: const Color(0xFF00A8CC),
-                        overlayColor: const Color(0xFF00A8CC).withOpacity(0.2),
+                        activeTrackColor: AppColors.info,
+                        inactiveTrackColor: Colors.white.withValues(alpha: 0.1),
+                        thumbColor: AppColors.info,
+                        overlayColor: AppColors.info.withValues(alpha: 0.2),
                         trackHeight: 4.h,
-                        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8.r),
-                        overlayShape: RoundSliderOverlayShape(overlayRadius: 16.r),
+                        thumbShape: RoundSliderThumbShape(
+                          enabledThumbRadius: 8.r,
+                        ),
+                        overlayShape: RoundSliderOverlayShape(
+                          overlayRadius: 16.r,
+                        ),
                       ),
                       child: Slider(
                         value: _maxPrice,
-                        min: 10.0,
-                        max: 2000.0,
+                        min: 10,
+                        max: 2000,
                         onChanged: (val) {
                           setState(() {
                             _maxPrice = val;
                           });
+                        },
+                        onChangeEnd: (val) {
+                          unawaited(_updateCount());
                         },
                       ),
                     ),
@@ -219,12 +279,18 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '\$10',
-                            style: GoogleFonts.inter(fontSize: 11.sp, color: const Color(0xFF8B929A)),
+                            r'$10',
+                            style: GoogleFonts.inter(
+                              fontSize: 11.sp,
+                              color: AppColors.textSecondary,
+                            ),
                           ),
                           Text(
-                            '\$2,000',
-                            style: GoogleFonts.inter(fontSize: 11.sp, color: const Color(0xFF8B929A)),
+                            r'$2,000',
+                            style: GoogleFonts.inter(
+                              fontSize: 11.sp,
+                              color: AppColors.textSecondary,
+                            ),
                           ),
                         ],
                       ),
@@ -251,24 +317,33 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   height: 52.h,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF00A8CC),
+                    color: AppColors.info,
                     borderRadius: BorderRadius.circular(12.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF00A8CC).withOpacity(0.3),
+                        color: AppColors.info.withValues(alpha: 0.3),
                         blurRadius: 12,
                         offset: const Offset(0, 4),
                       ),
                     ],
                   ),
-                  child: Text(
-                    'Show $count Results',
-                    style: GoogleFonts.inter(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: _isCalculating
+                      ? SizedBox(
+                          height: 20.h,
+                          width: 20.h,
+                          child: const CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : Text(
+                          'Show $_currentCount Results',
+                          style: GoogleFonts.inter(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
                 ),
               ),
             ),
@@ -284,13 +359,17 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       style: GoogleFonts.inter(
         fontSize: 11.sp,
         fontWeight: FontWeight.w700,
-        color: const Color(0xFF8B929A),
+        color: AppColors.textSecondary,
         letterSpacing: 0.8,
       ),
     );
   }
 
-  Widget _buildChipsWrap(List<String> options, List<String> selectedList, String allLabel) {
+  Widget _buildChipsWrap(
+    List<String> options,
+    List<String> selectedList,
+    String allLabel,
+  ) {
     return Wrap(
       spacing: 8.w,
       runSpacing: 8.h,
@@ -303,12 +382,11 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
             decoration: BoxDecoration(
               color: isSelected
-                  ? const Color(0xFF00A8CC).withOpacity(0.1)
-                  : const Color(0xFF1A1F26),
+                  ? AppColors.info.withValues(alpha: 0.1)
+                  : AppColors.onboardingSurface,
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(
-                color: isSelected ? const Color(0xFF00A8CC) : Colors.transparent,
-                width: 1,
+                color: isSelected ? AppColors.info : Colors.transparent,
               ),
             ),
             child: Text(
@@ -316,7 +394,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               style: GoogleFonts.inter(
                 fontSize: 12.sp,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                color: isSelected ? const Color(0xFF00A8CC) : const Color(0xFF8B929A),
+                color: isSelected ? AppColors.info : AppColors.textSecondary,
               ),
             ),
           ),

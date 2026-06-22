@@ -1,69 +1,16 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
+import 'package:auto_hub_app/features/browse/domain/models/product_part_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProductPartItem {
-  final String id;
-  final String title;
-  final double price;
-  final String condition; // Good, Excellent, Fair, Salvage
-  final double rating;
-  final String make;
-  final String model;
-  final String yearRange;
-  final String category;
-  final String warranty;
-  final String location;
-  final String imagePath;
-  final String? tag; // Featured, New, Certified, Hot Deal, etc.
-  final bool isFavorite;
-
-  const ProductPartItem({
-    required this.id,
-    required this.title,
-    required this.price,
-    required this.condition,
-    required this.rating,
-    required this.make,
-    required this.model,
-    required this.yearRange,
-    required this.category,
-    required this.warranty,
-    required this.location,
-    required this.imagePath,
-    this.tag,
-    this.isFavorite = false,
-  });
-
-  ProductPartItem copyWith({
-    bool? isFavorite,
-  }) {
-    return ProductPartItem(
-      id: id,
-      title: title,
-      price: price,
-      condition: condition,
-      rating: rating,
-      make: make,
-      model: model,
-      yearRange: yearRange,
-      category: category,
-      warranty: warranty,
-      location: location,
-      imagePath: imagePath,
-      tag: tag,
-      isFavorite: isFavorite ?? this.isFavorite,
-    );
-  }
-}
-
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    super.key,
     required this.part,
     this.onTap,
     this.onFavoriteTap,
+    super.key,
   });
 
   final ProductPartItem part;
@@ -76,38 +23,32 @@ class ProductCard extends StatelessWidget {
     Color conditionColor;
     switch (part.condition.toLowerCase()) {
       case 'excellent':
-        conditionColor = const Color(0xFF22C55E);
-        break;
+        conditionColor = AppColors.success;
       case 'good':
-        conditionColor = const Color(0xFF00A8CC);
-        break;
+        conditionColor = AppColors.info;
       case 'fair':
-        conditionColor = const Color(0xFFFBBF24);
-        break;
+        conditionColor = AppColors.warning;
       default:
-        conditionColor = const Color(0xFFEF4444);
+        conditionColor = AppColors.error;
     }
 
     // Tag styling helper
-    Color tagBg = Colors.transparent;
-    Color tagText = Colors.white;
+    var tagBg = Colors.transparent;
+    var tagText = Colors.white;
     if (part.tag != null) {
       switch (part.tag!.toLowerCase()) {
         case 'featured':
-          tagBg = const Color(0xFF00A8CC).withOpacity(0.15);
-          tagText = const Color(0xFF00A8CC);
-          break;
+          tagBg = AppColors.info.withValues(alpha: 0.15);
+          tagText = AppColors.info;
         case 'new':
-          tagBg = const Color(0xFFA78BFA).withOpacity(0.15);
-          tagText = const Color(0xFFA78BFA);
-          break;
+          tagBg = AppColors.onboardingPurple.withValues(alpha: 0.15);
+          tagText = AppColors.onboardingPurple;
         case 'certified':
-          tagBg = const Color(0xFF22C55E).withOpacity(0.15);
-          tagText = const Color(0xFF22C55E);
-          break;
+          tagBg = AppColors.success.withValues(alpha: 0.15);
+          tagText = AppColors.success;
         default: // Hot Deal, etc.
-          tagBg = const Color(0xFFE55A2B).withOpacity(0.15);
-          tagText = const Color(0xFFE55A2B);
+          tagBg = AppColors.secondaryDark.withValues(alpha: 0.15);
+          tagText = AppColors.secondaryDark;
       }
     }
 
@@ -120,7 +61,6 @@ class ProductCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
             color: const Color(0x12FFFFFF),
-            width: 1,
           ),
         ),
         clipBehavior: Clip.antiAlias,
@@ -156,8 +96,8 @@ class ProductCard extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          Colors.black.withOpacity(0.1),
-                          Colors.black.withOpacity(0.8),
+                          Colors.black.withValues(alpha: 0.1),
+                          Colors.black.withValues(alpha: 0.8),
                         ],
                         stops: const [0.0, 0.5, 1.0],
                       ),
@@ -173,10 +113,10 @@ class ProductCard extends StatelessWidget {
                         width: 36.w,
                         height: 36.h,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF0D1117).withOpacity(0.7),
+                          color: const Color(0xFF0D1117).withValues(alpha: 0.7),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.12),
+                            color: Colors.white.withValues(alpha: 0.12),
                             width: 0.8,
                           ),
                         ),
@@ -187,9 +127,13 @@ class ProductCard extends StatelessWidget {
                           height: 14.h,
                           colorFilter: ColorFilter.mode(
                             part.isFavorite
-                                ? const Color(0xFFEF4444)
+                                ? AppColors.error
                                 : Colors.white,
                             BlendMode.srcIn,
+                          ),
+                          placeholderBuilder: (context) => const Icon(
+                            Icons.error_outline,
+                            size: 14,
                           ),
                         ),
                       ),
@@ -209,8 +153,7 @@ class ProductCard extends StatelessWidget {
                           color: tagBg,
                           borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
-                            color: tagText.withOpacity(0.3),
-                            width: 1,
+                            color: tagText.withValues(alpha: 0.3),
                           ),
                         ),
                         child: Text(
@@ -246,11 +189,10 @@ class ProductCard extends StatelessWidget {
                             vertical: 4.h,
                           ),
                           decoration: BoxDecoration(
-                            color: conditionColor.withOpacity(0.1),
+                            color: conditionColor.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(10.r),
                             border: Border.all(
-                              color: conditionColor.withOpacity(0.4),
-                              width: 1,
+                              color: conditionColor.withValues(alpha: 0.4),
                             ),
                           ),
                           child: Text(
@@ -294,7 +236,7 @@ class ProductCard extends StatelessWidget {
                         height: 24.h,
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFF59E0B).withOpacity(0.1),
+                          color: const Color(0xFFF59E0B).withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(14.r),
                         ),
                         child: Row(
@@ -304,6 +246,10 @@ class ProductCard extends StatelessWidget {
                               'assets/icons/ic_star.svg',
                               width: 11.w,
                               height: 11.h,
+                              placeholderBuilder: (context) => const Icon(
+                                Icons.error_outline,
+                                size: 11,
+                              ),
                             ),
                             SizedBox(width: 4.w),
                             Text(
@@ -326,6 +272,10 @@ class ProductCard extends StatelessWidget {
                         'assets/icons/ic_tag.svg',
                         width: 12.w,
                         height: 12.h,
+                        placeholderBuilder: (context) => const Icon(
+                          Icons.error_outline,
+                          size: 12,
+                        ),
                       ),
                       SizedBox(width: 6.w),
                       Text(
@@ -382,7 +332,7 @@ class _DetailChip extends StatelessWidget {
       height: 23.h,
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -393,8 +343,12 @@ class _DetailChip extends StatelessWidget {
             width: 10.w,
             height: 10.h,
             colorFilter: const ColorFilter.mode(
-              Color(0xFF8B929A),
+              AppColors.textSecondary,
               BlendMode.srcIn,
+            ),
+            placeholderBuilder: (context) => const Icon(
+              Icons.error_outline,
+              size: 10,
             ),
           ),
           SizedBox(width: 4.w),

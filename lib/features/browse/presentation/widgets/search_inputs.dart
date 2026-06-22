@@ -1,26 +1,23 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
+import 'package:auto_hub_app/features/browse/presentation/widgets/search_type_toggle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'search_type_toggle.dart';
 
 class SearchInputs extends StatefulWidget {
   const SearchInputs({
-    super.key,
     required this.searchType,
     required this.partController,
     required this.vinController,
     required this.onFilterTap,
-    required this.onPartChanged,
-    required this.onVinChanged,
+    super.key,
   });
 
   final SearchType searchType;
   final TextEditingController partController;
   final TextEditingController vinController;
   final VoidCallback onFilterTap;
-  final ValueChanged<String> onPartChanged;
-  final ValueChanged<String> onVinChanged;
 
   @override
   State<SearchInputs> createState() => _SearchInputsState();
@@ -63,7 +60,7 @@ class _SearchInputsState extends State<SearchInputs> {
               borderRadius: BorderRadius.circular(26.r),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withValues(alpha: 0.15),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -71,8 +68,7 @@ class _SearchInputsState extends State<SearchInputs> {
             ),
             child: TextField(
               controller: widget.partController,
-              onChanged: widget.onPartChanged,
-              cursorColor: const Color(0xFF00A8CC),
+              cursorColor: AppColors.info,
               textAlignVertical: TextAlignVertical.center,
               style: GoogleFonts.inter(
                 color: Colors.white,
@@ -84,14 +80,14 @@ class _SearchInputsState extends State<SearchInputs> {
                 isDense: true,
                 hintText: 'Part name, make, model...',
                 hintStyle: GoogleFonts.inter(
-                  color: const Color(0xFF8B929A),
+                  color: AppColors.textSecondary,
                   fontSize: 14.sp,
                 ),
                 prefixIcon: Container(
                   margin: EdgeInsets.only(left: 16.w, right: 12.w),
                   child: const Icon(
                     Icons.search_rounded,
-                    color: Color(0xFF8B929A),
+                    color: AppColors.textSecondary,
                     size: 22,
                   ),
                 ),
@@ -121,7 +117,7 @@ class _SearchInputsState extends State<SearchInputs> {
               borderRadius: BorderRadius.circular(18.r),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
+                  color: Colors.black.withValues(alpha: 0.15),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -129,7 +125,7 @@ class _SearchInputsState extends State<SearchInputs> {
             ),
             child: const Icon(
               Icons.tune_rounded,
-              color: Color(0xFF8B929A),
+              color: AppColors.textSecondary,
             ),
           ),
         ),
@@ -142,35 +138,35 @@ class _SearchInputsState extends State<SearchInputs> {
     final len = vin.length;
 
     // Determine states
-    Color borderC = Colors.transparent;
+    var borderC = Colors.transparent;
     Widget? suffixI;
-    String helperL = '$len/17 digits';
+    final helperL = '$len/17 digits';
     String? helperR;
-    Color helperColor = const Color(0xFF8B929A);
+    var helperColor = AppColors.textSecondary;
 
     if (len == 0) {
       // State 1: Empty
       borderC = Colors.transparent;
       suffixI = null;
-      helperColor = const Color(0xFF8B929A);
+      helperColor = AppColors.textSecondary;
     } else if (len < 17) {
       // State 2: Incomplete
-      borderC = const Color(0xFFFBBF24).withOpacity(0.3);
+      borderC = AppColors.warning.withValues(alpha: 0.3);
       suffixI = const Icon(
         Icons.error_outline_rounded,
-        color: Color(0xFFFBBF24),
+        color: AppColors.warning,
       );
       helperR = 'Keep typing...';
-      helperColor = const Color(0xFFFBBF24);
+      helperColor = AppColors.warning;
     } else {
       // State 3: Valid (17 characters)
-      borderC = const Color(0xFF22C55E);
+      borderC = AppColors.success;
       suffixI = const Icon(
         Icons.check_circle_outline_rounded,
-        color: Color(0xFF22C55E),
+        color: AppColors.success,
       );
       helperR = 'Valid VIN — showing compatible parts';
-      helperColor = const Color(0xFF22C55E);
+      helperColor = AppColors.success;
     }
 
     return Column(
@@ -190,7 +186,7 @@ class _SearchInputsState extends State<SearchInputs> {
                   ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.15),
+                color: Colors.black.withValues(alpha: 0.15),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -200,7 +196,6 @@ class _SearchInputsState extends State<SearchInputs> {
             controller: widget.vinController,
             textCapitalization: TextCapitalization.characters,
             onChanged: (val) {
-              widget.onVinChanged(val);
               if (val.length > 17) {
                 // Restrict length to 17
                 widget.vinController.text = val.substring(0, 17);
@@ -209,18 +204,18 @@ class _SearchInputsState extends State<SearchInputs> {
                 );
               }
             },
-            cursorColor: const Color(0xFF00A8CC),
+            cursorColor: AppColors.info,
             textAlignVertical: TextAlignVertical.center,
             style: GoogleFonts.spaceMono(
               fontSize: 13.sp,
-              color: const Color(0xFFF0F6FC),
+              color: AppColors.onboardingTextPrimary,
               letterSpacing: 1.5,
             ),
             inputFormatters: [
               LengthLimitingTextInputFormatter(17),
               _UpperCaseFormatter(),
               FilteringTextInputFormatter.allow(
-                RegExp(r'[A-HJ-NPR-Za-hj-npr-z0-9]'),
+                RegExp('[A-HJ-NPR-Za-hj-npr-z0-9]'),
               ),
             ],
             decoration: InputDecoration(
@@ -230,18 +225,18 @@ class _SearchInputsState extends State<SearchInputs> {
               hintText: 'Enter 17-digit VIN number...',
               hintStyle: GoogleFonts.spaceMono(
                 fontSize: 13.sp,
-                color: const Color(0xFF8B929A),
-                letterSpacing: 1.0,
+                color: AppColors.textSecondary,
+                letterSpacing: 1,
               ),
               prefixIcon: Container(
                 margin: EdgeInsets.only(left: 16.w, right: 12.w),
                 child: Icon(
                   Icons.qr_code_scanner,
                   color: len == 0
-                      ? const Color(0xFF8B929A)
+                      ? AppColors.textSecondary
                       : (len < 17
-                            ? const Color(0xFFFBBF24)
-                            : const Color(0xFF22C55E)),
+                            ? AppColors.warning
+                            : AppColors.success),
                   size: 22,
                 ),
               ),
@@ -279,7 +274,7 @@ class _SearchInputsState extends State<SearchInputs> {
                 style: GoogleFonts.inter(
                   fontSize: 11.sp,
                   fontWeight: FontWeight.w400,
-                  color: const Color(0xFF8B929A),
+                  color: AppColors.textSecondary,
                 ),
               ),
               if (helperR != null)
