@@ -49,7 +49,7 @@ class TimelineView extends StatelessWidget {
             final isCompleted = event.isCompleted;
 
             // Determine if the line connecting to the next event is active
-            final isLineActive = !isLast && events[index + 1].isCompleted;
+            final isLineActive = !isLast && events[index].isCompleted;
 
             return IntrinsicHeight(
               child: Row(

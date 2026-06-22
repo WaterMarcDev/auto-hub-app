@@ -21,7 +21,7 @@ class OrderDetailsPage extends StatefulWidget {
 }
 
 class _OrderDetailsPageState extends State<OrderDetailsPage> {
-  late Order _order;
+  Order? _order;
 
   @override
   void initState() {
@@ -30,13 +30,12 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
   }
 
   void _loadOrder() {
-    final found = OrdersRepository.instance.getOrderById(widget.orderId);
-    if (found != null) {
-      _order = found;
-    }
+    _order = OrdersRepository.instance.getOrderById(widget.orderId);
   }
 
   Future<void> _showCancelDialog() async {
+    final order = _order;
+    if (order == null) return;
     await showDialog<void>(
       context: context,
       builder: (dialogContext) {
@@ -124,7 +123,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          OrdersRepository.instance.cancelOrder(_order.id);
+                          OrdersRepository.instance.cancelOrder(order.id);
                           Navigator.of(dialogContext).pop();
                           setState(_loadOrder);
                           ScaffoldMessenger.of(context)
@@ -178,6 +177,64 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final order = _order;
+    if (order == null) {
+      return Scaffold(
+        backgroundColor: AppColors.onboardingBackground,
+        body: SafeArea(
+          child: Column(
+            children: [
+              _buildHeader(context),
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 80.w,
+                        height: 80.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.onboardingSurface,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.05),
+                            width: 0.8,
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.error_outline_rounded,
+                          size: 32.sp,
+                          color: AppColors.error,
+                        ),
+                      ),
+                      SizedBox(height: 18.h),
+                      Text(
+                        'Order not found',
+                        style: GoogleFonts.inter(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.onboardingTextPrimary,
+                        ),
+                      ),
+                      SizedBox(height: 6.h),
+                      Text(
+                        'The requested order could not be located.',
+                        style: GoogleFonts.inter(
+                          fontSize: 13.sp,
+                          color: AppColors.onboardingTextSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,
       body: SafeArea(
@@ -193,25 +250,25 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildMainCard(),
+                    _buildMainCard(order),
                     SizedBox(height: 16.h),
-                    if (_order.trackingNumber != null &&
-                        _order.status != OrderStatus.cancelled) ...[
-                      TrackingCard(trackingNumber: _order.trackingNumber!),
+                    if (order.trackingNumber != null &&
+                        order.status != OrderStatus.cancelled) ...[
+                      TrackingCard(trackingNumber: order.trackingNumber!),
                       SizedBox(height: 16.h),
                     ],
-                    AddressCard(address: _order.address),
+                    AddressCard(address: order.address),
                     SizedBox(height: 24.h),
                     TimelineView(
-                      events: _order.timeline,
-                      status: _order.status,
+                      events: order.timeline,
+                      status: order.status,
                     ),
                     SizedBox(height: 12.h),
                   ],
                 ),
               ),
             ),
-            _buildBottomActionBar(),
+            _buildBottomActionBar(order),
           ],
         ),
       ),
@@ -266,9 +323,9 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
     );
   }
 
-  Widget _buildMainCard() {
+  Widget _buildMainCard(Order order) {
     String? estDeliveryDate;
-    if (_order.status == OrderStatus.inTransit) {
+    if (order.status == OrderStatus.inTransit) {
       estDeliveryDate = 'Est. Apr 2, 2026';
     }
 
@@ -296,7 +353,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              StatusBadge(status: _order.status),
+              StatusBadge(status: order.status),
               if (estDeliveryDate != null)
                 Text(
                   estDeliveryDate,
@@ -310,7 +367,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           ),
           SizedBox(height: 14.h),
           Text(
-            _order.title,
+            order.title,
             style: AppTextStyles.headlineSmall.copyWith(
               color: AppColors.onboardingTextPrimary,
               fontSize: 18.sp,
@@ -320,7 +377,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           ),
           SizedBox(height: 6.h),
           Text(
-            '${_order.id} · \$${_order.price.toStringAsFixed(2)}',
+            '${order.id} · \$${order.price.toStringAsFixed(2)}',
             style: AppTextStyles.bodySmall.copyWith(
               color: AppColors.onboardingTextSecondary,
               fontSize: 13.sp,
@@ -332,10 +389,10 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
     );
   }
 
-  Widget _buildBottomActionBar() {
+  Widget _buildBottomActionBar(Order order) {
     final bottomInset = MediaQuery.of(context).viewPadding.bottom;
 
-    if (_order.status == OrderStatus.delivered) {
+    if (order.status == OrderStatus.delivered) {
       return Container(
         height: 76.h + bottomInset,
         padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 12.h + bottomInset),
@@ -358,7 +415,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                     ..showSnackBar(
                       SnackBar(
                         content: Text(
-                          'Reordering ${_order.title}...',
+                          'Reordering ${order.title}...',
                           style: GoogleFonts.inter(color: Colors.white),
                         ),
                         backgroundColor: AppColors.onboardingCyan,
@@ -460,7 +517,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           ],
         ),
       );
-    } else if (_order.status == OrderStatus.inTransit) {
+    } else if (order.status == OrderStatus.inTransit) {
       return Container(
         height: 76.h + bottomInset,
         padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 12.h + bottomInset),
@@ -480,7 +537,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
               ..showSnackBar(
                 SnackBar(
                   content: Text(
-                    'Opening tracking page for ${_order.id}...',
+                    'Opening tracking page for ${order.id}...',
                     style: GoogleFonts.inter(color: Colors.white),
                   ),
                   backgroundColor: AppColors.onboardingCyan,
@@ -520,7 +577,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           ),
         ),
       );
-    } else if (_order.status == OrderStatus.processing) {
+    } else if (order.status == OrderStatus.processing) {
       return Container(
         height: 76.h + bottomInset,
         padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 12.h + bottomInset),
