@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/support_constants.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/widgets/call_support_dialog.dart';
@@ -42,7 +43,7 @@ class ContactSupportPage extends StatelessWidget {
   }
 
   Future<void> _makePhoneCall(BuildContext context) async {
-    final Uri url = Uri(scheme: 'tel', path: '+18005552886');
+    final url = Uri(scheme: 'tel', path: SupportConstants.supportPhoneNumber);
     try {
       if (await canLaunchUrl(url)) {
         await launchUrl(url);
@@ -60,14 +61,16 @@ class ContactSupportPage extends StatelessWidget {
         ScaffoldMessenger.of(context)
           ..hideCurrentSnackBar()
           ..showSnackBar(
-            SnackBar(content: Text('Error: $e')),
+            const SnackBar(
+              content: Text('Unable to open phone dialer at this time'),
+            ),
           );
       }
     }
   }
 
   Future<void> _sendEmail(BuildContext context) async {
-    final Uri url = Uri(scheme: 'mailto', path: 'support@autohub.express');
+    final url = Uri(scheme: 'mailto', path: SupportConstants.supportEmail);
     try {
       if (await canLaunchUrl(url)) {
         await launchUrl(url);
@@ -85,7 +88,9 @@ class ContactSupportPage extends StatelessWidget {
         ScaffoldMessenger.of(context)
           ..hideCurrentSnackBar()
           ..showSnackBar(
-            SnackBar(content: Text('Error: $e')),
+            const SnackBar(
+              content: Text('Unable to open email client at this time'),
+            ),
           );
       }
     }
@@ -98,8 +103,10 @@ class ContactSupportPage extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
               }
             },
             child: Container(
@@ -218,7 +225,10 @@ class ContactSupportPage extends StatelessWidget {
                 subtitle: 'Avg. response: 2 min',
                 showOnlineBadge: true,
                 onTap: () {
-                  context.pushNamed('chat');
+                  context.pushNamed(
+                    'chat',
+                    pathParameters: {'chatRoomId': '1'},
+                  );
                 },
               ),
               Divider(
@@ -230,7 +240,7 @@ class ContactSupportPage extends StatelessWidget {
                 iconColor: AppColors.onboardingPurple,
                 iconBgColor: AppColors.onboardingPurple.withValues(alpha: 0.1),
                 title: 'Email Support',
-                subtitle: 'support@autohub.express',
+                subtitle: SupportConstants.supportEmail,
                 onTap: () {
                   showDialog<void>(
                     context: context,
@@ -249,7 +259,7 @@ class ContactSupportPage extends StatelessWidget {
                 iconColor: AppColors.onboardingGreen,
                 iconBgColor: AppColors.onboardingGreen.withValues(alpha: 0.1),
                 title: 'Phone Support',
-                subtitle: '+1 (800) 555-AUTO',
+                subtitle: SupportConstants.supportPhoneNumber,
                 onTap: () {
                   showDialog<void>(
                     context: context,

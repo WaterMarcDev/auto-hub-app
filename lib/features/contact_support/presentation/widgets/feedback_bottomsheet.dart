@@ -1,6 +1,5 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:easy_stars/easy_stars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -112,15 +111,29 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
             ),
           ),
           SizedBox(height: 20.h),
-          // EasyStarsRating widget
-          EasyStarsRating(
-            initialRating: _currentRating,
-            filledColor: AppColors.onboardingCyan,
-            onRatingChanged: (rating) {
-              setState(() {
-                _currentRating = rating;
-              });
-            },
+          // Custom Stars Rating widget
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(5, (index) {
+              final starIndex = index + 1;
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _currentRating = starIndex.toDouble();
+                  });
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4.w),
+                  child: Icon(
+                    starIndex <= _currentRating
+                        ? Icons.star_rounded
+                        : Icons.star_outline_rounded,
+                    color: AppColors.onboardingCyan,
+                    size: 40.sp,
+                  ),
+                ),
+              );
+            }),
           ),
           SizedBox(height: 32.h),
           // Submit Button

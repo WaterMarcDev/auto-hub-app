@@ -178,6 +178,13 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 ),
                 width: 18.sp,
                 height: 18.sp,
+                errorBuilder: (context, error, stackTrace) => Icon(
+                  Icons.send,
+                  color: _isTextEmpty
+                      ? Colors.white.withValues(alpha: 0.3)
+                      : Colors.white,
+                  size: 18.sp,
+                ),
               ),
             ),
           ),

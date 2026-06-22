@@ -1,170 +1,64 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
+import 'package:auto_hub_app/features/contact_support/data/repositories/mock_chat_repository.dart';
+import 'package:auto_hub_app/features/contact_support/domain/entities/chat_message.dart';
+import 'package:auto_hub_app/features/contact_support/domain/entities/chat_room_info.dart';
+import 'package:auto_hub_app/features/contact_support/domain/repositories/chat_repository.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/widgets/chat_bubble.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/widgets/chat_input_bar.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/widgets/delete_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LiveChatPage extends StatefulWidget {
   const LiveChatPage({
+    required this.chatRoomId,
     super.key,
   });
+
+  final String chatRoomId;
 
   @override
   State<LiveChatPage> createState() => _LiveChatPageState();
 }
 
 class _LiveChatPageState extends State<LiveChatPage> {
-  final String chatRoomId = '1';
-  // We keep messages in reverse order (newest at index 0) for smooth ListView reversing
-  List<_ChatMessage> _messages = [];
+  final ChatRepository _chatRepository = MockChatRepository();
+  List<ChatMessage> _messages = [];
+  ChatRoomInfo? _roomInfo;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadMessages();
+    _loadData();
   }
 
-  void _loadMessages() {
-    if (chatRoomId == '1') {
-      _messages = [
-        const _ChatMessage(
-          text: 'Let me look into that for you.',
-          time: 'Just now',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'xaxx',
-          time: 'Just now',
-          isSender: true,
-          isSent: false,
-        ),
-        const _ChatMessage(
-          text:
-              "Your pickup is confirmed for Apr 3. We'll send a reminder the day before!",
-          time: '2:30 PM',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text:
-              "Yes, someone needs to be present to hand over the keys and sign the release form. We'll call 30 minutes before arrival.",
-          time: '11:15 AM',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Great, thanks! Do I need to be present?',
-          time: '11:02 AM',
-          isSender: true,
-        ),
-        const _ChatMessage(
-          text:
-              'Hello Mike! Your junk request has been reviewed and approved. The tow truck is scheduled for April 3rd between 9 AM and 12 PM.',
-          time: '10:45 AM',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text:
-              'Hi! I submitted a junk request JNK-0412. When will the tow truck arrive?',
-          time: '10:30 AM',
-          isSender: true,
-        ),
-      ];
-    } else if (chatRoomId == '2') {
-      _messages = [
-        const _ChatMessage(
-          text: 'Yes, the alternator is still available.',
-          time: 'Yesterday',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Hello, is the alternator still available?',
-          time: 'Yesterday',
-          isSender: true,
-        ),
-      ];
-    } else if (chatRoomId == '3') {
-      _messages = [
-        const _ChatMessage(
-          text: "We'll arrive between 9-11am.",
-          time: '3d ago',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Do you have an ETA for the tow truck?',
-          time: '3d ago',
-          isSender: true,
-        ),
-      ];
-    } else {
-      _messages = [
-        const _ChatMessage(
-          text: 'I can do \$290 for the bumper. Final offer',
-          time: '5d ago',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Can we negotiate the bumper pricing?',
-          time: '5d ago',
-          isSender: true,
-        ),
-      ];
+  Future<void> _loadData() async {
+    final roomInfo = await _chatRepository.getRoomInfo(widget.chatRoomId);
+    final messages = await _chatRepository.getMessages(widget.chatRoomId);
+    if (mounted) {
+      setState(() {
+        _roomInfo = roomInfo;
+        _messages = messages;
+        _isLoading = false;
+      });
     }
   }
-
-  _ChatRoomInfo _getRoomInfo() {
-    switch (chatRoomId) {
-      case '1':
-        return const _ChatRoomInfo(
-          name: 'AutoHub Support',
-          initials: 'AS',
-          avatarColor: Color(0xFF0DA0CE),
-          isOnline: true,
-        );
-      case '2':
-        return const _ChatRoomInfo(
-          name: 'PartSeller_Jay',
-          initials: 'PJ',
-          avatarColor: Color(0xFFA78BFA),
-          isOnline: false,
-        );
-      case '3':
-        return const _ChatRoomInfo(
-          name: 'QuickTow Inc.',
-          initials: 'QT',
-          avatarColor: Color(0xFF34D399),
-          isOnline: false,
-        );
-      case '4':
-        return const _ChatRoomInfo(
-          name: 'BumperKing_HTX',
-          initials: 'BK',
-          avatarColor: Color(0xFFFBBF24),
-          isOnline: true,
-        );
-      default:
-        return const _ChatRoomInfo(
-          name: 'Chat Room',
-          initials: 'C',
-          avatarColor: Colors.grey,
-          isOnline: false,
-        );
-    }
-  }
-
-  void _sendMessage(String text) {
+  void _sendMessage(String text) async {
+    final newMessage = ChatMessage(
+      text: text,
+      time: _formatCurrentTime(),
+      isSender: true,
+      isSent: false,
+    );
     setState(() {
-      _messages.insert(
-        0,
-        _ChatMessage(
-          text: text,
-          time: _formatCurrentTime(),
-          isSender: true,
-          isSent: false,
-        ),
-      );
+      _messages.insert(0, newMessage);
     });
+
+    await _chatRepository.sendMessage(widget.chatRoomId, newMessage);
 
     // Simulate reactive reply after 1.5 seconds
     Future.delayed(const Duration(milliseconds: 1500), () {
@@ -173,7 +67,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
         // Mark previous message as sent/delivered (double checks)
         final lastIdx = _messages.indexWhere((m) => m.isSender && !m.isSent);
         if (lastIdx != -1) {
-          _messages[lastIdx] = _ChatMessage(
+          _messages[lastIdx] = ChatMessage(
             text: _messages[lastIdx].text,
             time: _messages[lastIdx].time,
             isSender: true,
@@ -184,7 +78,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
         // Add auto reply
         _messages.insert(
           0,
-          _ChatMessage(
+          ChatMessage(
             text:
                 'Thanks for your message! An agent will look into this and reply soon.',
             time: _formatCurrentTime(),
@@ -225,7 +119,14 @@ class _LiveChatPageState extends State<LiveChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    final roomInfo = _getRoomInfo();
+    if (_isLoading) {
+      return const Scaffold(
+        backgroundColor: AppColors.onboardingBackground,
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    final roomInfo = _roomInfo!;
 
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,
@@ -258,7 +159,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
     );
   }
 
-  Widget _buildAppBar(BuildContext context, _ChatRoomInfo roomInfo) {
+  Widget _buildAppBar(BuildContext context, ChatRoomInfo roomInfo) {
     return Container(
       height: 70.h,
       decoration: const BoxDecoration(
@@ -275,8 +176,10 @@ class _LiveChatPageState extends State<LiveChatPage> {
         children: [
           GestureDetector(
             onTap: () {
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
               }
             },
             child: Container(
@@ -356,7 +259,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
     );
   }
 
-  Widget _buildAvatar(_ChatRoomInfo roomInfo) {
+  Widget _buildAvatar(ChatRoomInfo roomInfo) {
     return SizedBox(
       width: 38.r,
       height: 38.r,
@@ -433,32 +336,4 @@ class _LiveChatPageState extends State<LiveChatPage> {
       ),
     );
   }
-}
-
-class _ChatMessage {
-  const _ChatMessage({
-    required this.text,
-    required this.time,
-    required this.isSender,
-    this.isSent = true,
-  });
-
-  final String text;
-  final String time;
-  final bool isSender;
-  final bool isSent;
-}
-
-class _ChatRoomInfo {
-  const _ChatRoomInfo({
-    required this.name,
-    required this.initials,
-    required this.avatarColor,
-    required this.isOnline,
-  });
-
-  final String name;
-  final String initials;
-  final Color avatarColor;
-  final bool isOnline;
 }

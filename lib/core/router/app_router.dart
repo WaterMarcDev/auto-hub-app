@@ -61,9 +61,12 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const ContactSupportPage(),
     ),
     GoRoute(
-      path: '/chat',
+      path: '/chat/:chatRoomId',
       name: 'chat',
-      builder: (context, state) => const LiveChatPage(),
+      builder: (context, state) {
+        final chatRoomId = state.pathParameters['chatRoomId'] ?? '1';
+        return LiveChatPage(chatRoomId: chatRoomId);
+      },
     ),
   ],
 );

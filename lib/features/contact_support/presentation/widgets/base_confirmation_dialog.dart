@@ -107,31 +107,28 @@ class BaseConfirmationDialog extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: SizedBox(
-                    height: 48.h,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        if (onCancel != null) {
-                          onCancel!();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.onboardingBackground,
-                        foregroundColor: AppColors.onboardingTextSecondary,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.r),
-                          side: BorderSide(
-                            color: Colors.white.withValues(alpha: 0.05),
-                            width: 0.8,
-                          ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      if (onCancel != null) {
+                        onCancel!();
+                      }
+                    },
+                    child: Container(
+                      height: 48.h,
+                      decoration: BoxDecoration(
+                        color: AppColors.onboardingBackground,
+                        borderRadius: BorderRadius.circular(16.r),
+                        border: Border.all(
+                          color: Colors.white.withValues(alpha: 0.05),
+                          width: 0.8,
                         ),
-                        padding: EdgeInsets.zero,
                       ),
+                      alignment: Alignment.center,
                       child: Text(
                         cancelText,
                         style: TextStyle(
+                          color: AppColors.onboardingTextSecondary,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -141,37 +138,31 @@ class BaseConfirmationDialog extends StatelessWidget {
                 ),
                 SizedBox(width: 12.w),
                 Expanded(
-                  child: Container(
-                    height: 48.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.r),
-                      boxShadow: confirmButtonShadowColor != null
-                          ? [
-                              BoxShadow(
-                                color: confirmButtonShadowColor!,
-                                blurRadius: 16.r,
-                                offset: Offset(0, 4.h),
-                              ),
-                            ]
-                          : null,
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        onConfirm();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: confirmButtonColor,
-                        foregroundColor: Colors.white,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.r),
-                        ),
-                        padding: EdgeInsets.zero,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      onConfirm();
+                    },
+                    child: Container(
+                      height: 48.h,
+                      decoration: BoxDecoration(
+                        color: confirmButtonColor,
+                        borderRadius: BorderRadius.circular(16.r),
+                        boxShadow: confirmButtonShadowColor != null
+                            ? [
+                                BoxShadow(
+                                  color: confirmButtonShadowColor!,
+                                  blurRadius: 16.r,
+                                  offset: Offset(0, 4.h),
+                                ),
+                              ]
+                            : null,
                       ),
+                      alignment: Alignment.center,
                       child: Text(
                         confirmText,
                         style: TextStyle(
+                          color: Colors.white,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                         ),
