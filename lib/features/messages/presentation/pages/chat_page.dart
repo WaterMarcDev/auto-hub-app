@@ -1,10 +1,12 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
+import 'package:auto_hub_app/features/messages/data/repositories/messages_repository.dart';
+import 'package:auto_hub_app/features/messages/domain/models/message_model.dart';
 import 'package:auto_hub_app/features/messages/presentation/widgets/chat_bubble.dart';
 import 'package:auto_hub_app/features/messages/presentation/widgets/chat_input_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({
@@ -19,179 +21,66 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  // We keep messages in reverse order (newest at index 0) for smooth ListView reversing
-  List<_ChatMessage> _messages = [];
+  late final MessagesRepository _repository;
+  LiveChatConversation? _roomInfo;
+  List<ChatMessage> _messages = [];
 
   @override
   void initState() {
     super.initState();
+    _repository = MessagesRepository();
     _loadMessages();
   }
 
   void _loadMessages() {
-    if (widget.chatRoomId == '1') {
-      _messages = [
-        const _ChatMessage(
-          text: 'Let me look into that for you.',
-          time: 'Just now',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'xaxx',
-          time: 'Just now',
-          isSender: true,
-          isSent: false,
-        ),
-        const _ChatMessage(
-          text:
-              "Your pickup is confirmed for Apr 3. We'll send a reminder the day before!",
-          time: '2:30 PM',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text:
-              "Yes, someone needs to be present to hand over the keys and sign the release form. We'll call 30 minutes before arrival.",
-          time: '11:15 AM',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Great, thanks! Do I need to be present?',
-          time: '11:02 AM',
-          isSender: true,
-        ),
-        const _ChatMessage(
-          text:
-              'Hello Mike! Your junk request has been reviewed and approved. The tow truck is scheduled for April 3rd between 9 AM and 12 PM.',
-          time: '10:45 AM',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text:
-              'Hi! I submitted a junk request JNK-0412. When will the tow truck arrive?',
-          time: '10:30 AM',
-          isSender: true,
-        ),
-      ];
-    } else if (widget.chatRoomId == '2') {
-      _messages = [
-        const _ChatMessage(
-          text: 'Yes, the alternator is still available.',
-          time: 'Yesterday',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Hello, is the alternator still available?',
-          time: 'Yesterday',
-          isSender: true,
-        ),
-      ];
-    } else if (widget.chatRoomId == '3') {
-      _messages = [
-        const _ChatMessage(
-          text: "We'll arrive between 9-11am.",
-          time: '3d ago',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Do you have an ETA for the tow truck?',
-          time: '3d ago',
-          isSender: true,
-        ),
-      ];
-    } else {
-      _messages = [
-        const _ChatMessage(
-          text: 'I can do \$290 for the bumper. Final offer',
-          time: '5d ago',
-          isSender: false,
-        ),
-        const _ChatMessage(
-          text: 'Can we negotiate the bumper pricing?',
-          time: '5d ago',
-          isSender: true,
-        ),
-      ];
-    }
-  }
-
-  _ChatRoomInfo _getRoomInfo() {
-    switch (widget.chatRoomId) {
-      case '1':
-        return const _ChatRoomInfo(
-          name: 'AutoHub Support',
-          initials: 'AS',
-          avatarColor: Color(0xFF0DA0CE),
-          isOnline: true,
-        );
-      case '2':
-        return const _ChatRoomInfo(
-          name: 'PartSeller_Jay',
-          initials: 'PJ',
-          avatarColor: Color(0xFFA78BFA),
-          isOnline: false,
-        );
-      case '3':
-        return const _ChatRoomInfo(
-          name: 'QuickTow Inc.',
-          initials: 'QT',
-          avatarColor: Color(0xFF34D399),
-          isOnline: false,
-        );
-      case '4':
-        return const _ChatRoomInfo(
-          name: 'BumperKing_HTX',
-          initials: 'BK',
-          avatarColor: Color(0xFFFBBF24),
-          isOnline: true,
-        );
-      default:
-        return const _ChatRoomInfo(
-          name: 'Chat Room',
-          initials: 'C',
-          avatarColor: Colors.grey,
-          isOnline: false,
-        );
-    }
+    setState(() {
+      _roomInfo = _repository.getConversationById(widget.chatRoomId);
+      _messages = _repository.getMessages(widget.chatRoomId);
+    });
   }
 
   void _sendMessage(String text) {
-    setState(() {
-      _messages.insert(
-        0,
-        _ChatMessage(
-          text: text,
-          time: _formatCurrentTime(),
-          isSender: true,
-          isSent: false,
-        ),
-      );
-    });
+    final newMsg = ChatMessage(
+      text: text,
+      time: _formatCurrentTime(),
+      isSender: true,
+      isSent: false,
+    );
+    _repository.sendMessage(widget.chatRoomId, newMsg);
+    _loadMessages();
 
     // Simulate reactive reply after 1.5 seconds
     Future.delayed(const Duration(milliseconds: 1500), () {
       if (!mounted) return;
+
       setState(() {
-        // Mark previous message as sent/delivered (double checks)
-        final lastIdx = _messages.indexWhere((m) => m.isSender && !m.isSent);
+        // Find message to mark sent
+        final msgs = _repository.getMessages(widget.chatRoomId);
+        final lastIdx = msgs.indexWhere((m) => m.isSender && !m.isSent);
         if (lastIdx != -1) {
-          _messages[lastIdx] = _ChatMessage(
-            text: _messages[lastIdx].text,
-            time: _messages[lastIdx].time,
-            isSender: true,
-            isSent: true,
+          _repository.updateMessage(
+            widget.chatRoomId,
+            lastIdx,
+            ChatMessage(
+              text: msgs[lastIdx].text,
+              time: msgs[lastIdx].time,
+              isSender: true,
+            ),
           );
         }
 
-        // Add auto reply
-        _messages.insert(
-          0,
-          _ChatMessage(
+        // Auto reply with time evaluated AFTER mounted check
+        _repository.sendMessage(
+          widget.chatRoomId,
+          ChatMessage(
             text:
                 'Thanks for your message! An agent will look into this and reply soon.',
             time: _formatCurrentTime(),
             isSender: false,
           ),
         );
+
+        _loadMessages();
       });
     });
   }
@@ -206,34 +95,67 @@ class _ChatPageState extends State<ChatPage> {
     return '$hour:$minute $amPm';
   }
 
-  void _clearChat() {
-    // showDialog<void>(
-    //   context: context,
-    //   builder: (context) => DeleteConfirmationDialog(
-    //     onConfirm: () {
-    //       setState(() {
-    //         _messages = [];
-    //       });
-    //       ScaffoldMessenger.of(context)
-    //         ..hideCurrentSnackBar()
-    //         ..showSnackBar(
-    //           const SnackBar(content: Text('Chat messages cleared')),
-    //         );
-    //     },
-    //   ),
-    // );
+  Future<void> _clearChat() async {
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.onboardingSurfaceLight,
+        title: Text(
+          'Clear Chat?',
+          style: AppTextStyles.headlineSmall.copyWith(color: Colors.white),
+        ),
+        content: Text(
+          'Are you sure you want to clear this conversation? This action cannot be undone.',
+          style: AppTextStyles.bodyMedium.copyWith(
+            color: AppColors.onboardingTextSecondary,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              'Cancel',
+              style: AppTextStyles.bodyMedium.copyWith(color: Colors.white),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _repository.clearChat(widget.chatRoomId);
+              _loadMessages();
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  const SnackBar(content: Text('Chat messages cleared')),
+                );
+            },
+            child: Text(
+              'Clear',
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: AppColors.secondaryDark,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final roomInfo = _getRoomInfo();
+    if (_roomInfo == null) {
+      return const Scaffold(
+        backgroundColor: AppColors.onboardingBackground,
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
 
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,
       body: SafeArea(
         child: Column(
           children: [
-            _buildAppBar(context, roomInfo),
+            _buildAppBar(context, _roomInfo!),
             Expanded(
               child: _messages.isEmpty
                   ? _buildEmptyState()
@@ -259,7 +181,7 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget _buildAppBar(BuildContext context, _ChatRoomInfo roomInfo) {
+  Widget _buildAppBar(BuildContext context, LiveChatConversation roomInfo) {
     return Container(
       height: 70.h,
       decoration: const BoxDecoration(
@@ -276,8 +198,10 @@ class _ChatPageState extends State<ChatPage> {
         children: [
           GestureDetector(
             onTap: () {
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
               }
             },
             child: Container(
@@ -288,7 +212,6 @@ class _ChatPageState extends State<ChatPage> {
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: Colors.white.withValues(alpha: 0.08),
-                  width: 1.0,
                 ),
               ),
               alignment: Alignment.center,
@@ -341,7 +264,6 @@ class _ChatPageState extends State<ChatPage> {
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: Colors.white.withValues(alpha: 0.08),
-                  width: 1.0,
                 ),
               ),
               alignment: Alignment.center,
@@ -357,7 +279,7 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget _buildAvatar(_ChatRoomInfo roomInfo) {
+  Widget _buildAvatar(LiveChatConversation roomInfo) {
     return SizedBox(
       width: 38.r,
       height: 38.r,
@@ -374,7 +296,7 @@ class _ChatPageState extends State<ChatPage> {
             alignment: Alignment.center,
             child: Text(
               roomInfo.initials,
-              style: GoogleFonts.inter(
+              style: AppTextStyles.bodyMedium.copyWith(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w900,
                 color: Colors.white,
@@ -434,32 +356,4 @@ class _ChatPageState extends State<ChatPage> {
       ),
     );
   }
-}
-
-class _ChatMessage {
-  const _ChatMessage({
-    required this.text,
-    required this.time,
-    required this.isSender,
-    this.isSent = true,
-  });
-
-  final String text;
-  final String time;
-  final bool isSender;
-  final bool isSent;
-}
-
-class _ChatRoomInfo {
-  const _ChatRoomInfo({
-    required this.name,
-    required this.initials,
-    required this.avatarColor,
-    required this.isOnline,
-  });
-
-  final String name;
-  final String initials;
-  final Color avatarColor;
-  final bool isOnline;
 }

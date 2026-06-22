@@ -38,8 +38,8 @@ class _ChatInputBarState extends State<ChatInputBar> {
 
   @override
   void dispose() {
-    _controller.removeListener(_textListener);
-    _controller.dispose();
+    _controller..removeListener(_textListener)
+    ..dispose();
     super.dispose();
   }
 
@@ -90,7 +90,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 color: AppColors.onboardingSurface,
                 border: Border.all(
                   color: Colors.white.withValues(alpha: 0.08),
-                  width: 1.0,
+                  width: 1,
                 ),
               ),
               alignment: Alignment.center,
@@ -135,7 +135,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
                   borderRadius: BorderRadius.circular(14.r),
                   borderSide: BorderSide(
                     color: Colors.white.withValues(alpha: 0.08),
-                    width: 1.0,
+                    width: 1,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -178,6 +178,13 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 ),
                 width: 18.sp,
                 height: 18.sp,
+                errorBuilder: (context, error, stackTrace) => Icon(
+                  Icons.send,
+                  color: _isTextEmpty
+                      ? Colors.white.withValues(alpha: 0.3)
+                      : Colors.white,
+                  size: 18.sp,
+                ),
               ),
             ),
           ),

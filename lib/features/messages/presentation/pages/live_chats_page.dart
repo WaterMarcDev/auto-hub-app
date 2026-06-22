@@ -1,6 +1,7 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/messages/models/messages_models.dart';
+import 'package:auto_hub_app/features/messages/data/repositories/messages_repository.dart';
+import 'package:auto_hub_app/features/messages/domain/models/message_model.dart';
 import 'package:auto_hub_app/features/messages/presentation/widgets/conversation_tile.dart';
 import 'package:auto_hub_app/features/messages/presentation/widgets/message_options_overlay.dart';
 import 'package:flutter/material.dart';
@@ -15,43 +16,28 @@ class LiveChatPage extends StatefulWidget {
 }
 
 class _LiveChatPageState extends State<LiveChatPage> {
-  List<LiveChatConversation> _conversations = const [
-    LiveChatConversation(
-      name: 'AutoHub Support',
-      lastMessage: 'Your pickup is confirmed for Apr 3.',
-      time: '2h ago',
-      initials: 'AS',
-      avatarColor: Color(0xFF0DA0CE),
-      isOnline: true,
-      chatRoomId: '1',
-    ),
-    LiveChatConversation(
-      name: 'PartSeller_Jay',
-      lastMessage: 'Yes, the alternator is still available.',
-      time: '1d ago',
-      initials: 'PJ',
-      avatarColor: Color(0xFFA78BFA),
-      unreadCount: 1,
-      chatRoomId: '2',
-    ),
-    LiveChatConversation(
-      name: 'QuickTow Inc.',
-      lastMessage: "We'll arrive between 9-11am.",
-      time: '3d ago',
-      initials: 'QT',
-      avatarColor: Color(0xFF34D399),
-      chatRoomId: '3',
-    ),
-    LiveChatConversation(
-      name: 'BumperKing_HTX',
-      lastMessage: 'I can do \$290 for the bumper. Final offer',
-      time: '5d ago',
-      initials: 'BK',
-      avatarColor: Color(0xFFFBBF24),
-      isOnline: true,
-      chatRoomId: '4',
-    ),
-  ];
+  late final MessagesRepository _repository;
+  List<LiveChatConversation> _conversations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _repository = MessagesRepository();
+    _loadConversations();
+  }
+
+  void _loadConversations() {
+    setState(() {
+      _conversations = _repository.getConversations();
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Refresh conversations in case they changed in another screen
+    _loadConversations();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,8 +82,10 @@ class _LiveChatPageState extends State<LiveChatPage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  if (Navigator.of(context).canPop()) {
-                    Navigator.of(context).pop();
+                  if (context.canPop()) {
+                    context.pop();
+                  } else {
+                    context.go('/');
                   }
                 },
                 child: Container(
@@ -139,20 +127,8 @@ class _LiveChatPageState extends State<LiveChatPage> {
                 barrierColor: Colors.black.withValues(alpha: 0.6),
                 builder: (context) => MessageOptionsOverlay(
                   onMarkAllAsRead: () {
-                    setState(() {
-                      _conversations = _conversations.map((convo) {
-                        return LiveChatConversation(
-                          name: convo.name,
-                          lastMessage: convo.lastMessage,
-                          time: convo.time,
-                          initials: convo.initials,
-                          avatarColor: convo.avatarColor,
-                          isOnline: convo.isOnline,
-                          unreadCount: 0,
-                          chatRoomId: convo.chatRoomId,
-                        );
-                      }).toList();
-                    });
+                    _repository.markAllAsRead();
+                    _loadConversations();
                     ScaffoldMessenger.of(context)
                       ..hideCurrentSnackBar()
                       ..showSnackBar(
@@ -162,9 +138,8 @@ class _LiveChatPageState extends State<LiveChatPage> {
                       );
                   },
                   onDeleteAll: () {
-                    setState(() {
-                      _conversations = const [];
-                    });
+                    _repository.deleteAllConversations();
+                    _loadConversations();
                     ScaffoldMessenger.of(context)
                       ..hideCurrentSnackBar()
                       ..showSnackBar(

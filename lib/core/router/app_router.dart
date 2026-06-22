@@ -1,12 +1,12 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
+import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
+import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
-import 'package:auto_hub_app/features/messages/presentation/page/chat_page.dart';
-import 'package:auto_hub_app/features/messages/presentation/page/live_chats_page.dart';
 import 'package:go_router/go_router.dart';
 
 /// Application router configuration using GoRouter.

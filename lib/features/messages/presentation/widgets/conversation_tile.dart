@@ -1,9 +1,8 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/messages/models/messages_models.dart';
+import 'package:auto_hub_app/features/messages/domain/models/message_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ConversationTile extends StatelessWidget {
   const ConversationTile({
@@ -117,7 +116,7 @@ class ConversationTile extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               conversation.initials,
-              style: GoogleFonts.inter(
+              style: AppTextStyles.bodyMedium.copyWith(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w900,
                 color: Colors.white,
