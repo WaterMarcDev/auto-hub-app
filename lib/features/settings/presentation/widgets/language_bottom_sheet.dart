@@ -124,7 +124,7 @@ class LanguageBottomSheet extends StatelessWidget {
                           style: AppTextStyles.bodyMedium.copyWith(
                             color: isSelected
                                 ? AppColors.onboardingCyan
-                                : const Color(0xFFF0F6FC),
+                                : AppColors.onboardingTextPrimary,
                             fontSize: 15.sp,
                             fontWeight:
                                 isSelected ? FontWeight.w700 : FontWeight.w500,

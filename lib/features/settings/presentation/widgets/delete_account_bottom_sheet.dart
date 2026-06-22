@@ -110,7 +110,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
             'Deleting your account will permanently remove:',
             textAlign: TextAlign.center,
             style: AppTextStyles.bodyMedium.copyWith(
-              color: const Color(0xFF8B929A),
+              color: AppColors.onboardingTextSecondary,
               fontSize: 13.sp,
             ),
           ),
@@ -201,7 +201,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
             child: Text(
               text,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: const Color(0xFF8B929A),
+                color: AppColors.onboardingTextSecondary,
                 fontSize: 13.sp,
               ),
             ),

@@ -23,7 +23,7 @@ class SettingsGroupCard extends StatelessWidget {
           child: Text(
             title.toUpperCase(),
             style: AppTextStyles.labelLarge.copyWith(
-              color: const Color(0xFF484F58),
+              color: AppColors.onboardingTextSecondary,
               fontSize: 10.sp,
               fontWeight: FontWeight.w700,
               letterSpacing: 0.8,

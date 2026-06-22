@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +57,7 @@ class SettingsActionTile extends StatelessWidget {
                     Text(
                       title,
                       style: AppTextStyles.bodyMedium.copyWith(
-                        color: titleColor ?? const Color(0xFFF0F6FC),
+                        color: titleColor ?? AppColors.onboardingTextPrimary,
                         fontSize: 15.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -66,7 +67,7 @@ class SettingsActionTile extends StatelessWidget {
                       Text(
                         subtitle!,
                         style: AppTextStyles.bodySmall.copyWith(
-                          color: subtitleColor ?? const Color(0xFF8B929A),
+                          color: subtitleColor ?? AppColors.onboardingTextSecondary,
                           fontSize: 11.5.sp,
                         ),
                       ),

@@ -43,7 +43,7 @@ class SettingsSwitchTile extends StatelessWidget {
                 Text(
                   title,
                   style: AppTextStyles.bodyMedium.copyWith(
-                    color: const Color(0xFFF0F6FC),
+                    color: AppColors.onboardingTextPrimary,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w500,
                   ),
@@ -53,7 +53,7 @@ class SettingsSwitchTile extends StatelessWidget {
                   Text(
                     subtitle!,
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: const Color(0xFF8B929A),
+                      color: AppColors.onboardingTextSecondary,
                       fontSize: 11.5.sp,
                     ),
                   ),
