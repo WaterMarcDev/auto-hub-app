@@ -64,7 +64,7 @@ class AvatarHeader extends StatelessWidget {
                     fontSize: 32.sp,
                     fontWeight: FontWeight.w900,
                     color: Colors.white,
-                    height: 1.0,
+                    height: 1,
                   ),
                 ),
               ),
@@ -120,6 +120,8 @@ class AvatarHeader extends StatelessWidget {
                   AppColors.onboardingGreen,
                   BlendMode.srcIn,
                 ),
+                errorBuilder: (context, error, stackTrace) =>
+                    const SizedBox.shrink(),
               ),
               SizedBox(width: 6.w),
               Text(

@@ -62,6 +62,11 @@ class DetailItemTile extends StatelessWidget {
                   iconColor ?? AppColors.onboardingCyan,
                   BlendMode.srcIn,
                 ),
+                errorBuilder: (context, error, stackTrace) => Icon(
+                  Icons.error_outline,
+                  color: AppColors.error,
+                  size: 16.w,
+                ),
               ),
             ),
             SizedBox(width: 14.w),

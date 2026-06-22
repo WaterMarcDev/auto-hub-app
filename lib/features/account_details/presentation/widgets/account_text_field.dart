@@ -32,7 +32,7 @@ class AccountTextField extends StatelessWidget {
         Text(
           label.toUpperCase(),
           style: AppTextStyles.labelLarge.copyWith(
-            color: const Color(0xFF484F58),
+            color: AppColors.onboardingTextSecondary,
             fontSize: 10.sp,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.8,
@@ -59,7 +59,10 @@ class AccountTextField extends StatelessWidget {
             ),
             filled: true,
             fillColor: const Color(0xFF1B222D),
-            contentPadding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 16.h),
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 18.w,
+              vertical: 16.h,
+            ),
             isDense: true,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16.r),
