@@ -1,5 +1,5 @@
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/credit_card_widget.dart';
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/payment_card.dart';
+import 'package:auto_hub_app/features/payment_methods/presentation/widgets/credit_card_widget.dart';
+import 'package:auto_hub_app/features/payment_methods/domain/entities/payment_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -58,7 +58,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
 
     final isNameValid = name.isNotEmpty;
     final isNumberValid = number.length >= 12 && number.length <= 19;
-    
+
     bool isExpiryValid = false;
     final cleanExpiry = expiry.replaceAll(RegExp(r'\D'), '');
     if (cleanExpiry.length == 4) {

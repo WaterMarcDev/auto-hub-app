@@ -1,6 +1,6 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/payment_card.dart';
+import 'package:auto_hub_app/features/payment_methods/domain/entities/payment_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,30 +25,58 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final isVisa = widget.card.brand.toLowerCase() == 'visa';
+    final brandLower = widget.card.brand.toLowerCase();
+    final isVisa = brandLower == 'visa';
+    final isMastercard = brandLower == 'mastercard';
+    final isAmex = brandLower == 'amex';
 
     // Gradients matching the specified brand themes.
-    final cardGradient = isVisa
-        ? const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF2E5D8A), // Royal blue variant
-              Color(0xFF162E4B), // Deep navy
-              Color(0xFF0F2440), // Dark space blue
-            ],
-            stops: [0.0, 0.6, 1.0],
-          )
-        : const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFFFF6B35), // Vibrant coral
-              Color(0xFFE55A2B), // Deep orange
-              Color(0xFF9E3613), // Crimson orange
-            ],
-            stops: [0.0, 0.5, 1.0],
-          );
+    LinearGradient cardGradient;
+    if (isVisa) {
+      cardGradient = const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Color(0xFF2E5D8A), // Royal blue variant
+          Color(0xFF162E4B), // Deep navy
+          Color(0xFF0F2440), // Dark space blue
+        ],
+        stops: [0.0, 0.6, 1.0],
+      );
+    } else if (isAmex) {
+      cardGradient = const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Color(0xFF55C1E7), // Light cyan blue
+          Color(0xFF007BC1), // Amex blue
+          Color(0xFF00457C), // Dark blue
+        ],
+        stops: [0.0, 0.5, 1.0],
+      );
+    } else if (isMastercard) {
+      cardGradient = const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Color(0xFFFF6B35), // Vibrant coral
+          Color(0xFFE55A2B), // Deep orange
+          Color(0xFF9E3613), // Crimson orange
+        ],
+        stops: [0.0, 0.5, 1.0],
+      );
+    } else {
+      cardGradient = const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Color(0xFF555555),
+          Color(0xFF333333),
+          Color(0xFF111111),
+        ],
+        stops: [0.0, 0.5, 1.0],
+      );
+    }
 
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),

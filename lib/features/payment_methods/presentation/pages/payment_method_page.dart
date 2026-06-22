@@ -1,16 +1,18 @@
 import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/add_card_bottom_sheet.dart';
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/looping_card_stack.dart';
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/manage_cards_widget.dart';
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/payment_card.dart';
-import 'package:auto_hub_app/features/payment_methods/presentations/widgets/toast_notification.dart';
+import 'package:auto_hub_app/features/payment_methods/data/repositories/payment_methods_repository_impl.dart';
+import 'package:auto_hub_app/features/payment_methods/domain/entities/payment_card.dart';
+import 'package:auto_hub_app/features/payment_methods/domain/repositories/payment_methods_repository.dart';
+import 'package:auto_hub_app/features/payment_methods/presentation/widgets/add_card_bottom_sheet.dart';
+import 'package:auto_hub_app/features/payment_methods/presentation/widgets/looping_card_stack.dart';
+import 'package:auto_hub_app/features/payment_methods/presentation/widgets/manage_cards_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
-/// The responsive and adaptive Payment Methods Page (pure UI with local state).
+/// The responsive and adaptive Payment Methods Page.
 class PaymentMethodPage extends StatefulWidget {
   const PaymentMethodPage({super.key});
 
@@ -19,104 +21,94 @@ class PaymentMethodPage extends StatefulWidget {
 }
 
 class _PaymentMethodPageState extends State<PaymentMethodPage> {
-  // Local list of cards pre-populated with mock data
-  late List<PaymentCard> _cards;
+  // In a real app, this repository would be injected via dependency injection (e.g. GetIt, Provider, Riverpod).
+  late final PaymentMethodsRepository _repository;
+  
+  List<PaymentCard> _cards = [];
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
+    _repository = PaymentMethodsRepositoryImpl();
     _loadPaymentMethods();
   }
 
-  /// Simulates loading of payment methods
-  void _loadPaymentMethods() {
-    setState(() {
-      _isLoading = true;
-    });
-
-    // Load initial mock cards
-    _cards = [
-      const PaymentCard(
-        id: '1',
-        cardHolder: 'MIKE JOHNSON',
-        cardNumber: '4291',
-        expiry: '08/27',
-        cvc: '123',
-        brand: 'Visa',
-        isDefault: true,
-      ),
-      const PaymentCard(
-        id: '2',
-        cardHolder: 'MIKE JOHNSON',
-        cardNumber: '7832',
-        expiry: '03/28',
-        cvc: '456',
-        brand: 'Mastercard',
-        isDefault: false,
-      ),
-    ];
-
-    setState(() {
-      _isLoading = false;
-    });
+  Future<void> _loadPaymentMethods() async {
+    setState(() => _isLoading = true);
+    try {
+      final cards = await _repository.getPaymentMethods();
+      if (mounted) {
+        setState(() {
+          _cards = cards;
+        });
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
-  /// Adds a new payment card
-  void _addCard({
+  Future<void> _addCard({
     required String cardHolder,
     required String cardNumber,
     required String expiry,
     required String cvc,
-  }) {
-    final cleanNumber = cardNumber.replaceAll(RegExp(r'\s+'), '');
-    final detectedBrand = cleanNumber.startsWith('4')
-        ? 'Visa'
-        : (cleanNumber.startsWith('5') ? 'Mastercard' : 'Visa');
-
-    final newCard = PaymentCard(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      cardHolder: cardHolder.toUpperCase(),
-      cardNumber: cleanNumber,
-      expiry: expiry,
-      cvc: cvc,
-      brand: detectedBrand,
-      isDefault: _cards.isEmpty, // Make default if it is the first card
-    );
-
-    setState(() {
-      _cards.add(newCard);
-    });
-
-    ToastNotification.show(context, 'Card Added Successfully!');
-  }
-
-  /// Removes a payment card
-  void _removeCard(String cardId) {
-    final cardToRemove = _cards.firstWhere((card) => card.id == cardId);
-    
-    setState(() {
-      _cards.removeWhere((card) => card.id == cardId);
-
-      // Promote another card to default if the default card was removed
-      if (cardToRemove.isDefault && _cards.isNotEmpty) {
-        final firstCard = _cards.first;
-        _cards[0] = firstCard.copyWith(isDefault: true);
+  }) async {
+    setState(() => _isLoading = true);
+    try {
+      await _repository.addPaymentMethod(
+        cardHolder: cardHolder,
+        cardNumber: cardNumber,
+        expiry: expiry,
+        cvc: cvc,
+      );
+      await _loadPaymentMethods();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Card Added Successfully!')),
+        );
       }
-    });
-
-    ToastNotification.show(context, 'Card Removed Successfully!');
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
-  /// Sets a card as the default option
-  void _setDefaultCard(String cardId) {
-    setState(() {
-      _cards = _cards.map((card) {
-        return card.copyWith(isDefault: card.id == cardId);
-      }).toList();
-    });
+  Future<void> _removeCard(String cardId) async {
+    setState(() => _isLoading = true);
+    try {
+      await _repository.removePaymentMethod(cardId);
+      await _loadPaymentMethods();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Card Removed Successfully!')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
 
-    ToastNotification.show(context, 'Card set as default.');
+  Future<void> _setDefaultCard(String cardId) async {
+    setState(() => _isLoading = true);
+    try {
+      await _repository.setDefaultPaymentMethod(cardId);
+      await _loadPaymentMethods();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Card set as default.')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
   void _showAddCardSheet(BuildContext context) {
@@ -125,19 +117,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => AddCardBottomSheet(
-        onAddCard: ({
-          required String cardHolder,
-          required String cardNumber,
-          required String expiry,
-          required String cvc,
-        }) {
-          _addCard(
-            cardHolder: cardHolder,
-            cardNumber: cardNumber,
-            expiry: expiry,
-            cvc: cvc,
-          );
-        },
+        onAddCard: _addCard,
       ),
     );
   }
@@ -153,11 +133,9 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(height: 16.h),
-              // Header Row
               _buildHeader(context),
               SizedBox(height: 24.h),
 
-              // Responsive Body Layout
               Expanded(
                 child: LayoutBuilder(
                   builder: (context, constraints) {
@@ -190,14 +168,13 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
     );
   }
 
-  /// Builds the top app bar / header row containing the back button and title.
   Widget _buildHeader(BuildContext context) {
     return Row(
       children: [
         GestureDetector(
           onTap: () {
-            if (Navigator.of(context).canPop()) {
-              Navigator.of(context).pop();
+            if (context.canPop()) {
+              context.pop();
             }
           },
           child: Container(
@@ -225,6 +202,10 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                 Colors.white,
                 BlendMode.srcIn,
               ),
+              errorBuilder: (context, error, stackTrace) => const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -241,7 +222,6 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
     );
   }
 
-  /// Builds a vertical scrollable column layout optimized for narrow mobile screens.
   Widget _buildMobileLayout(BuildContext context) {
     return Column(
       children: [
@@ -251,14 +231,11 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Premium Looping Stacked Cards
                 LoopingCardStack(
                   cards: _cards,
                   onCardChanged: (card) {},
                 ),
                 SizedBox(height: 24.h),
-
-                // Manage Section
                 ManageCardsWidget(
                   cards: _cards,
                   onRemove: _removeCard,
@@ -269,7 +246,6 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
             ),
           ),
         ),
-        // Sticky Add Payment Method button at the bottom of the page
         Padding(
           padding: EdgeInsets.only(bottom: 16.h, top: 8.h),
           child: _buildAddMethodButton(context),
@@ -278,12 +254,10 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
     );
   }
 
-  /// Builds a side-by-side multi-column layout optimized for wider tablet/landscape screens.
   Widget _buildTabletLayout(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Left Column: Premium Looping Stacked Cards
         Expanded(
           flex: 11,
           child: SingleChildScrollView(
@@ -310,8 +284,6 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
           ),
         ),
         SizedBox(width: 24.w),
-
-        // Right Column: Manage listing and Add Payment button
         Expanded(
           flex: 13,
           child: SingleChildScrollView(
@@ -336,7 +308,6 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
     );
   }
 
-  /// Builds an empty state display if all cards are removed.
   Widget _buildEmptyState(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -377,7 +348,6 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
     );
   }
 
-  /// Custom outline Add Payment Method button.
   Widget _buildAddMethodButton(BuildContext context) {
     return GestureDetector(
       onTap: () => _showAddCardSheet(context),
