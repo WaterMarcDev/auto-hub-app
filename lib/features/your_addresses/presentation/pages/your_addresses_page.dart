@@ -1,14 +1,13 @@
-import 'dart:math' as math;
-
-import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/your_addresses/presentation/models/address_model.dart';
+import 'package:auto_hub_app/features/your_addresses/data/repositories/mock_address_repository.dart';
+import 'package:auto_hub_app/features/your_addresses/domain/entities/address.dart';
+import 'package:auto_hub_app/features/your_addresses/domain/repositories/address_repository.dart';
 import 'package:auto_hub_app/features/your_addresses/presentation/widgets/address_card.dart';
 import 'package:auto_hub_app/features/your_addresses/presentation/widgets/address_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class YourAddressesPage extends StatefulWidget {
   const YourAddressesPage({super.key});
@@ -18,99 +17,76 @@ class YourAddressesPage extends StatefulWidget {
 }
 
 class _YourAddressesPageState extends State<YourAddressesPage> {
-  // Mock initial address list matching the provided screenshot data
-  final List<AddressModel> _addresses = [
-    const AddressModel(
-      id: '1',
-      type: 'home',
-      label: 'Home',
-      streetAddress: '4521 Westheimer Rd',
-      city: 'Houston',
-      state: 'TX',
-      zip: '77027',
-      isDefault: true,
-    ),
-    const AddressModel(
-      id: '2',
-      type: 'work',
-      label: 'Work',
-      streetAddress: '1200 McKinney St, Suite 450',
-      city: 'Houston',
-      state: 'TX',
-      zip: '77010',
-      isDefault: false,
-    ),
-  ];
+  final AddressRepository _repository = MockAddressRepository();
+  List<Address> _addresses = [];
+  bool _isLoading = true;
 
-  void _setDefaultAddress(String id) {
-    setState(() {
-      for (var i = 0; i < _addresses.length; i++) {
-        _addresses[i] = _addresses[i].copyWith(
-          isDefault: _addresses[i].id == id,
-        );
-      }
-    });
+  @override
+  void initState() {
+    super.initState();
+    _loadAddresses();
+  }
+
+  Future<void> _loadAddresses() async {
+    final addresses = await _repository.getAddresses();
+    if (mounted) {
+      setState(() {
+        _addresses = addresses;
+        _isLoading = false;
+      });
+    }
+  }
+
+  Future<void> _setDefaultAddress(String id) async {
+    await _repository.setDefaultAddress(id);
+    await _loadAddresses();
     _showSnackBar('Default address updated');
   }
 
-  void _deleteAddress(String id) {
+  Future<void> _deleteAddress(String id) async {
     final deletedIndex = _addresses.indexWhere((a) => a.id == id);
     if (deletedIndex == -1) return;
 
     final deletedAddress = _addresses[deletedIndex];
 
-    setState(() {
-      _addresses.removeAt(deletedIndex);
-      // If we deleted the default address, and we still have addresses left, make the first one default
-      if (deletedAddress.isDefault && _addresses.isNotEmpty) {
-        _addresses[0] = _addresses[0].copyWith(isDefault: true);
-      }
-    });
+    await _repository.deleteAddress(id);
+    await _loadAddresses();
 
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Deleted "${deletedAddress.label}"'),
-        action: SnackBarAction(
-          label: 'UNDO',
-          textColor: AppColors.onboardingCyan,
-          onPressed: () {
-            setState(() {
-              _addresses.insert(deletedIndex, deletedAddress);
-              // Restore default state if necessary
+    if (mounted) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Deleted "${deletedAddress.label}"'),
+          action: SnackBarAction(
+            label: 'UNDO',
+            textColor: AppColors.onboardingCyan,
+            onPressed: () async {
+              await _repository.updateAddress(deletedAddress);
               if (deletedAddress.isDefault) {
-                for (var i = 0; i < _addresses.length; i++) {
-                  _addresses[i] = _addresses[i].copyWith(
-                    isDefault: _addresses[i].id == deletedAddress.id,
-                  );
-                }
+                await _repository.setDefaultAddress(deletedAddress.id);
               }
-            });
-          },
+              await _loadAddresses();
+            },
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
-  void _saveAddress(AddressModel address) {
-    final index = _addresses.indexWhere((a) => a.id == address.id);
-    setState(() {
-      if (index != -1) {
-        // Edit Mode
-        _addresses[index] = address;
-        _showSnackBar('Address "${address.label}" updated');
-      } else {
-        // Add Mode
-        // If this is the very first address, automatically make it default
-        final isFirst = _addresses.isEmpty;
-        final newAddress = address.copyWith(isDefault: isFirst);
-        _addresses.add(newAddress);
-        _showSnackBar('Address "${address.label}" added');
-      }
-    });
+  Future<void> _saveAddress(Address address) async {
+    final isEdit = _addresses.any((a) => a.id == address.id);
+    if (isEdit) {
+      await _repository.updateAddress(address);
+      _showSnackBar('Address "${address.label}" updated');
+    } else {
+      await _repository.addAddress(address);
+      _showSnackBar('Address "${address.label}" added');
+    }
+    await _loadAddresses();
   }
 
   void _showSnackBar(String message) {
+    if (!mounted) return;
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -120,7 +96,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
     );
   }
 
-  Future<void> _openAddressForm([AddressModel? address]) async {
+  Future<void> _openAddressForm([Address? address]) async {
     await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -145,22 +121,24 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
             Expanded(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 600),
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.fromLTRB(20.w, 18.h, 20.w, 24.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      if (_addresses.isEmpty) ...[
-                        _buildEmptyState(),
-                      ] else ...[
-                        _buildAddressesCard(),
-                      ],
-                      SizedBox(height: 20.h),
-                      _buildAddButton(),
-                    ],
-                  ),
-                ),
+                child: _isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        padding: EdgeInsets.fromLTRB(20.w, 18.h, 20.w, 24.h),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (_addresses.isEmpty) ...[
+                              _buildEmptyState(),
+                            ] else ...[
+                              _buildAddressesCard(),
+                            ],
+                            SizedBox(height: 20.h),
+                            _buildAddButton(),
+                          ],
+                        ),
+                      ),
               ),
             ),
           ],
@@ -178,8 +156,10 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
           children: [
             GestureDetector(
               onTap: () {
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
+                if (context.canPop()) {
+                  context.pop();
+                } else {
+                  context.go('/');
                 }
               },
               child: Container(
@@ -194,17 +174,10 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
                   ),
                 ),
                 alignment: Alignment.center,
-                child: Transform.rotate(
-                  angle: math.pi,
-                  child: SvgPicture.asset(
-                    AppIcons.chevronRight,
-                    width: 15.w,
-                    height: 15.h,
-                    colorFilter: const ColorFilter.mode(
-                      Colors.white,
-                      BlendMode.srcIn,
-                    ),
-                  ),
+                child: Icon(
+                  Icons.chevron_left,
+                  color: Colors.white,
+                  size: 24.sp,
                 ),
               ),
             ),

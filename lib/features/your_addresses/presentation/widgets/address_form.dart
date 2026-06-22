@@ -1,20 +1,20 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/your_addresses/presentation/models/address_model.dart';
+import 'package:auto_hub_app/features/your_addresses/domain/entities/address.dart';
 import 'package:auto_hub_app/features/your_addresses/presentation/widgets/address_text_field.dart';
 import 'package:auto_hub_app/features/your_addresses/presentation/widgets/address_type_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddressForm extends StatefulWidget {
-  final AddressModel? initialAddress;
-  final void Function(AddressModel) onSave;
 
   const AddressForm({
     this.initialAddress,
     required this.onSave,
     super.key,
   });
+  final Address? initialAddress;
+  final void Function(Address) onSave;
 
   @override
   State<AddressForm> createState() => _AddressFormState();
@@ -53,8 +53,12 @@ class _AddressFormState extends State<AddressForm> {
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      final address = AddressModel(
-        id: widget.initialAddress?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+      // Create a unique ID using microseconds + a random bit, if no package
+      final uniqueId = widget.initialAddress?.id ?? 
+        '${DateTime.now().microsecondsSinceEpoch}_${(DateTime.now().millisecond * 7)}';
+
+      final address = Address(
+        id: uniqueId,
         type: _selectedType,
         label: _labelController.text.trim(),
         streetAddress: _streetController.text.trim(),
@@ -235,7 +239,7 @@ class _AddressFormState extends State<AddressForm> {
                                   if (val == null || val.trim().isEmpty) {
                                     return 'Required';
                                   }
-                                  if (val.trim().length != 2) {
+                                  if (!RegExp(r'^[A-Za-z]{2}$').hasMatch(val.trim())) {
                                     return '2 letters';
                                   }
                                   return null;
@@ -255,6 +259,9 @@ class _AddressFormState extends State<AddressForm> {
                                 validator: (val) {
                                   if (val == null || val.trim().isEmpty) {
                                     return 'Required';
+                                  }
+                                  if (!RegExp(r'^\d{5}(-\d{4})?$').hasMatch(val.trim())) {
+                                    return 'Invalid format';
                                   }
                                   return null;
                                 },

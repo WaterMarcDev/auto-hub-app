@@ -1,14 +1,9 @@
-class AddressModel {
-  final String id;
-  final String type; // 'home' | 'work' | 'other'
-  final String label;
-  final String streetAddress;
-  final String city;
-  final String state;
-  final String zip;
-  final bool isDefault;
+import 'package:flutter/foundation.dart';
 
-  const AddressModel({
+@immutable
+class Address {
+
+  const Address({
     required this.id,
     required this.type,
     required this.label,
@@ -18,8 +13,16 @@ class AddressModel {
     required this.zip,
     required this.isDefault,
   });
+  final String id;
+  final String type; // 'home' | 'work' | 'other'
+  final String label;
+  final String streetAddress;
+  final String city;
+  final String state;
+  final String zip;
+  final bool isDefault;
 
-  AddressModel copyWith({
+  Address copyWith({
     String? id,
     String? type,
     String? label,
@@ -29,7 +32,7 @@ class AddressModel {
     String? zip,
     bool? isDefault,
   }) {
-    return AddressModel(
+    return Address(
       id: id ?? this.id,
       type: type ?? this.type,
       label: label ?? this.label,

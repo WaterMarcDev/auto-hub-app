@@ -1,11 +1,11 @@
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
-import 'package:auto_hub_app/features/your_addresses/presentation/models/address_model.dart';
+import 'package:auto_hub_app/features/your_addresses/domain/entities/address.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddressCard extends StatelessWidget {
-  final AddressModel address;
+  final Address address;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
   final VoidCallback? onSetDefault;
@@ -20,8 +20,8 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isHome = address.type == 'home';
-    final bool isWork = address.type == 'work';
+    final isHome = address.type == 'home';
+    final isWork = address.type == 'work';
 
     IconData typeIcon;
     Color iconColor;
