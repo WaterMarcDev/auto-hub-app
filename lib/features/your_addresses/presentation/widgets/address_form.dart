@@ -84,7 +84,7 @@ class _AddressFormState extends State<AddressForm> {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.5),
-            blurRadius: 24,
+            blurRadius: 24.r,
             offset: const Offset(0, -4),
           ),
         ],
