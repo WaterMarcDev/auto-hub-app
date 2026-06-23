@@ -79,7 +79,7 @@ class ConversationTile extends StatelessWidget {
                             alignment: Alignment.center,
                             child: Text(
                               '${conversation.unreadCount}',
-                              style: TextStyle(
+                              style: AppTextStyles.bodySmall.copyWith(
                                 color: Colors.white,
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w800,

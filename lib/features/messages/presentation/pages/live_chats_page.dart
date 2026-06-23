@@ -203,7 +203,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
   }
 
   Widget _buildConversationsSection(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
       padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 24.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,40 +218,41 @@ class _LiveChatPageState extends State<LiveChatPage> {
             ),
           ),
           SizedBox(height: 12.h),
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.onboardingSurfaceLight,
-              borderRadius: BorderRadius.circular(24.r),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.07),
-                width: 0.8,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
-                  blurRadius: 10.r,
-                  offset: Offset(0, 2.h),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.onboardingSurfaceLight,
+                borderRadius: BorderRadius.circular(24.r),
+                border: Border.all(
+                  color: Colors.white.withValues(alpha: 0.07),
+                  width: 0.8,
                 ),
-              ],
-            ),
-            clipBehavior: Clip.hardEdge,
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: _conversations.length,
-              separatorBuilder: (context, index) => Divider(
-                color: Colors.white.withValues(alpha: 0.05),
-                height: 1.h,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.3),
+                    blurRadius: 10.r,
+                    offset: Offset(0, 2.h),
+                  ),
+                ],
               ),
-              itemBuilder: (context, index) {
-                final convo = _conversations[index];
-                return ConversationTile(
-                  conversation: convo,
-                  onTap: () {
-                    context.push('/chat?chatRoomId=${convo.chatRoomId}');
-                  },
-                );
-              },
+              clipBehavior: Clip.hardEdge,
+              child: ListView.separated(
+                padding: EdgeInsets.zero,
+                itemCount: _conversations.length,
+                separatorBuilder: (context, index) => Divider(
+                  color: Colors.white.withValues(alpha: 0.05),
+                  height: 1.h,
+                ),
+                itemBuilder: (context, index) {
+                  final convo = _conversations[index];
+                  return ConversationTile(
+                    conversation: convo,
+                    onTap: () {
+                      context.push('/chat?chatRoomId=${convo.chatRoomId}');
+                    },
+                  );
+                },
+              ),
             ),
           ),
         ],

@@ -2,6 +2,7 @@ import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class MessageOptionsOverlay extends StatelessWidget {
   const MessageOptionsOverlay({
@@ -62,7 +63,7 @@ class MessageOptionsOverlay extends StatelessWidget {
                 title: 'Mark All as Read',
                 titleColor: Colors.white,
                 onTap: () {
-                  Navigator.of(context).pop();
+                  context.pop();
                   onMarkAllAsRead();
                 },
               ),
@@ -73,7 +74,7 @@ class MessageOptionsOverlay extends StatelessWidget {
                 title: 'Delete All Conversations',
                 titleColor: AppColors.error,
                 onTap: () {
-                  Navigator.of(context).pop();
+                  context.pop();
                   onDeleteAll();
                 },
               ),

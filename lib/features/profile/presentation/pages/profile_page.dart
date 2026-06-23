@@ -112,8 +112,8 @@ class ProfilePage extends StatelessWidget {
           children: [
             _TopBar(
               onBackTap: () {
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
+                if (context.canPop()) {
+                  context.pop();
                 }
               },
             ),

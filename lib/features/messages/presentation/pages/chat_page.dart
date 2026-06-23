@@ -112,7 +112,7 @@ class _ChatPageState extends State<ChatPage> {
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => context.pop(),
             child: Text(
               'Cancel',
               style: AppTextStyles.bodyMedium.copyWith(color: Colors.white),
@@ -120,7 +120,7 @@ class _ChatPageState extends State<ChatPage> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
               _repository.clearChat(widget.chatRoomId);
               _loadMessages();
               ScaffoldMessenger.of(context)
