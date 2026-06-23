@@ -44,6 +44,9 @@ abstract final class AppColors {
   /// Hint/placeholder text color.
   static const Color textHint = Color(0xFF9CA3AF);
 
+  /// Tertiary text / disabled color.
+  static const Color textTertiary = Color(0xFF484F58);
+
   /// Text on primary surfaces — white.
   static const Color textOnPrimary = Color(0xFFFFFFFF);
 

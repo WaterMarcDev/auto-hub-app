@@ -361,7 +361,7 @@ class _EditAccountDetailsPageState extends State<EditAccountDetailsPage> {
                                                 .copyWith(
                                                   color: _isModified
                                                       ? Colors.white
-                                                      : const Color(0xFF484F58),
+                                                      : AppColors.textTertiary,
                                                   fontSize: 14.sp,
                                                   fontWeight: FontWeight.w700,
                                                 ),

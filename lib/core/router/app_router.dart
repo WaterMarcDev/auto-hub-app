@@ -1,6 +1,6 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
-import 'package:auto_hub_app/features/account_details/presentation/pages/account_details.dart';
-import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details.dart';
+import 'package:auto_hub_app/features/account_details/presentation/pages/account_details_page.dart';
+import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
