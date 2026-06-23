@@ -1,6 +1,7 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:auto_hub_app/features/payment_methods/presentation/pages/payment_method_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/junk_detail_page.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/my_request_junk.dart';
@@ -57,6 +58,9 @@ final GoRouter appRouter = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/payment-methods',
+      name: 'payment-methods',
+      builder: (context, state) => const PaymentMethodPage(),
       path: '/my-request-junk',
       name: 'my-request-junk',
       builder: (context, state) => const MyRequestJunk(),

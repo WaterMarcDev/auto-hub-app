@@ -14,7 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  List<ProfileMenuSectionData> _buildSections(VoidCallback onMenuTap, BuildContext context) {
+  List<ProfileMenuSectionData> _buildSections(BuildContext context, VoidCallback onMenuTap) {
     return [
       ProfileMenuSectionData(
         title: 'MY ACTIVITY',
@@ -64,7 +64,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Payment Methods',
             iconPath: AppIcons.profileCard,
             iconBackgroundColor: const Color(0x1F34D399),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('payment-methods'),
           ),
           ProfileMenuItemData(
             title: 'Settings',
@@ -96,7 +96,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sections = _buildSections(() {
+    final sections = _buildSections(context, () {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(
