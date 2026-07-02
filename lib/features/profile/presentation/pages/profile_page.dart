@@ -35,7 +35,7 @@ class ProfilePage extends StatelessWidget {
             title: 'My Junk Requests',
             iconPath: AppIcons.profileCard,
             iconBackgroundColor: const Color(0x1F34D399),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('my-request-junk'),
           ),
           ProfileMenuItemData(
             title: 'Messages',
@@ -58,13 +58,13 @@ class ProfilePage extends StatelessWidget {
             title: 'Your Addresses',
             iconPath: AppIcons.profileHeart,
             iconBackgroundColor: const Color(0x1FA78BFA),
-            onTap: onMenuTap,
+            onTap: () => context.push('/your-addresses'),
           ),
           ProfileMenuItemData(
             title: 'Payment Methods',
             iconPath: AppIcons.profileCard,
             iconBackgroundColor: const Color(0x1F34D399),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('payment-methods'),
           ),
           ProfileMenuItemData(
             title: 'Settings',
@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
         ..showSnackBar(
           const SnackBar(content: Text('This section is coming soon')),
         );
-    });
+    }, context);
 
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,
