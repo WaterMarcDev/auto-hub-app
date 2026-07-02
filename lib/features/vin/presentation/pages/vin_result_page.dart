@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 
 class VinResultPage extends StatelessWidget {
   const VinResultPage({required this.result, super.key});
@@ -112,7 +113,7 @@ class _AppBar extends StatelessWidget {
                   vin,
                   style: GoogleFonts.spaceMono(
                     fontSize: 9.sp,
-                    color: const Color(0xFF484F58),
+                    color:  AppColors.textTertiary,
                     letterSpacing: 1.2,
                   ),
                 ),

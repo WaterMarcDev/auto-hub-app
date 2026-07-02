@@ -25,4 +25,5 @@ class AppIcons {
   static const String profileSettings = 'assets/icons/ic_profile_settings.svg';
   static const String profileVerified = 'assets/icons/ic_profile_verified.svg';
   static const String send = 'assets/icons/ic_send.svg';
+  static const String shield = 'assets/icons/ic_shield.svg';
 }
