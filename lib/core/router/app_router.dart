@@ -2,6 +2,8 @@ import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/account_details/presentation/pages/account_details_page.dart';
 import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/payment_methods/presentation/pages/payment_method_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
@@ -61,6 +63,18 @@ final GoRouter appRouter = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/contact-support',
+      name: 'contact-support',
+      builder: (context, state) => const ContactSupportPage(),
+    ),
+    GoRoute(
+      path: '/chat/:chatRoomId',
+      name: 'chat',
+      builder: (context, state) {
+        final chatRoomId = state.pathParameters['chatRoomId'] ?? '1';
+        return LiveChatPage(chatRoomId: chatRoomId);
+      },),
+      GoRoute(
       path: '/account-details',
       name: 'account-details',
       builder: (context, state) => const AccountDetailsPage(),

@@ -10,11 +10,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  List<ProfileMenuSectionData> _buildSections(BuildContext context, VoidCallback onMenuTap) {
+  List<ProfileMenuSectionData> _buildSections(
+    BuildContext context,
+    VoidCallback onMenuTap,
+  ) {
     return [
       ProfileMenuSectionData(
         title: 'MY ACTIVITY',
@@ -87,7 +91,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Contact Support',
             iconPath: AppIcons.profileChat,
             iconBackgroundColor: const Color(0x1FFBBF24),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('contact-support'),
           ),
         ],
       ),
