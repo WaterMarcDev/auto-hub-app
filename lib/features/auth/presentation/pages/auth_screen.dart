@@ -198,7 +198,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     child: Text(
                       'or continue with email',
                       style: AppTextStyles.bodySmall.copyWith(
-                        color: const Color(0xFF484F58),
+                        color: AppColors.textTertiary,
                         fontSize: 12.sp,
                       ),
                     ),
@@ -232,7 +232,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   text: TextSpan(
                     text: 'Continue as ',
                     style: AppTextStyles.bodyMedium.copyWith(
-                      color: const Color(0xFF484F58),
+                      color: AppColors.textTertiary,
                       fontSize: 13.sp,
                     ),
                     children: [
@@ -260,7 +260,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 text: TextSpan(
                   text: "By continuing, you agree to AutoHub Express's ",
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: const Color(0xFF484F58),
+                    color: AppColors.textTertiary,
                     fontSize: 10.sp,
                   ),
                   children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 
 class BrowsePage extends StatelessWidget {
   const BrowsePage({super.key});
@@ -27,7 +28,7 @@ class BrowsePage extends StatelessWidget {
               'Coming soon',
               style: GoogleFonts.inter(
                 fontSize: 14,
-                color: const Color(0xFF484F58),
+                color: AppColors.textTertiary,
               ),
             ),
           ],

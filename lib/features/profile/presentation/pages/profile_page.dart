@@ -8,6 +8,7 @@ import 'package:auto_hub_app/features/profile/presentation/widgets/profile_menu_
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,7 +39,7 @@ class ProfilePage extends StatelessWidget {
             title: 'My Junk Requests',
             iconPath: AppIcons.profileCard,
             iconBackgroundColor: const Color(0x1F34D399),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('my-request-junk'),
           ),
           ProfileMenuItemData(
             title: 'Messages',
@@ -55,19 +56,19 @@ class ProfilePage extends StatelessWidget {
             title: 'Account Details',
             iconPath: AppIcons.profileActivity,
             iconBackgroundColor: const Color(0x1F0DA0CE),
-            onTap: onMenuTap,
+            onTap: () => context.push('/account-details'),
           ),
           ProfileMenuItemData(
             title: 'Your Addresses',
             iconPath: AppIcons.profileHeart,
             iconBackgroundColor: const Color(0x1FA78BFA),
-            onTap: onMenuTap,
+            onTap: () => context.push('/your-addresses'),
           ),
           ProfileMenuItemData(
             title: 'Payment Methods',
             iconPath: AppIcons.profileCard,
             iconBackgroundColor: const Color(0x1F34D399),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('payment-methods'),
           ),
           ProfileMenuItemData(
             title: 'Settings',
@@ -105,7 +106,7 @@ class ProfilePage extends StatelessWidget {
         ..showSnackBar(
           const SnackBar(content: Text('This section is coming soon')),
         );
-    });
+    }, context);
 
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,

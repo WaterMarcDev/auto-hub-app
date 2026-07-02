@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 
 class SavedPage extends StatelessWidget {
   const SavedPage({required this.onBrowseTap, super.key});
@@ -93,7 +94,7 @@ class SavedPage extends StatelessWidget {
                         style: GoogleFonts.inter(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
-                          color: const Color(0xFF484F58),
+                          color: AppColors.textTertiary,
                         ),
                       ),
                       Text(
