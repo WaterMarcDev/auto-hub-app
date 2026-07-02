@@ -9,6 +9,7 @@ import 'package:auto_hub_app/features/request_junk/presentation/pages/new_junk_r
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
+import 'package:auto_hub_app/features/your_addresses/presentation/pages/your_addresses_page.dart';
 import 'package:go_router/go_router.dart';
 
 /// Application router configuration using GoRouter.
@@ -58,6 +59,10 @@ final GoRouter appRouter = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/your-addresses',
+      name: 'your-addresses',
+      builder: (context, state) => const YourAddressesPage(),
+      GoRoute(
       path: '/payment-methods',
       name: 'payment-methods',
       builder: (context, state) => const PaymentMethodPage(),
@@ -82,3 +87,4 @@ final GoRouter appRouter = GoRouter(
     ),
   ],
 );
+

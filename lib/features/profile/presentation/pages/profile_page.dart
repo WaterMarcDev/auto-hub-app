@@ -58,7 +58,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Your Addresses',
             iconPath: AppIcons.profileHeart,
             iconBackgroundColor: const Color(0x1FA78BFA),
-            onTap: onMenuTap,
+            onTap: () => context.push('/your-addresses'),
           ),
           ProfileMenuItemData(
             title: 'Payment Methods',
