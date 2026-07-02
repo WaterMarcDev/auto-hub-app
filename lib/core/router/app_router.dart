@@ -60,7 +60,8 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/payment-methods',
       name: 'payment-methods',
-      builder: (context, state) => const PaymentMethodPage(),
+      builder: (context, state) => const PaymentMethodPage(),),
+    GoRoute(
       path: '/my-request-junk',
       name: 'my-request-junk',
       builder: (context, state) => const MyRequestJunk(),

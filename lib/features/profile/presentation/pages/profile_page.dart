@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
         ..showSnackBar(
           const SnackBar(content: Text('This section is coming soon')),
         );
-    }, context);
+    });
 
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,

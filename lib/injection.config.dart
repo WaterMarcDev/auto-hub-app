@@ -9,6 +9,9 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:auto_hub_app/core/services/base_api_client.dart' as _i1031;
+import 'package:auto_hub_app/features/auth/services/auth_api_service.dart'
+    as _i55;
 import 'package:auto_hub_app/features/splash/presentation/bloc/splash_cubit.dart'
     as _i1035;
 import 'package:get_it/get_it.dart' as _i174;
@@ -22,6 +25,10 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i1035.SplashCubit>(() => _i1035.SplashCubit());
+    gh.lazySingleton<_i1031.BaseApiClient>(() => _i1031.BaseApiClient());
+    gh.lazySingleton<_i55.AuthApiService>(
+      () => _i55.AuthApiService(gh<_i1031.BaseApiClient>()),
+    );
     return this;
   }
 }
