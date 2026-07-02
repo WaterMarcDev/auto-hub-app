@@ -1,4 +1,6 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
+import 'package:auto_hub_app/features/account_details/presentation/pages/account_details_page.dart';
+import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/payment_methods/presentation/pages/payment_method_page.dart';
@@ -59,6 +61,15 @@ final GoRouter appRouter = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/account-details',
+      name: 'account-details',
+      builder: (context, state) => const AccountDetailsPage(),
+    ),
+    GoRoute(
+      path: '/edit-account-details',
+      name: 'edit-account-details',
+      builder: (context, state) => const EditAccountDetailsPage(),
+          GoRoute(
       path: '/your-addresses',
       name: 'your-addresses',
       builder: (context, state) => const YourAddressesPage(),

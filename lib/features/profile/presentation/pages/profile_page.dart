@@ -52,7 +52,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Account Details',
             iconPath: AppIcons.profileActivity,
             iconBackgroundColor: const Color(0x1F0DA0CE),
-            onTap: onMenuTap,
+            onTap: () => context.push('/account-details'),
           ),
           ProfileMenuItemData(
             title: 'Your Addresses',
