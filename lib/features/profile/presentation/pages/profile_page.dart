@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Messages',
             iconPath: AppIcons.profileChat,
             iconBackgroundColor: const Color(0x1FFBBF24),
-            onTap: onMenuTap,
+            onTap: () => context.push('/live-chats'),
           ),
         ],
       ),
@@ -116,8 +116,8 @@ class ProfilePage extends StatelessWidget {
           children: [
             _TopBar(
               onBackTap: () {
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
+                if (context.canPop()) {
+                  context.pop();
                 }
               },
             ),
