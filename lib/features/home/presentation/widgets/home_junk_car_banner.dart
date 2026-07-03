@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,12 +15,12 @@ class HomeJunkCarBanner extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
-            color: const Color(0xFF0DA0CE).withValues(alpha: 0.2),
+            color: AppColors.onboardingCyan.withValues(alpha: 0.2),
             width: 0.8,
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF0DA0CE).withValues(alpha: 0.12),
+              color: AppColors.onboardingCyan.withValues(alpha: 0.12),
               blurRadius: 24,
               offset: const Offset(0, 4),
             ),
@@ -35,7 +36,10 @@ class HomeJunkCarBanner extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment(-0.81, -1.0),
                     end: Alignment(0.81, 1.0),
-                    colors: [Color(0xFF0A1220), Color(0xFF08101A)],
+                    colors: [
+                      AppColors.gradientDarkMid,
+                      AppColors.gradientDarkSurface,
+                    ],
                   ),
                 ),
               ),
@@ -51,8 +55,8 @@ class HomeJunkCarBanner extends StatelessWidget {
                   shape: BoxShape.circle,
                   gradient: RadialGradient(
                     colors: [
-                      const Color(0xFF0DA0CE).withValues(alpha: 0.15),
-                      const Color(0xFF075067).withValues(alpha: 0.075),
+                      AppColors.onboardingCyan.withValues(alpha: 0.15),
+                      AppColors.glowTeal.withValues(alpha: 0.075),
                       Colors.transparent,
                     ],
                     stops: const [0.0, 0.35, 0.7],
@@ -84,7 +88,7 @@ class HomeJunkCarBanner extends StatelessWidget {
                               style: GoogleFonts.inter(
                                 fontSize: 10.sp,
                                 fontWeight: FontWeight.w700,
-                                color: const Color(0xFF0DA0CE),
+                                color: AppColors.onboardingCyan,
                                 letterSpacing: 0.8,
                               ),
                             ),
@@ -97,7 +101,7 @@ class HomeJunkCarBanner extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontSize: 17.sp,
                             fontWeight: FontWeight.w800,
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             letterSpacing: -0.3,
                             height: 1.5,
                           ),
@@ -109,7 +113,7 @@ class HomeJunkCarBanner extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
-                            color: Colors.white.withValues(alpha: 0.4),
+                            color: AppColors.colorWhite.withValues(alpha: 0.4),
                           ),
                         ),
                       ],
@@ -124,12 +128,17 @@ class HomeJunkCarBanner extends StatelessWidget {
                       gradient: const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [Color(0xFF0DA0CE), Color(0xFF0B8FB5)],
+                        colors: [
+                          AppColors.onboardingCyan,
+                          AppColors.onboardingCyan,
+                        ],
                       ),
                       borderRadius: BorderRadius.circular(16.r),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF0DA0CE).withValues(alpha: 0.4),
+                          color: AppColors.onboardingCyan.withValues(
+                            alpha: 0.4,
+                          ),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),
@@ -141,7 +150,7 @@ class HomeJunkCarBanner extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                       ),
                     ),
                   ),

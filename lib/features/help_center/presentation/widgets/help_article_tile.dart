@@ -41,7 +41,7 @@ class HelpArticleTile extends StatelessWidget {
                         child: Text(
                           article.title,
                           style: AppTextStyles.bodyMedium.copyWith(
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -84,7 +84,7 @@ class HelpArticleTile extends StatelessWidget {
                       : AppIcons.chevronRightRounded,
                   color: isExpanded
                       ? AppColors.onboardingCyan
-                      : Colors.white.withValues(alpha: 0.3),
+                      : AppColors.colorWhite.withValues(alpha: 0.3),
                   size: 20.sp,
                 ),
               ],
@@ -115,7 +115,7 @@ class HelpArticleTile extends StatelessWidget {
                       Text(
                         article.content,
                         style: AppTextStyles.bodyMedium.copyWith(
-                          color: Colors.white.withValues(alpha: 0.85),
+                          color: AppColors.colorWhite.withValues(alpha: 0.85),
                           fontSize: 13.5.sp,
                           height: 1.5,
                         ),

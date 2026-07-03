@@ -34,7 +34,7 @@ class ProductCard extends StatelessWidget {
 
     // Tag styling helper
     var tagBg = Colors.transparent;
-    var tagText = Colors.white;
+    var tagText = AppColors.colorWhite;
     if (part.tag != null) {
       switch (part.tag!.toLowerCase()) {
         case 'featured':
@@ -57,10 +57,10 @@ class ProductCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(bottom: 16.h),
         decoration: BoxDecoration(
-          color: const Color(0xFF1A1F26),
+          color: AppColors.surfaceDarkVariant,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: const Color(0x12FFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
           ),
         ),
         clipBehavior: Clip.antiAlias,
@@ -78,7 +78,7 @@ class ProductCard extends StatelessWidget {
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
-                        color: const Color(0xFF12161A),
+                        color: AppColors.surfaceDark,
                         alignment: Alignment.center,
                         child: const Icon(
                           Icons.image_not_supported_outlined,
@@ -113,10 +113,12 @@ class ProductCard extends StatelessWidget {
                         width: 36.w,
                         height: 36.h,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF0D1117).withValues(alpha: 0.7),
+                          color: AppColors.onboardingBackground.withValues(
+                            alpha: 0.7,
+                          ),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.12),
+                            color: AppColors.colorWhite.withValues(alpha: 0.12),
                             width: 0.8,
                           ),
                         ),
@@ -128,7 +130,7 @@ class ProductCard extends StatelessWidget {
                           colorFilter: ColorFilter.mode(
                             part.isFavorite
                                 ? AppColors.error
-                                : Colors.white,
+                                : AppColors.colorWhite,
                             BlendMode.srcIn,
                           ),
                           placeholderBuilder: (context) => const Icon(
@@ -180,7 +182,7 @@ class ProductCard extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontSize: 22.sp,
                             fontWeight: FontWeight.w900,
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                           ),
                         ),
                         Container(
@@ -225,7 +227,7 @@ class ProductCard extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -236,7 +238,7 @@ class ProductCard extends StatelessWidget {
                         height: 24.h,
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFF59E0B).withValues(alpha: 0.1),
+                          color: AppColors.starRating.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(14.r),
                         ),
                         child: Row(
@@ -257,7 +259,7 @@ class ProductCard extends StatelessWidget {
                               style: GoogleFonts.inter(
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w700,
-                                color: const Color(0xFFFBBF24),
+                                color: AppColors.warning,
                               ),
                             ),
                           ],
@@ -283,7 +285,7 @@ class ProductCard extends StatelessWidget {
                         style: GoogleFonts.inter(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
-                          color: const Color(0xFF8B929A),
+                          color: AppColors.onboardingTextSecondary,
                         ),
                       ),
                     ],
@@ -332,7 +334,7 @@ class _DetailChip extends StatelessWidget {
       height: 23.h,
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.05),
+        color: AppColors.colorWhite.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -357,7 +359,7 @@ class _DetailChip extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 10.sp,
               fontWeight: FontWeight.w500,
-              color: const Color(0xFF8B929A),
+              color: AppColors.onboardingTextSecondary,
             ),
           ),
         ],

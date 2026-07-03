@@ -36,7 +36,7 @@ class DetailItemTile extends StatelessWidget {
         border: showDivider
             ? Border(
                 bottom: BorderSide(
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: AppColors.colorWhite.withValues(alpha: 0.05),
                   width: 0.8,
                 ),
               )

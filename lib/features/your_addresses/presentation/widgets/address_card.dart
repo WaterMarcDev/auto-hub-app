@@ -59,7 +59,7 @@ class AddressCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.r),
                   border: isWork || address.type == 'other'
                       ? Border.all(
-                          color: Colors.white.withValues(alpha: 0.05),
+                          color: AppColors.colorWhite.withValues(alpha: 0.05),
                           width: 0.8,
                         )
                       : null,

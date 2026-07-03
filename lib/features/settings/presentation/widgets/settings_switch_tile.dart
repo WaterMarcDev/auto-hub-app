@@ -27,7 +27,7 @@ class SettingsSwitchTile extends StatelessWidget {
         border: showDivider
             ? Border(
                 bottom: BorderSide(
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: AppColors.colorWhite.withValues(alpha: 0.05),
                   width: 0.8,
                 ),
               )
@@ -65,10 +65,10 @@ class SettingsSwitchTile extends StatelessWidget {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Colors.white,
+            activeColor: AppColors.colorWhite,
             activeTrackColor: AppColors.onboardingCyan,
-            inactiveThumbColor: Colors.white,
-            inactiveTrackColor: const Color(0xFF2E333D),
+            inactiveThumbColor: AppColors.colorWhite,
+            inactiveTrackColor: AppColors.toggleTrackInactive,
             trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
           ),
         ],

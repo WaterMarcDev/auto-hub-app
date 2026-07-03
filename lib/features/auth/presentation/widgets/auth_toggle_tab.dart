@@ -22,7 +22,7 @@ class AuthToggleTab extends StatelessWidget {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 1.w,
         ),
         boxShadow: [
@@ -79,7 +79,7 @@ class AuthToggleTab extends StatelessWidget {
                           duration: const Duration(milliseconds: 250),
                           style: AppTextStyles.labelLarge.copyWith(
                             color: isSignIn
-                                ? Colors.white
+                                ? AppColors.colorWhite
                                 : AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,
@@ -100,7 +100,7 @@ class AuthToggleTab extends StatelessWidget {
                           duration: const Duration(milliseconds: 250),
                           style: AppTextStyles.labelLarge.copyWith(
                             color: !isSignIn
-                                ? Colors.white
+                                ? AppColors.colorWhite
                                 : AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,

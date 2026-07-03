@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,7 +51,7 @@ class HomePartCardHorizontal extends StatelessWidget {
       width: width.w,
       height: 248.h,
       decoration: BoxDecoration(
-        color: const Color(0xFF161B22),
+        color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
           color: const Color(0x12FFFFFF),
@@ -91,7 +92,7 @@ class HomePartCardVertical extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF161B22),
+          color: AppColors.onboardingSurfaceLight,
           borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
             color: const Color(0x12FFFFFF),
@@ -171,10 +172,10 @@ class _PartImageSection extends StatelessWidget {
               width: 36.w,
               height: 36.h,
               decoration: BoxDecoration(
-                color: const Color(0xFF0D1117).withValues(alpha: 0.7),
+                color: AppColors.onboardingBackground.withValues(alpha: 0.7),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.12),
+                  color: AppColors.colorWhite.withValues(alpha: 0.12),
                   width: 0.8,
                 ),
                 boxShadow: [
@@ -207,7 +208,7 @@ class _PartImageSection extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: height > 150 ? 19.sp : 16.sp,
                     fontWeight: FontWeight.w800,
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     letterSpacing: -0.5,
                   ),
                 ),
@@ -234,10 +235,10 @@ class _BadgeWidget extends StatelessWidget {
           height: 33.h,
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           decoration: BoxDecoration(
-            color: const Color(0xFF0DA0CE).withValues(alpha: 0.15),
+            color: AppColors.onboardingCyan.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(14.r),
             border: Border.all(
-              color: const Color(0x35609FFA),
+              color: AppColors.facebookBlue.withValues(alpha: 0.21),
               width: 0.8,
             ),
           ),
@@ -247,7 +248,7 @@ class _BadgeWidget extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 10.sp,
               fontWeight: FontWeight.w700,
-              color: const Color(0xFF0DA0CE),
+              color: AppColors.onboardingCyan,
               letterSpacing: 0.5,
             ),
           ),
@@ -257,10 +258,10 @@ class _BadgeWidget extends StatelessWidget {
           height: 33.h,
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           decoration: BoxDecoration(
-            color: const Color(0xFF0DA0CE).withValues(alpha: 0.15),
+            color: AppColors.onboardingCyan.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(14.r),
             border: Border.all(
-              color: const Color(0xFF0DA0CE).withValues(alpha: 0.21),
+              color: AppColors.onboardingCyan.withValues(alpha: 0.21),
               width: 0.8,
             ),
           ),
@@ -270,7 +271,7 @@ class _BadgeWidget extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 10.sp,
               fontWeight: FontWeight.w700,
-              color: const Color(0xFF0DA0CE),
+              color: AppColors.onboardingCyan,
               letterSpacing: 0.5,
             ),
           ),
@@ -280,10 +281,10 @@ class _BadgeWidget extends StatelessWidget {
           height: 33.h,
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           decoration: BoxDecoration(
-            color: const Color(0xFF10B981).withValues(alpha: 0.15),
+            color: AppColors.certifiedGreen.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(14.r),
             border: Border.all(
-              color: const Color(0xFF34D399).withValues(alpha: 0.21),
+              color: AppColors.onboardingGreen.withValues(alpha: 0.21),
               width: 0.8,
             ),
           ),
@@ -293,7 +294,7 @@ class _BadgeWidget extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 10.sp,
               fontWeight: FontWeight.w700,
-              color: const Color(0xFF34D399),
+              color: AppColors.onboardingGreen,
               letterSpacing: 0.5,
             ),
           ),
@@ -316,12 +317,12 @@ class _ConditionBadge extends StatelessWidget {
       height: 30.h,
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       decoration: BoxDecoration(
-        color: const Color(0xFF0D1117).withValues(alpha: 0.75),
+        color: AppColors.onboardingBackground.withValues(alpha: 0.75),
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(
           color: isExcellent
-              ? const Color(0xFF34D399).withValues(alpha: 0.21)
-              : const Color(0xFF0DA0CE).withValues(alpha: 0.21),
+              ? AppColors.onboardingGreen.withValues(alpha: 0.21)
+              : AppColors.onboardingCyan.withValues(alpha: 0.21),
           width: 0.8,
         ),
       ),
@@ -332,8 +333,8 @@ class _ConditionBadge extends StatelessWidget {
           fontSize: 10.sp,
           fontWeight: FontWeight.w700,
           color: isExcellent
-              ? const Color(0xFF34D399)
-              : const Color(0xFF0DA0CE),
+              ? AppColors.onboardingGreen
+              : AppColors.onboardingCyan,
         ),
       ),
     );
@@ -365,7 +366,7 @@ class _PartInfoSection extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w700,
-                        color: const Color(0xFFF0F6FC),
+                        color: AppColors.onboardingTextPrimary,
                         letterSpacing: -0.2,
                       ),
                       maxLines: 1,
@@ -385,7 +386,7 @@ class _PartInfoSection extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w400,
-                            color: const Color(0xFF8B929A),
+                            color: AppColors.onboardingTextSecondary,
                           ),
                         ),
                       ],
@@ -399,7 +400,7 @@ class _PartInfoSection extends StatelessWidget {
                 height: 24.h,
                 padding: EdgeInsets.symmetric(horizontal: 8.w),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF59E0B).withValues(alpha: 0.1),
+                  color: AppColors.starRating.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(14.r),
                 ),
                 child: Row(
@@ -416,7 +417,7 @@ class _PartInfoSection extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w700,
-                        color: const Color(0xFFFBBF24),
+                        color: AppColors.warning,
                       ),
                     ),
                   ],
@@ -467,7 +468,7 @@ class _InfoChip extends StatelessWidget {
       height: 23.h,
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.05),
+        color: AppColors.colorWhite.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -484,7 +485,7 @@ class _InfoChip extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 10.sp,
               fontWeight: FontWeight.w500,
-              color: const Color(0xFF8B929A),
+              color: AppColors.onboardingTextSecondary,
             ),
           ),
         ],

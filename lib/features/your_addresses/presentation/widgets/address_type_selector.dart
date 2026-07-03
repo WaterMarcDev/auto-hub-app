@@ -75,7 +75,7 @@ class AddressTypeSelector extends StatelessWidget {
             border: Border.all(
               color: isSelected
                   ? AppColors.onboardingCyan
-                  : Colors.white.withValues(alpha: 0.08),
+                  : AppColors.colorWhite.withValues(alpha: 0.08),
               width: isSelected ? 1.2 : 0.8,
             ),
           ),

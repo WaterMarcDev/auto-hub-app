@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/widgets/onboarding_bottom_nav.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/widgets/quality_parts_view.dart';
@@ -63,9 +64,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
             end: Alignment.bottomRight,
             stops: [0.08, 0.5, 0.91],
             colors: [
-              Color(0xFF080D14),
-              Color(0xFF0A1220),
-              Color(0xFF050810),
+              AppColors.gradientDarkStart,
+              AppColors.gradientDarkMid,
+              AppColors.gradientDarkEnd,
             ],
           ),
         ),
@@ -102,16 +103,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         vertical: 8.h,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.06),
+                        color: AppColors.colorWhite.withValues(alpha: 0.06),
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.1),
+                          color: AppColors.colorWhite.withValues(alpha: 0.1),
                         ),
                       ),
                       child: Text(
                         'Skip',
                         style: AppTextStyles.labelLarge.copyWith(
-                          color: Colors.white.withValues(alpha: 0.45),
+                          color: AppColors.colorWhite.withValues(alpha: 0.45),
                           fontWeight: FontWeight.w600,
                         ),
                       ),

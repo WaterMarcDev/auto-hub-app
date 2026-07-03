@@ -148,13 +148,13 @@ class _MyRequestJunkState extends State<MyRequestJunk> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1.0,
                 ),
               ),
               child: const Icon(
                 AppIcons.chevronLeft,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 size: 24,
               ),
             ),
@@ -197,7 +197,7 @@ class _MyRequestJunkState extends State<MyRequestJunk> {
               color: AppColors.onboardingSurface,
               borderRadius: BorderRadius.circular(24.r),
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.06),
+                color: AppColors.colorWhite.withValues(alpha: 0.06),
                 width: 1.0,
               ),
             ),
@@ -206,7 +206,7 @@ class _MyRequestJunkState extends State<MyRequestJunk> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: requests.length,
               separatorBuilder: (context, index) => Divider(
-                color: Colors.white.withValues(alpha: 0.06),
+                color: AppColors.colorWhite.withValues(alpha: 0.06),
                 height: 1.h,
               ),
               itemBuilder: (context, index) {

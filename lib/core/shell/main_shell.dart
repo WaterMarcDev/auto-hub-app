@@ -166,7 +166,7 @@ class _MainShellState extends State<MainShell> {
                         width: 4.w,
                         height: 4.h,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF0DA0CE),
+                          color: AppColors.onboardingCyan,
                           borderRadius: BorderRadius.circular(2.r),
                           boxShadow: const [
                             BoxShadow(
@@ -188,8 +188,8 @@ class _MainShellState extends State<MainShell> {
                 fontSize: 10.sp,
                 fontWeight: isActive ? FontWeight.w700 : FontWeight.w400,
                 color: isActive
-                    ? const Color(0xFF0DA0CE)
-                    : const Color(0xFF4B5563),
+                    ? AppColors.onboardingCyan
+                    : AppColors.tabInactive,
                 letterSpacing: 0.3,
               ),
             ),

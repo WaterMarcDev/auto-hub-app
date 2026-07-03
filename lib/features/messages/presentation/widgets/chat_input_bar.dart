@@ -89,14 +89,14 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 borderRadius: BorderRadius.circular(14.r),
                 color: AppColors.onboardingSurface,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1,
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.imageOutlined,
-                color: Colors.white.withValues(alpha: 0.7),
+                color: AppColors.colorWhite.withValues(alpha: 0.7),
                 size: 20.sp,
               ),
             ),
@@ -107,7 +107,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
               controller: _controller,
               cursorColor: AppColors.onboardingCyan,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 fontSize: 14.sp,
               ),
               decoration: InputDecoration(
@@ -127,14 +127,14 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14.r),
                   borderSide: BorderSide(
-                    color: Colors.white.withValues(alpha: 0.08),
+                    color: AppColors.colorWhite.withValues(alpha: 0.08),
                     width: 1.0,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14.r),
                   borderSide: BorderSide(
-                    color: Colors.white.withValues(alpha: 0.08),
+                    color: AppColors.colorWhite.withValues(alpha: 0.08),
                     width: 1.w,
                   ),
                 ),
@@ -161,7 +161,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
                     : AppColors.onboardingCyan,
                 borderRadius: BorderRadius.circular(14.r),
                 border: Border.all(
-                  color: Colors.white.withValues(
+                  color: AppColors.colorWhite.withValues(
                     alpha: _isTextEmpty ? 0.08 : 0.15,
                   ),
                   width: 1.0,

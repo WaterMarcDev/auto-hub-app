@@ -96,14 +96,14 @@ class _LiveChatPageState extends State<LiveChatPage> {
                     color: AppColors.onboardingSurface,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.08),
+                      color: AppColors.colorWhite.withValues(alpha: 0.08),
                       width: 1.0,
                     ),
                   ),
                   alignment: Alignment.center,
                   child: Icon(
                     AppIcons.chevronLeft,
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     size: 24.sp,
                   ),
                 ),
@@ -159,14 +159,14 @@ class _LiveChatPageState extends State<LiveChatPage> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1.0,
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.moreVert,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 size: 22.sp,
               ),
             ),
@@ -225,7 +225,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
                 color: AppColors.onboardingSurfaceLight,
                 borderRadius: BorderRadius.circular(24.r),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.07),
+                  color: AppColors.colorWhite.withValues(alpha: 0.07),
                   width: 0.8,
                 ),
                 boxShadow: [
@@ -241,7 +241,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
                 padding: EdgeInsets.zero,
                 itemCount: _conversations.length,
                 separatorBuilder: (context, index) => Divider(
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: AppColors.colorWhite.withValues(alpha: 0.05),
                   height: 1.h,
                 ),
                 itemBuilder: (context, index) {

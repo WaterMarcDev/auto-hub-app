@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +22,7 @@ class SearchTypeToggle extends StatelessWidget {
       height: 52.h,
       padding: EdgeInsets.all(4.r),
       decoration: BoxDecoration(
-        color: const Color(0xFF131922),
+        color: AppColors.surfaceSlate,
         borderRadius: BorderRadius.circular(26.r),
       ),
       child: Stack(
@@ -37,11 +38,11 @@ class SearchTypeToggle extends StatelessWidget {
               widthFactor: 0.5,
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF0DA0CE),
+                  color: AppColors.onboardingCyan,
                   borderRadius: BorderRadius.circular(22.r),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF0DA0CE).withOpacity(0.35),
+                      color: AppColors.onboardingCyan.withOpacity(0.35),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -67,8 +68,8 @@ class SearchTypeToggle extends StatelessWidget {
                           height: 16.h,
                           colorFilter: ColorFilter.mode(
                             selectedType == SearchType.part
-                                ? Colors.white
-                                : const Color(0xFF4C5562),
+                                ? AppColors.colorWhite
+                                : AppColors.toggleInactive,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -81,8 +82,8 @@ class SearchTypeToggle extends StatelessWidget {
                                 ? FontWeight.w700
                                 : FontWeight.w600,
                             color: selectedType == SearchType.part
-                                ? Colors.white
-                                : const Color(0xFF4C5562),
+                                ? AppColors.colorWhite
+                                : AppColors.toggleInactive,
                           ),
                         ),
                       ],
@@ -104,8 +105,8 @@ class SearchTypeToggle extends StatelessWidget {
                           height: 16.h,
                           colorFilter: ColorFilter.mode(
                             selectedType == SearchType.vin
-                                ? Colors.white
-                                : const Color(0xFF4C5562),
+                                ? AppColors.colorWhite
+                                : AppColors.toggleInactive,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -118,8 +119,8 @@ class SearchTypeToggle extends StatelessWidget {
                                 ? FontWeight.w700
                                 : FontWeight.w600,
                             color: selectedType == SearchType.vin
-                                ? Colors.white
-                                : const Color(0xFF4C5562),
+                                ? AppColors.colorWhite
+                                : AppColors.toggleInactive,
                           ),
                         ),
                       ],

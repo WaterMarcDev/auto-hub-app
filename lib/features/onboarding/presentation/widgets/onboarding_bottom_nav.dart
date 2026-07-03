@@ -34,7 +34,7 @@ class OnboardingBottomNav extends StatelessWidget {
               decoration: BoxDecoration(
                 color: isActive
                     ? AppColors.onboardingCyan
-                    : Colors.white.withValues(alpha: 0.15),
+                    : AppColors.colorWhite.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(10.r),
                 boxShadow: isActive
                     ? [
@@ -79,7 +79,7 @@ class OnboardingBottomNav extends StatelessWidget {
                 Text(
                   isLastPage ? 'Get Started' : 'Next',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w700,
                   ),
@@ -89,7 +89,7 @@ class OnboardingBottomNav extends StatelessWidget {
                   
                   isLastPage ? AppIcons.arrowForward : AppIcons.chevronRight,
                   size: 18.w,
-                  color: Colors.white,
+                  color: AppColors.colorWhite,
                 ),
               ],
             ),

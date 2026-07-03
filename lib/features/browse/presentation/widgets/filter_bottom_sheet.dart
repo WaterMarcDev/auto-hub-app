@@ -165,7 +165,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 width: 40.w,
                 height: 4.h,
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.1),
+                  color: AppColors.colorWhite.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(2.r),
                 ),
               ),
@@ -181,7 +181,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     style: GoogleFonts.inter(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: AppColors.colorWhite,
                     ),
                   ),
                   GestureDetector(
@@ -248,7 +248,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
                         activeTrackColor: AppColors.info,
-                        inactiveTrackColor: Colors.white.withValues(alpha: 0.1),
+                        inactiveTrackColor: AppColors.colorWhite.withValues(alpha: 0.1),
                         thumbColor: AppColors.info,
                         overlayColor: AppColors.info.withValues(alpha: 0.2),
                         trackHeight: 4.h,
@@ -332,7 +332,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           height: 20.h,
                           width: 20.h,
                           child: const CircularProgressIndicator(
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             strokeWidth: 2,
                           ),
                         )
@@ -341,7 +341,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           style: GoogleFonts.inter(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                           ),
                         ),
                 ),

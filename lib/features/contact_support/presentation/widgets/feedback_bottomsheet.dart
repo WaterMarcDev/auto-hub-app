@@ -31,7 +31,7 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
         ),
         border: Border(
           top: BorderSide(
-            color: Colors.white.withValues(alpha: 0.08),
+            color: AppColors.colorWhite.withValues(alpha: 0.08),
             width: 0.8,
           ),
         ),
@@ -44,7 +44,7 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
             width: 44.w,
             height: 4.h,
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.15),
+              color: AppColors.colorWhite.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(2.r),
             ),
           ),
@@ -56,7 +56,7 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
               Text(
                 'Rate Your Experience',
                 style: AppTextStyles.headlineSmall.copyWith(
-                  color: Colors.white,
+                  color: AppColors.colorWhite,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w800,
                   letterSpacing: -0.5,
@@ -68,17 +68,17 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   width: 32.r,
                   height: 32.r,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.04),
+                    color: AppColors.colorWhite.withValues(alpha: 0.04),
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.05),
+                      color: AppColors.colorWhite.withValues(alpha: 0.05),
                       width: 0.8,
                     ),
                   ),
                   alignment: Alignment.center,
                   child: Icon(
                     AppIcons.close,
-                    color: Colors.white.withValues(alpha: 0.7),
+                    color: AppColors.colorWhite.withValues(alpha: 0.7),
                     size: 16.sp,
                   ),
                 ),
@@ -161,15 +161,15 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                     },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.onboardingCyan,
-                foregroundColor: Colors.white,
+                foregroundColor: AppColors.colorWhite,
                 disabledBackgroundColor: AppColors.onboardingSurfaceLight,
-                disabledForegroundColor: Colors.white.withValues(alpha: 0.15),
+                disabledForegroundColor: AppColors.colorWhite.withValues(alpha: 0.15),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.r),
                   side: _currentRating == 0.0
                       ? BorderSide(
-                          color: Colors.white.withValues(alpha: 0.04),
+                          color: AppColors.colorWhite.withValues(alpha: 0.04),
                           width: 0.8,
                         )
                       : BorderSide.none,

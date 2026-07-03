@@ -43,7 +43,7 @@ class ChatBubble extends StatelessWidget {
           border: isSender
               ? null
               : Border.all(
-                  color: Colors.white.withValues(alpha: 0.04),
+                  color: AppColors.colorWhite.withValues(alpha: 0.04),
                   width: 0.8,
                 ),
         ),
@@ -55,7 +55,7 @@ class ChatBubble extends StatelessWidget {
             Text(
               message,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 fontSize: 14.5.sp,
                 fontWeight: FontWeight.w500,
                 height: 1.3.h,
@@ -70,7 +70,7 @@ class ChatBubble extends StatelessWidget {
                   Text(
                     time,
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: Colors.white.withValues(alpha: 0.6),
+                      color: AppColors.colorWhite.withValues(alpha: 0.6),
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -78,7 +78,7 @@ class ChatBubble extends StatelessWidget {
                   SizedBox(width: 4.w),
                   Icon(
                     isSent ? AppIcons.doneAll : AppIcons.done,
-                    color: Colors.white.withValues(alpha: 0.7),
+                    color: AppColors.colorWhite.withValues(alpha: 0.7),
                     size: 14.sp,
                   ),
                 ],

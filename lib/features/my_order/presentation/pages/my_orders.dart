@@ -121,7 +121,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                 color: AppColors.onboardingSurfaceLight,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.07),
+                  color: AppColors.colorWhite.withValues(alpha: 0.07),
                   width: 0.8,
                 ),
               ),
@@ -129,7 +129,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
               child: Icon(
                 Icons.chevron_left_rounded,
                 size: 22.sp,
-                color: Colors.white,
+                color: AppColors.colorWhite,
               ),
             ),
           ),
@@ -186,7 +186,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                   border: Border.all(
                     color: isSelected
                         ? AppColors.onboardingCyan
-                        : Colors.white.withValues(alpha: 0.05),
+                        : AppColors.colorWhite.withValues(alpha: 0.05),
                     width: 1,
                   ),
                 ),
@@ -221,7 +221,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
               color: AppColors.onboardingSurface,
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.05),
+                color: AppColors.colorWhite.withValues(alpha: 0.05),
                 width: 0.8,
               ),
             ),

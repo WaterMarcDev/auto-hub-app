@@ -145,7 +145,7 @@ class _StepVehicleInfoState extends State<StepVehicleInfo> {
                   children: [
                     Expanded(
                       child: Divider(
-                        color: Colors.white.withValues(alpha: 0.08),
+                        color: AppColors.colorWhite.withValues(alpha: 0.08),
                         thickness: 1,
                       ),
                     ),
@@ -164,7 +164,7 @@ class _StepVehicleInfoState extends State<StepVehicleInfo> {
                     ),
                     Expanded(
                       child: Divider(
-                        color: Colors.white.withValues(alpha: 0.08),
+                        color: AppColors.colorWhite.withValues(alpha: 0.08),
                         thickness: 1,
                       ),
                     ),
@@ -411,13 +411,13 @@ class _StepVehicleInfoState extends State<StepVehicleInfo> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
             borderSide: BorderSide(
-              color: Colors.white.withValues(alpha: 0.08),
+              color: AppColors.colorWhite.withValues(alpha: 0.08),
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
             borderSide: BorderSide(
-              color: Colors.white.withValues(alpha: 0.08),
+              color: AppColors.colorWhite.withValues(alpha: 0.08),
             ),
           ),
           focusedBorder: OutlineInputBorder(
@@ -430,7 +430,7 @@ class _StepVehicleInfoState extends State<StepVehicleInfo> {
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
             borderSide: BorderSide(
-              color: Colors.white.withValues(alpha: 0.03),
+              color: AppColors.colorWhite.withValues(alpha: 0.03),
             ),
           ),
           filled: false,

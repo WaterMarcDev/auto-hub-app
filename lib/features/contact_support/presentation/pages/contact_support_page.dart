@@ -117,14 +117,14 @@ class ContactSupportPage extends StatelessWidget {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1.0,
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.chevronLeft,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 size: 24.sp,
               ),
             ),
@@ -211,7 +211,7 @@ class ContactSupportPage extends StatelessWidget {
             color: AppColors.onboardingSurfaceLight,
             borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.07),
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
               width: 0.8,
             ),
           ),
@@ -233,7 +233,7 @@ class ContactSupportPage extends StatelessWidget {
                 },
               ),
               Divider(
-                color: Colors.white.withValues(alpha: 0.05),
+                color: AppColors.colorWhite.withValues(alpha: 0.05),
                 height: 1.h,
               ),
               _ContactTile(
@@ -252,7 +252,7 @@ class ContactSupportPage extends StatelessWidget {
                 },
               ),
               Divider(
-                color: Colors.white.withValues(alpha: 0.05),
+                color: AppColors.colorWhite.withValues(alpha: 0.05),
                 height: 1.h,
               ),
               _ContactTile(
@@ -298,7 +298,7 @@ class ContactSupportPage extends StatelessWidget {
             color: AppColors.onboardingSurfaceLight,
             borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.07),
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
               width: 0.8,
             ),
           ),
@@ -369,7 +369,7 @@ class _ContactTile extends StatelessWidget {
                         Text(
                           title,
                           style: AppTextStyles.bodyMedium.copyWith(
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -433,7 +433,7 @@ class _ContactTile extends StatelessWidget {
               ),
               Icon(
                 AppIcons.chevronRight,
-                color: Colors.white.withValues(alpha: 0.3),
+                color: AppColors.colorWhite.withValues(alpha: 0.3),
                 size: 20.sp,
               ),
             ],

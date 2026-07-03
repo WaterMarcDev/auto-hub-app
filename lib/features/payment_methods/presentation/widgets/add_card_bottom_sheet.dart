@@ -103,7 +103,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
             topRight: Radius.circular(24.r),
           ),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.05),
+            color: AppColors.colorWhite.withValues(alpha: 0.05),
           ),
         ),
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
@@ -120,7 +120,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
                     width: 44.w,
                     height: 5.h,
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.15),
+                      color: AppColors.colorWhite.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(2.5.r),
                     ),
                   ),
@@ -134,7 +134,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
                     Text(
                       'Add Card',
                       style: AppTextStyles.headlineMedium.copyWith(
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                         fontWeight: FontWeight.w800,
                         fontSize: 22.sp,
                       ),
@@ -145,16 +145,16 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
                         width: 32.w,
                         height: 32.w,
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.06),
+                          color: AppColors.colorWhite.withValues(alpha: 0.06),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.08),
+                            color: AppColors.colorWhite.withValues(alpha: 0.08),
                           ),
                         ),
                         alignment: Alignment.center,
                         child: Icon(
                           AppIcons.close,
-                          color: Colors.white.withValues(alpha: 0.6),
+                          color: AppColors.colorWhite.withValues(alpha: 0.6),
                           size: 16.w,
                         ),
                       ),
@@ -298,8 +298,8 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
                       'Add Card',
                       style: AppTextStyles.button.copyWith(
                         color: _isButtonEnabled
-                            ? Colors.white
-                            : Colors.white.withValues(alpha: 0.5),
+                            ? AppColors.colorWhite
+                            : AppColors.colorWhite.withValues(alpha: 0.5),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -344,7 +344,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.05),
+          color: AppColors.colorWhite.withValues(alpha: 0.05),
         ),
       ),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
@@ -355,7 +355,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
         textCapitalization: textCapitalization,
         inputFormatters: inputFormatters,
         style: AppTextStyles.bodyMedium.copyWith(
-          color: Colors.white,
+          color: AppColors.colorWhite,
           fontWeight: FontWeight.w600,
           fontSize: 14.sp,
         ),
@@ -365,7 +365,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
           fillColor: Colors.transparent,
           hintText: hintText,
           hintStyle: AppTextStyles.bodyMedium.copyWith(
-            color: Colors.white.withValues(alpha: 0.25),
+            color: AppColors.colorWhite.withValues(alpha: 0.25),
             fontSize: 14.sp,
           ),
           border: InputBorder.none,

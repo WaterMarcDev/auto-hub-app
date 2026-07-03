@@ -12,7 +12,7 @@ class SavedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0D1117),
+      backgroundColor: AppColors.onboardingBackground,
       body: Stack(
         children: [
           const Positioned.fill(
@@ -22,9 +22,9 @@ class SavedPage extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFF0D1117),
-                    Color(0xFF0B1016),
-                    Color(0xFF070E17),
+                    AppColors.onboardingBackground,
+                    AppColors.gradientDarkAlt1,
+                    AppColors.gradientDarkAlt2,
                   ],
                   stops: [0, 0.55, 1],
                 ),
@@ -39,9 +39,12 @@ class SavedPage extends StatelessWidget {
             child: Container(
               width: 212.w,
               height: 212.h,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: RadialGradient(
-                  colors: [Color(0x2A0DA0CE), Color(0x000DA0CE)],
+                  colors: [
+                    AppColors.onboardingCyan.withValues(alpha: 0.16),
+                    AppColors.onboardingCyan.withValues(alpha: 0.0),
+                  ],
                   stops: [0, 1],
                 ),
               ),
@@ -54,14 +57,14 @@ class SavedPage extends StatelessWidget {
             right: 0,
             child: Container(
               height: 130.h,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0x000DA0CE),
-                    Color(0x1F0DA0CE),
-                    Color(0x000DA0CE),
+                    AppColors.onboardingCyan.withValues(alpha: 0.0),
+                    AppColors.onboardingCyan.withValues(alpha: 0.12),
+                    AppColors.onboardingCyan.withValues(alpha: 0.0),
                   ],
                   stops: [0, 0.55, 1],
                 ),
@@ -76,11 +79,11 @@ class SavedPage extends StatelessWidget {
                 Container(
                   height: 76.h,
                   width: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF161B22),
+                  decoration: BoxDecoration(
+                    color: AppColors.onboardingSurfaceLight,
                     border: Border(
                       bottom: BorderSide(
-                        color: Color(0x0FFFFFFF),
+                        color: AppColors.colorWhite.withValues(alpha: 0.06),
                         width: 0.8,
                       ),
                     ),
@@ -102,7 +105,7 @@ class SavedPage extends StatelessWidget {
                         style: GoogleFonts.inter(
                           fontSize: 22.sp,
                           fontWeight: FontWeight.w800,
-                          color: const Color(0xFFF0F6FC),
+                          color: AppColors.onboardingTextPrimary,
                           height: 1.5,
                           letterSpacing: -0.5,
                         ),
@@ -129,15 +132,20 @@ class SavedPage extends StatelessWidget {
                                 width: 112.w,
                                 height: 112.h,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x0F0DA0CE),
+                                  color: AppColors.onboardingCyan.withValues(
+                                    alpha: 0.06,
+                                  ),
                                   borderRadius: BorderRadius.circular(24.r),
                                   border: Border.all(
-                                    color: const Color(0x1F0DA0CE),
+                                    color: AppColors.onboardingCyan.withValues(
+                                      alpha: 0.12,
+                                    ),
                                     width: 0.8,
                                   ),
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
-                                      color: Color(0x140DA0CE),
+                                      color: AppColors.onboardingCyan
+                                          .withValues(alpha: 0.08),
                                       blurRadius: 40,
                                     ),
                                   ],
@@ -156,10 +164,13 @@ class SavedPage extends StatelessWidget {
                                   width: 32.w,
                                   height: 32.h,
                                   decoration: BoxDecoration(
-                                    color: const Color(0x0D0DA0CE),
+                                    color: AppColors.onboardingCyan.withValues(
+                                      alpha: 0.05,
+                                    ),
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: const Color(0x1A0DA0CE),
+                                      color: AppColors.onboardingCyan
+                                          .withValues(alpha: 0.1),
                                       width: 0.8,
                                     ),
                                   ),
@@ -172,10 +183,13 @@ class SavedPage extends StatelessWidget {
                                   width: 20.w,
                                   height: 20.h,
                                   decoration: BoxDecoration(
-                                    color: const Color(0x0A0DA0CE),
+                                    color: AppColors.onboardingCyan.withValues(
+                                      alpha: 0.04,
+                                    ),
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: const Color(0x140DA0CE),
+                                      color: AppColors.onboardingCyan
+                                          .withValues(alpha: 0.08),
                                       width: 0.8,
                                     ),
                                   ),
@@ -196,7 +210,7 @@ class SavedPage extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontSize: 22.sp,
                             fontWeight: FontWeight.w800,
-                            color: const Color(0xFFF0F6FC),
+                            color: AppColors.onboardingTextPrimary,
                             height: 1.5,
                             letterSpacing: -0.5,
                           ),
@@ -213,7 +227,7 @@ class SavedPage extends StatelessWidget {
                           style: GoogleFonts.inter(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
-                            color: const Color(0xFF8B929A),
+                            color: AppColors.onboardingTextSecondary,
                             height: 1.7,
                           ),
                         ),
@@ -233,7 +247,7 @@ class SavedPage extends StatelessWidget {
                                 begin: Alignment(-0.62, -1.0),
                                 end: Alignment(0.62, 1.0),
                                 colors: [
-                                  Color(0xFF0DA0CE),
+                                  AppColors.onboardingCyan,
                                   Color(0xFF0B8FB5),
                                 ],
                               ),
@@ -259,7 +273,7 @@ class SavedPage extends StatelessWidget {
                                   style: GoogleFonts.inter(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.white,
+                                    color: AppColors.colorWhite,
                                     height: 1.5,
                                   ),
                                 ),

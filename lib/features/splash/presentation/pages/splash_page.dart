@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_hub_app/core/constants/app_images.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/features/splash/presentation/bloc/splash_cubit.dart';
 import 'package:auto_hub_app/features/splash/presentation/bloc/splash_state.dart';
 import 'package:auto_hub_app/injection.dart';
@@ -76,12 +77,12 @@ class _SplashPageState extends State<SplashPage>
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: const Color(0xFF0DA0CE),
+          color: AppColors.onboardingCyan,
           width: 4.w,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF0DA0CE).withValues(alpha: 0.5),
+            color: AppColors.onboardingCyan.withValues(alpha: 0.5),
             blurRadius: 48.r,
             offset: Offset(0, 8.h),
           ),
@@ -90,7 +91,7 @@ class _SplashPageState extends State<SplashPage>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0xFF0DA0CE),
+            AppColors.onboardingCyan,
             Color(0xFF0B8FB5),
           ],
         ),
@@ -142,9 +143,9 @@ class _SplashPageState extends State<SplashPage>
                 end: Alignment.bottomRight,
                 stops: [0.08, 0.5, 0.91],
                 colors: [
-                  Color(0xFF080D14),
-                  Color(0xFF0A1220),
-                  Color(0xFF050810),
+                  AppColors.gradientDarkStart,
+                  AppColors.gradientDarkMid,
+                  AppColors.gradientDarkEnd,
                 ],
               ),
             ),
@@ -165,8 +166,9 @@ class _SplashPageState extends State<SplashPage>
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: const Color(0xFF0DA0CE)
-                                    .withValues(alpha: 0.07),
+                                color: AppColors.onboardingCyan.withValues(
+                                  alpha: 0.07,
+                                ),
                                 width: 0.8.w,
                               ),
                             ),
@@ -181,8 +183,9 @@ class _SplashPageState extends State<SplashPage>
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: const Color(0xFF0DA0CE)
-                                    .withValues(alpha: 0.15),
+                                color: AppColors.onboardingCyan.withValues(
+                                  alpha: 0.15,
+                                ),
                                 width: 0.8.w,
                               ),
                             ),

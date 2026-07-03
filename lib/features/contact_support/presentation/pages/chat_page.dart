@@ -190,14 +190,14 @@ class _LiveChatPageState extends State<LiveChatPage> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1.0,
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.chevronLeft,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 size: 22.sp,
               ),
             ),
@@ -213,7 +213,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
                 Text(
                   roomInfo.name,
                   style: AppTextStyles.headlineSmall.copyWith(
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w800,
                   ),
@@ -243,14 +243,14 @@ class _LiveChatPageState extends State<LiveChatPage> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1.0,
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.deleteOutlineRounded,
-                color: Colors.white.withValues(alpha: 0.8),
+                color: AppColors.colorWhite.withValues(alpha: 0.8),
                 size: 18.sp,
               ),
             ),
@@ -280,7 +280,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
               style: GoogleFonts.inter(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w900,
-                color: Colors.white,
+                color: AppColors.colorWhite,
               ),
             ),
           ),

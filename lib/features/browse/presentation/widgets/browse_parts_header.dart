@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +24,7 @@ class BrowsePartsHeader extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: const Color(0xFF8B929A),
+                color: AppColors.colorGray,
               ),
             ),
             SizedBox(height: 4.h),
@@ -32,7 +33,7 @@ class BrowsePartsHeader extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 24.sp,
                 fontWeight: FontWeight.w700,
-                color: Colors.white,
+                color: AppColors.colorWhite,
               ),
             ),
           ],
@@ -40,10 +41,10 @@ class BrowsePartsHeader extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           decoration: BoxDecoration(
-            color: const Color(0xFF1A1F26),
+            color: AppColors.surfaceDarkVariant,
             borderRadius: BorderRadius.circular(14.r),
             border: Border.all(
-              color: const Color(0xFF00A8CC).withOpacity(0.3),
+              color: AppColors.accentTeal.withOpacity(0.3),
               width: 1,
             ),
           ),
@@ -52,7 +53,7 @@ class BrowsePartsHeader extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 12.sp,
               fontWeight: FontWeight.w600,
-              color: const Color(0xFF00A8CC),
+              color: AppColors.accentTeal,
             ),
           ),
         ),

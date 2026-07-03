@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/features/contact_support/domain/entities/chat_message.dart';
 import 'package:auto_hub_app/features/contact_support/domain/entities/chat_room_info.dart';
 import 'package:auto_hub_app/features/contact_support/domain/repositories/chat_repository.dart';
@@ -98,7 +99,7 @@ class MockChatRepository implements ChatRepository {
         return const ChatRoomInfo(
           name: 'AutoHub Support',
           initials: 'AS',
-          avatarColor: Color(0xFF0DA0CE),
+          avatarColor: AppColors.onboardingCyan,
           isOnline: true,
         );
       case '2':
@@ -119,7 +120,7 @@ class MockChatRepository implements ChatRepository {
         return const ChatRoomInfo(
           name: 'BumperKing_HTX',
           initials: 'BK',
-          avatarColor: Color(0xFFFBBF24),
+          avatarColor: AppColors.warning,
           isOnline: true,
         );
       default:

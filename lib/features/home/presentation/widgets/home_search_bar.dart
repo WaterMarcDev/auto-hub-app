@@ -1,4 +1,5 @@
 import 'package:auto_hub_app/core/constants/app_icons.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,10 +14,10 @@ class HomeSearchBar extends StatelessWidget {
       child: Container(
         height: 48.h,
         decoration: BoxDecoration(
-          color: const Color(0xFF161B22),
+          color: AppColors.onboardingSurfaceLight,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: const Color(0x14FFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.08),
             width: 0.8,
           ),
           boxShadow: [
@@ -30,9 +31,9 @@ class HomeSearchBar extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(width: 14.w),
-            const Icon(
+            Icon(
               AppIcons.search,
-              color: Color(0x80F0F6FC),
+              color: AppColors.onboardingTextPrimary.withValues(alpha: 0.5),
               size: 16,
             ),
             SizedBox(width: 8.w),
@@ -42,7 +43,7 @@ class HomeSearchBar extends StatelessWidget {
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
-                  color: const Color(0x80F0F6FC),
+                  color: AppColors.onboardingTextPrimary.withValues(alpha: 0.5),
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
@@ -56,12 +57,15 @@ class HomeSearchBar extends StatelessWidget {
                 gradient: const LinearGradient(
                   begin: Alignment(-0.6, -1.0),
                   end: Alignment(0.6, 1.0),
-                  colors: [Color(0xFF0DA0CE), Color(0xFF0B8FB5)],
+                  colors: [
+                    AppColors.onboardingCyan,
+                    AppColors.onboardingCyanDark,
+                  ],
                 ),
                 borderRadius: BorderRadius.circular(14.r),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF0DA0CE).withValues(alpha: 0.35),
+                    color: AppColors.onboardingCyan.withValues(alpha: 0.35),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -73,7 +77,7 @@ class HomeSearchBar extends StatelessWidget {
                 style: GoogleFonts.inter(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w700,
-                  color: Colors.white,
+                  color: AppColors.colorWhite,
                 ),
               ),
             ),

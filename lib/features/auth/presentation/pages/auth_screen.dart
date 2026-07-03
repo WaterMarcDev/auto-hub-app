@@ -72,14 +72,16 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void _updateLoginValidity() {
     setState(() {
-      _isLoginValid = _loginEmailController.text.trim().isNotEmpty &&
+      _isLoginValid =
+          _loginEmailController.text.trim().isNotEmpty &&
           _loginPasswordController.text.trim().isNotEmpty;
     });
   }
 
   void _updateSignupValidity() {
     setState(() {
-      _isSignupValid = _signupNameController.text.trim().isNotEmpty &&
+      _isSignupValid =
+          _signupNameController.text.trim().isNotEmpty &&
           _signupEmailController.text.trim().isNotEmpty &&
           _signupPasswordController.text.trim().isNotEmpty;
     });
@@ -112,7 +114,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       color: AppColors.onboardingSurfaceLight,
                       borderRadius: BorderRadius.circular(16.r),
                       border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.08),
+                        color: AppColors.colorWhite.withValues(alpha: 0.08),
                         width: 1.w,
                       ),
                       boxShadow: [
@@ -124,9 +126,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       ],
                     ),
                     padding: EdgeInsets.all(10.w),
-                    child: const Icon(
-                      AppIcons.arrowLeft
-                    )
+                    child: const Icon(AppIcons.arrowLeft),
                   ),
                 ),
               ),
@@ -164,7 +164,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 backgroundColor: AppColors.onboardingSurfaceLight,
                 textColor: AppColors.onboardingTextPrimary,
                 shadowColor: Colors.black.withValues(alpha: 0.3),
-                borderColor: Colors.white.withValues(alpha: 0.1),
+                borderColor: AppColors.colorWhite.withValues(alpha: 0.1),
                 onPressed: () {},
               ),
               SizedBox(height: 12.h),
@@ -173,9 +173,9 @@ class _AuthScreenState extends State<AuthScreen> {
                     ? 'Continue with Facebook'
                     : 'Sign up with Facebook',
                 iconPath: AppIcons.facebook,
-                backgroundColor: const Color(0xFF1877F2),
-                textColor: Colors.white,
-                shadowColor: const Color(0xFF1877F2).withValues(alpha: 0.35),
+                backgroundColor: AppColors.facebookBlue,
+                textColor: AppColors.colorWhite,
+                shadowColor: AppColors.facebookBlue.withValues(alpha: 0.35),
                 onPressed: () {},
               ),
               SizedBox(height: 24.h),
@@ -186,7 +186,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   Expanded(
                     child: Container(
                       height: 1,
-                      color: Colors.white.withValues(alpha: 0.07),
+                      color: AppColors.colorWhite.withValues(alpha: 0.07),
                     ),
                   ),
                   Padding(
@@ -202,7 +202,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   Expanded(
                     child: Container(
                       height: 1,
-                      color: Colors.white.withValues(alpha: 0.07),
+                      color: AppColors.colorWhite.withValues(alpha: 0.07),
                     ),
                   ),
                 ],

@@ -289,7 +289,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           'AutoHub Express v2.4.1',
                           textAlign: TextAlign.center,
                           style: AppTextStyles.bodySmall.copyWith(
-                            color: const Color(0xFF484F58),
+                            color: AppColors.textTertiary,
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w500,
                           ),

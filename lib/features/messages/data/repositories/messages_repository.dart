@@ -1,8 +1,8 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/features/messages/domain/models/message_model.dart';
 import 'package:flutter/material.dart';
 
 class MessagesRepository {
-
   factory MessagesRepository() {
     return _instance;
   }
@@ -23,7 +23,7 @@ class MessagesRepository {
         lastMessage: 'Your pickup is confirmed for Apr 3.',
         time: '2h ago',
         initials: 'AS',
-        avatarColor: Color(0xFF0DA0CE),
+        avatarColor: AppColors.onboardingCyan,
         isOnline: true,
         chatRoomId: '1',
       ),
@@ -49,7 +49,7 @@ class MessagesRepository {
         lastMessage: r'I can do $290 for the bumper. Final offer',
         time: '5d ago',
         initials: 'BK',
-        avatarColor: Color(0xFFFBBF24),
+        avatarColor: AppColors.warning,
         isOnline: true,
         chatRoomId: '4',
       ),

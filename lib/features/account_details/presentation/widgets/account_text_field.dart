@@ -58,7 +58,7 @@ class AccountTextField extends StatelessWidget {
               fontSize: 14.sp,
             ),
             filled: true,
-            fillColor: const Color(0xFF1B222D),
+            fillColor: AppColors.surfaceSteel,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 18.w,
               vertical: 16.h,
@@ -67,7 +67,7 @@ class AccountTextField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16.r),
               borderSide: BorderSide(
-                color: Colors.white.withValues(alpha: 0.08),
+                color: AppColors.colorWhite.withValues(alpha: 0.08),
                 width: 0.8,
               ),
             ),

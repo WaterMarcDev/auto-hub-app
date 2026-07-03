@@ -127,7 +127,7 @@ class _EditAccountDetailsPageState extends State<EditAccountDetailsPage> {
         title: Text(
           'Unsaved Changes',
           style: AppTextStyles.headlineMedium.copyWith(
-            color: Colors.white,
+            color: AppColors.colorWhite,
             fontSize: 18.sp,
           ),
         ),
@@ -202,7 +202,7 @@ class _EditAccountDetailsPageState extends State<EditAccountDetailsPage> {
                           child: Text(
                             'Failed to load profile',
                             style: AppTextStyles.bodyMedium.copyWith(
-                              color: Colors.white,
+                              color: AppColors.colorWhite,
                             ),
                           ),
                         )
@@ -306,12 +306,12 @@ class _EditAccountDetailsPageState extends State<EditAccountDetailsPage> {
                                         child: Container(
                                           height: 54.h,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFF161B22),
+                                            color: AppColors.onboardingSurfaceLight,
                                             borderRadius: BorderRadius.circular(
                                               24.r,
                                             ),
                                             border: Border.all(
-                                              color: Colors.white.withValues(
+                                              color: AppColors.colorWhite.withValues(
                                                 alpha: 0.08,
                                               ),
                                               width: 0.8,
@@ -342,14 +342,14 @@ class _EditAccountDetailsPageState extends State<EditAccountDetailsPage> {
                                           decoration: BoxDecoration(
                                             color: _isModified
                                                 ? AppColors.onboardingCyan
-                                                : const Color(0xFF1C2330),
+                                                : AppColors.onboardingSurface,
                                             borderRadius: BorderRadius.circular(
                                               24.r,
                                             ),
                                             border: Border.all(
                                               color: _isModified
                                                   ? AppColors.onboardingCyan
-                                                  : Colors.white.withValues(
+                                                  : AppColors.colorWhite.withValues(
                                                       alpha: 0.04,
                                                     ),
                                               width: 0.8,
@@ -361,7 +361,7 @@ class _EditAccountDetailsPageState extends State<EditAccountDetailsPage> {
                                             style: AppTextStyles.labelLarge
                                                 .copyWith(
                                                   color: _isModified
-                                                      ? Colors.white
+                                                      ? AppColors.colorWhite
                                                       : AppColors.textTertiary,
                                                   fontSize: 14.sp,
                                                   fontWeight: FontWeight.w700,
@@ -408,14 +408,14 @@ class _TopBar extends StatelessWidget {
                   color: AppColors.onboardingSurface,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.07),
+                    color: AppColors.colorWhite.withValues(alpha: 0.07),
                     width: 0.8,
                   ),
                 ),
                 alignment: Alignment.center,
                 child: Icon(
                   AppIcons.chevronLeft,
-                  color: Colors.white,
+                  color: AppColors.colorWhite,
                   size: 16.w,
                 ),
               ),

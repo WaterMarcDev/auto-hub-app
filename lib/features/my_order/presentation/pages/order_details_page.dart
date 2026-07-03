@@ -44,7 +44,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24.r),
             side: BorderSide(
-              color: Colors.white.withValues(alpha: 0.08),
+              color: AppColors.colorWhite.withValues(alpha: 0.08),
               width: 0.8,
             ),
           ),
@@ -104,7 +104,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                             color: AppColors.onboardingBackground,
                             borderRadius: BorderRadius.circular(14.r),
                             border: Border.all(
-                              color: Colors.white.withValues(alpha: 0.05),
+                              color: AppColors.colorWhite.withValues(alpha: 0.05),
                               width: 0.8,
                             ),
                           ),
@@ -133,7 +133,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                                 content: Text(
                                   'Order cancel request submitted',
                                   style: GoogleFonts.inter(
-                                    color: Colors.white,
+                                    color: AppColors.colorWhite,
                                   ),
                                 ),
                                 backgroundColor: AppColors.error,
@@ -158,7 +158,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                           child: Text(
                             'Cancel Order',
                             style: AppTextStyles.labelLarge.copyWith(
-                              color: Colors.white,
+                              color: AppColors.colorWhite,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -197,7 +197,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                           color: AppColors.onboardingSurface,
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.05),
+                            color: AppColors.colorWhite.withValues(alpha: 0.05),
                             width: 0.8,
                           ),
                         ),
@@ -306,7 +306,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.07),
+                  color: AppColors.colorWhite.withValues(alpha: 0.07),
                   width: 0.8,
                 ),
               ),
@@ -314,7 +314,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
               child: Icon(
                 Icons.close_rounded,
                 size: 18.sp,
-                color: Colors.white,
+                color: AppColors.colorWhite,
               ),
             ),
           ),
@@ -335,7 +335,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.05),
+          color: AppColors.colorWhite.withValues(alpha: 0.05),
           width: 0.8,
         ),
         boxShadow: [
@@ -400,7 +400,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           color: AppColors.onboardingBackground,
           border: Border(
             top: BorderSide(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: AppColors.colorWhite.withValues(alpha: 0.05),
               width: 0.8,
             ),
           ),
@@ -416,7 +416,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                       SnackBar(
                         content: Text(
                           'Reordering ${order.title}...',
-                          style: GoogleFonts.inter(color: Colors.white),
+                          style: GoogleFonts.inter(color: AppColors.colorWhite),
                         ),
                         backgroundColor: AppColors.onboardingCyan,
                       ),
@@ -449,13 +449,13 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                       Icon(
                         Icons.refresh_rounded,
                         size: 16.sp,
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                       ),
                       SizedBox(width: 8.w),
                       Text(
                         'Reorder',
                         style: AppTextStyles.labelLarge.copyWith(
-                          color: Colors.white,
+                          color: AppColors.colorWhite,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -475,7 +475,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                       SnackBar(
                         content: Text(
                           'Rating feature coming soon!',
-                          style: GoogleFonts.inter(color: Colors.white),
+                          style: GoogleFonts.inter(color: AppColors.colorWhite),
                         ),
                         backgroundColor: AppColors.warning,
                       ),
@@ -525,7 +525,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           color: AppColors.onboardingBackground,
           border: Border(
             top: BorderSide(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: AppColors.colorWhite.withValues(alpha: 0.05),
               width: 0.8,
             ),
           ),
@@ -538,7 +538,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
                 SnackBar(
                   content: Text(
                     'Opening tracking page for ${order.id}...',
-                    style: GoogleFonts.inter(color: Colors.white),
+                    style: GoogleFonts.inter(color: AppColors.colorWhite),
                   ),
                   backgroundColor: AppColors.onboardingCyan,
                 ),
@@ -585,7 +585,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
           color: AppColors.onboardingBackground,
           border: Border(
             top: BorderSide(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: AppColors.colorWhite.withValues(alpha: 0.05),
               width: 0.8,
             ),
           ),

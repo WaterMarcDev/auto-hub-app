@@ -63,7 +63,7 @@ class AvatarHeader extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 32.sp,
                     fontWeight: FontWeight.w900,
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     height: 1,
                   ),
                 ),
@@ -80,7 +80,7 @@ class AvatarHeader extends StatelessWidget {
                       width: 32.w,
                       height: 32.h,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF1C2330),
+                        color: AppColors.onboardingSurface,
                         shape: BoxShape.circle,
                         border: Border.all(
                           color: AppColors.onboardingBackground,

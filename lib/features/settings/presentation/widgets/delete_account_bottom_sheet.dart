@@ -19,7 +19,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(28.r)),
         border: Border(
           top: BorderSide(
-            color: Colors.white.withValues(alpha: 0.08),
+            color: AppColors.colorWhite.withValues(alpha: 0.08),
             width: 0.8,
           ),
         ),
@@ -61,14 +61,14 @@ class DeleteAccountBottomSheet extends StatelessWidget {
                     color: AppColors.onboardingSurface,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.07),
+                      color: AppColors.colorWhite.withValues(alpha: 0.07),
                       width: 0.8,
                     ),
                   ),
                   alignment: Alignment.center,
                   child: Icon(
                     Icons.close_rounded,
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     size: 16.sp,
                   ),
                 ),
@@ -98,7 +98,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
           Text(
             'Are you sure?',
             style: AppTextStyles.headlineSmall.copyWith(
-              color: Colors.white,
+              color: AppColors.colorWhite,
               fontWeight: FontWeight.w700,
               fontSize: 18.sp,
             ),
@@ -123,7 +123,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
               color: AppColors.onboardingSurfaceLight,
               borderRadius: BorderRadius.circular(16.r),
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.05),
+                color: AppColors.colorWhite.withValues(alpha: 0.05),
                 width: 0.8,
               ),
             ),
@@ -180,7 +180,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
         border: showDivider
             ? Border(
                 bottom: BorderSide(
-                  color: Colors.white.withValues(alpha: 0.03),
+                  color: AppColors.colorWhite.withValues(alpha: 0.03),
                   width: 0.8,
                 ),
               )
