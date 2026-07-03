@@ -11,6 +11,7 @@ import 'package:auto_hub_app/features/my_order/presentation/pages/order_details_
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/payment_methods/presentation/pages/payment_method_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
+import 'package:auto_hub_app/features/settings/presentation/pages/settings_page.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/junk_detail_page.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/my_request_junk.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/new_junk_request.dart';
@@ -130,12 +131,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const YourAddressesPage(),
     ),
     GoRoute(
+      path: '/settings',
+      name: 'settings',
+      builder: (context, state) => const SettingsPage(),
+     GoRoute(
       path: '/payment-methods',
       name: 'payment-methods',
       builder: (context, state) => const PaymentMethodPage(),
-    ),
-    // request_junk feature
-    GoRoute(
+      GoRoute(
       path: '/my-request-junk',
       name: 'my-request-junk',
       builder: (context, state) => const MyRequestJunk(),

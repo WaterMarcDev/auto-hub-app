@@ -74,7 +74,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Settings',
             iconPath: AppIcons.profileSettings,
             iconBackgroundColor: const Color(0x1A8B929A),
-            onTap: onMenuTap,
+            onTap: () => context.push('/settings'),
           ),
         ],
       ),
