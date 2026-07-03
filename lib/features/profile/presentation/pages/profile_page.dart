@@ -10,11 +10,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  List<ProfileMenuSectionData> _buildSections(BuildContext context, VoidCallback onMenuTap) {
+  List<ProfileMenuSectionData> _buildSections(
+    BuildContext context,
+    VoidCallback onMenuTap,
+  ) {
     return [
       ProfileMenuSectionData(
         title: 'MY ACTIVITY',
@@ -23,7 +27,7 @@ class ProfilePage extends StatelessWidget {
             title: 'My Orders',
             iconPath: AppIcons.profileActivity,
             iconBackgroundColor: const Color(0x1F0DA0CE),
-            onTap: onMenuTap,
+            onTap: () => context.push('/my-orders'),
           ),
           ProfileMenuItemData(
             title: 'Saved Parts',
@@ -41,7 +45,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Messages',
             iconPath: AppIcons.profileChat,
             iconBackgroundColor: const Color(0x1FFBBF24),
-            onTap: onMenuTap,
+            onTap: () => context.push('/live-chats'),
           ),
         ],
       ),
@@ -52,13 +56,13 @@ class ProfilePage extends StatelessWidget {
             title: 'Account Details',
             iconPath: AppIcons.profileActivity,
             iconBackgroundColor: const Color(0x1F0DA0CE),
-            onTap: onMenuTap,
+            onTap: () => context.push('/account-details'),
           ),
           ProfileMenuItemData(
             title: 'Your Addresses',
             iconPath: AppIcons.profileHeart,
             iconBackgroundColor: const Color(0x1FA78BFA),
-            onTap: onMenuTap,
+            onTap: () => context.push('/your-addresses'),
           ),
           ProfileMenuItemData(
             title: 'Payment Methods',
@@ -87,7 +91,7 @@ class ProfilePage extends StatelessWidget {
             title: 'Contact Support',
             iconPath: AppIcons.profileChat,
             iconBackgroundColor: const Color(0x1FFBBF24),
-            onTap: onMenuTap,
+            onTap: () => context.pushNamed('contact-support'),
           ),
         ],
       ),
@@ -112,8 +116,8 @@ class ProfilePage extends StatelessWidget {
           children: [
             _TopBar(
               onBackTap: () {
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
+                if (context.canPop()) {
+                  context.pop();
                 }
               },
             ),

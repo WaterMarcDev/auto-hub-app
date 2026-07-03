@@ -41,7 +41,7 @@ class ProfileMenuSectionCard extends StatelessWidget {
             child: Text(
               section.title,
               style: AppTextStyles.labelLarge.copyWith(
-                color: const Color(0xFF484F58),
+                color: AppColors.textTertiary,
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w700,
                 letterSpacing: 0.8,

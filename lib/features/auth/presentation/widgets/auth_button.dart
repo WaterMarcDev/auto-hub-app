@@ -61,7 +61,7 @@ class AuthButton extends StatelessWidget {
             child: Text(
               text,
               style: AppTextStyles.labelLarge.copyWith(
-                color: showPrimary ? Colors.white : const Color(0xFF484F58),
+                color: showPrimary ? Colors.white : AppColors.textTertiary,
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w700,
               ),

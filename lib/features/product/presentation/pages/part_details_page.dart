@@ -330,7 +330,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                     iconPath: AppIcons.tag,
                     text: 'ALT-8912-HON',
                     textStyle: GoogleFonts.cousine(
-                      color: const Color(0xFF484F58),
+                      color:   AppColors.textTertiary,
                       fontSize: 11.sp,
                       height: 1.5,
                     ),
@@ -385,7 +385,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                 Text(
                   'Warranty: 90 Days',
                   style: AppTextStyles.bodySmall.copyWith(
-                    color: const Color(0xFF484F58),
+                    color:   AppColors.textTertiary,
                     fontSize: 11.sp,
                     height: 1.5,
                   ),
@@ -425,7 +425,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                   Text(
                     '(94)',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: const Color(0xFF484F58),
+                      color:   AppColors.textTertiary,
                       fontSize: 12.sp,
                     ),
                   ),
@@ -692,7 +692,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                     Text(
                       'Toyota Camry',
                       style: AppTextStyles.bodySmall.copyWith(
-                        color: const Color(0xFF484F58),
+                        color:  AppColors.textTertiary,
                         fontSize: 10.sp,
                         height: 1.5,
                       ),
@@ -829,7 +829,7 @@ class _QuickFactItem extends StatelessWidget {
           Text(
             label,
             style: AppTextStyles.bodySmall.copyWith(
-              color: const Color(0xFF484F58),
+              color:   AppColors.textTertiary,
               fontSize: 10.sp,
             ),
           ),
@@ -904,7 +904,7 @@ class _DetailsToggleTab extends StatelessWidget {
                           style: AppTextStyles.labelLarge.copyWith(
                             color: currentIndex == 0
                                 ? Colors.white
-                                : const Color(0xFF484F58),
+                                :   AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -924,7 +924,7 @@ class _DetailsToggleTab extends StatelessWidget {
                           style: AppTextStyles.labelLarge.copyWith(
                             color: currentIndex == 1
                                 ? Colors.white
-                                : const Color(0xFF484F58),
+                                :   AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,
                           ),

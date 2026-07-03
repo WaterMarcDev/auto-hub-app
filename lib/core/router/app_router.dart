@@ -1,5 +1,13 @@
 import 'package:auto_hub_app/core/shell/main_shell.dart';
+import 'package:auto_hub_app/features/account_details/presentation/pages/account_details_page.dart';
+import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart' as contact_support_chat;
+import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
+import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
+import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart';
+import 'package:auto_hub_app/features/my_order/presentation/pages/my_orders.dart';
+import 'package:auto_hub_app/features/my_order/presentation/pages/order_details_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/payment_methods/presentation/pages/payment_method_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
@@ -10,6 +18,7 @@ import 'package:auto_hub_app/features/request_junk/presentation/pages/new_junk_r
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
+import 'package:auto_hub_app/features/your_addresses/presentation/pages/your_addresses_page.dart';
 import 'package:go_router/go_router.dart';
 
 /// Application router configuration using GoRouter.
@@ -57,6 +66,69 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => VinResultPage(
         result: state.extra! as VinDecodeResult,
       ),
+    ),
+    // my_order feature
+    GoRoute(
+      path: '/my-orders',
+      name: 'my-orders',
+      builder: (context, state) => const MyOrdersPage(),
+    ),
+    GoRoute(
+      path: '/order-details',
+      name: 'order-details',
+      builder: (context, state) {
+        final orderId = state.extra! as String;
+        return OrderDetailsPage(orderId: orderId);
+      },
+    ),
+    // messages feature
+    GoRoute(
+      path: '/live-chats',
+      name: 'live-chats',
+      builder: (context, state) => const LiveChatPage(),
+    ),
+    GoRoute(
+      path: '/chat',
+      name: 'chat',
+      builder: (context, state) {
+        final chatRoomId = state.uri.queryParameters['chatRoomId'] ?? '';
+        return ChatPage(chatRoomId: chatRoomId);
+      },
+    ),
+    GoRoute(
+      path: '/chat/:chatRoomId',
+      name: 'chat-room',
+      builder: (context, state) {
+        final chatRoomId = state.pathParameters['chatRoomId'] ?? '1';
+        return ChatPage(chatRoomId: chatRoomId);
+      },
+    ),
+    // contact_support feature
+    GoRoute(
+      path: '/contact-support',
+      name: 'contact-support',
+      builder: (context, state) => const ContactSupportPage(),
+    ),
+    GoRoute(
+      path: '/contact-support-chat',
+      name: 'contact-support-chat',
+      builder: (context, state) => const contact_support_chat.ChatPage(),
+    ),
+    // account
+    GoRoute(
+      path: '/account-details',
+      name: 'account-details',
+      builder: (context, state) => const AccountDetailsPage(),
+    ),
+    GoRoute(
+      path: '/edit-account-details',
+      name: 'edit-account-details',
+      builder: (context, state) => const EditAccountDetailsPage(),
+    ),
+    GoRoute(
+      path: '/your-addresses',
+      name: 'your-addresses',
+      builder: (context, state) => const YourAddressesPage(),
     ),
     GoRoute(
       path: '/settings',

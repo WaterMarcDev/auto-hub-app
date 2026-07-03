@@ -14,6 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 
 class HomeVinLookup extends StatelessWidget {
   const HomeVinLookup({super.key});
@@ -310,7 +311,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                         ? (_isValid
                               ? const Color(0xFF34D399)
                               : const Color(0xFFFF6B6B))
-                        : const Color(0xFF484F58),
+                        : AppColors.textTertiary,
                   ),
                 ),
                 _FindPartsButton(
@@ -425,7 +426,7 @@ class _FindPartsButton extends StatelessWidget {
               width: 12.w,
               height: 12.h,
               colorFilter: const ColorFilter.mode(
-                Color(0xFF484F58),
+                AppColors.textTertiary,
                 BlendMode.srcIn,
               ),
             ),
@@ -435,7 +436,7 @@ class _FindPartsButton extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w700,
-                color: const Color(0xFF484F58),
+                color: AppColors.textTertiary,
               ),
             ),
           ],
