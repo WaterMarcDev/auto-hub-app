@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/request_junk/models/junk_models.dart';
@@ -132,7 +133,7 @@ class JunkDetailPage extends StatelessWidget {
                 ),
               ),
               child: const Icon(
-                Icons.chevron_left,
+                AppIcons.chevronLeft,
                 color: Colors.white,
                 size: 24,
               ),
@@ -177,7 +178,7 @@ class JunkDetailPage extends StatelessWidget {
             if (request.status == JunkRequestStatus.pickupScheduled) ...[
               Expanded(
                 child: _buildActionButton(
-                  icon: Icons.calendar_today_outlined,
+                  icon: AppIcons.calendarToday,
                   label: 'Reschedule',
                   textColor: AppColors.onboardingCyan,
                   borderColor: AppColors.onboardingCyan.withValues(alpha: 0.3),
@@ -187,7 +188,7 @@ class JunkDetailPage extends StatelessWidget {
               SizedBox(width: 12.w),
               Expanded(
                 child: _buildActionButton(
-                  icon: Icons.cancel_outlined,
+                  icon: AppIcons.cancel,
                   label: 'Cancel',
                   textColor: AppColors.error,
                   borderColor: AppColors.error.withValues(alpha: 0.3),
@@ -197,7 +198,7 @@ class JunkDetailPage extends StatelessWidget {
             ] else if (request.status == JunkRequestStatus.offerPending) ...[
               Expanded(
                 child: _buildActionButton(
-                  icon: Icons.cancel_outlined,
+                  icon: AppIcons.cancel,
                   label: 'Cancel Request',
                   textColor: AppColors.error,
                   borderColor: AppColors.error.withValues(alpha: 0.3),

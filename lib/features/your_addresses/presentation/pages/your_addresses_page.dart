@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/your_addresses/data/repositories/mock_address_repository.dart';
@@ -175,7 +176,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
                 ),
                 alignment: Alignment.center,
                 child: Icon(
-                  Icons.chevron_left,
+                  AppIcons.chevronLeft,
                   color: Colors.white,
                   size: 24.sp,
                 ),
@@ -277,7 +278,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.add_rounded,
+              AppIcons.addRounded,
               color: AppColors.onboardingCyan,
               size: 20.sp,
             ),
@@ -318,7 +319,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
               shape: BoxShape.circle,
             ),
             child: Icon(
-              Icons.location_off_outlined,
+              AppIcons.locationOffOutlined, 
               color: AppColors.onboardingCyan,
               size: 28.sp,
             ),

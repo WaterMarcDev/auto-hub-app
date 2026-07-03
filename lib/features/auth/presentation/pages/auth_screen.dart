@@ -124,13 +124,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       ],
                     ),
                     padding: EdgeInsets.all(10.w),
-                    child: SvgPicture.asset(
-                      AppIcons.arrowLeft,
-                      colorFilter: const ColorFilter.mode(
-                        Colors.white,
-                        BlendMode.srcIn,
-                      ),
-                    ),
+                    child: const Icon(
+                      AppIcons.arrowLeft
+                    )
                   ),
                 ),
               ),
@@ -324,13 +320,13 @@ class _AuthScreenState extends State<AuthScreen> {
       children: [
         AuthTextField(
           hintText: 'Email address',
-          prefixIcon: SvgPicture.asset(AppIcons.mail),
+          prefixIcon: const Icon(AppIcons.mail),
           controller: _loginEmailController,
         ),
         SizedBox(height: 12.h),
         AuthTextField(
           hintText: 'Password',
-          prefixIcon: SvgPicture.asset(AppIcons.lock),
+          prefixIcon: const Icon(AppIcons.lock),
           isPassword: _obscureLoginPassword,
           suffixIconPath: AppIcons.eyeOutline,
           suffixIconPathActive: AppIcons.eyeDot,
@@ -375,19 +371,19 @@ class _AuthScreenState extends State<AuthScreen> {
       children: [
         AuthTextField(
           hintText: 'Full name',
-          prefixIcon: SvgPicture.asset(AppIcons.user),
+          prefixIcon: const Icon(AppIcons.user),
           controller: _signupNameController,
         ),
         SizedBox(height: 12.h),
         AuthTextField(
           hintText: 'Email address',
-          prefixIcon: SvgPicture.asset(AppIcons.mail),
+          prefixIcon: Icon(AppIcons.mail),
           controller: _signupEmailController,
         ),
         SizedBox(height: 12.h),
         AuthTextField(
           hintText: 'Password',
-          prefixIcon: SvgPicture.asset(AppIcons.lock),
+          prefixIcon: Icon(AppIcons.lock),
           isPassword: _obscureSignupPassword,
           suffixIconPath: AppIcons.eyeOutline,
           suffixIconPathActive: AppIcons.eyeDot,

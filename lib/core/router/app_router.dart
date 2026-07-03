@@ -2,6 +2,10 @@ import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/account_details/presentation/pages/account_details_page.dart';
 import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart' as contact_support_chat;
+import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
+import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart' ;
 import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart' as contact_support_chat;
 import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
 import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
@@ -110,6 +114,13 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const ContactSupportPage(),
     ),
     GoRoute(
+      path: '/chat/:chatRoomId',
+      name: 'chat-room',
+      builder: (context, state) {
+        final chatRoomId = state.pathParameters['chatRoomId'] ?? '1';
+        return ChatPage(chatRoomId: chatRoomId);
+      },),
+      GoRoute(
       path: '/contact-support-chat',
       name: 'contact-support-chat',
       builder: (context, state) => const contact_support_chat.ChatPage(),

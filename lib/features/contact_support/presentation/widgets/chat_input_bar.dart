@@ -95,7 +95,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
               ),
               alignment: Alignment.center,
               child: Icon(
-                Icons.image_outlined,
+                AppIcons.imageOutlined,
                 color: Colors.white.withValues(alpha: 0.7),
                 size: 20.sp,
               ),
@@ -168,23 +168,9 @@ class _ChatInputBarState extends State<ChatInputBar> {
                 ),
               ),
               alignment: Alignment.center,
-              child: SvgPicture.asset(
+              child: const Icon(
                 AppIcons.send,
-                colorFilter: ColorFilter.mode(
-                  _isTextEmpty
-                      ? Colors.white.withValues(alpha: 0.3)
-                      : Colors.white,
-                  BlendMode.srcIn,
-                ),
-                width: 18.sp,
-                height: 18.sp,
-                errorBuilder: (context, error, stackTrace) => Icon(
-                  Icons.send,
-                  color: _isTextEmpty
-                      ? Colors.white.withValues(alpha: 0.3)
-                      : Colors.white,
-                  size: 18.sp,
-                ),
+                
               ),
             ),
           ),

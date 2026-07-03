@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/features/browse/presentation/pages/browse_page.dart';
 import 'package:auto_hub_app/features/home/presentation/pages/home_page.dart';
 import 'package:auto_hub_app/features/profile/presentation/pages/profile_page.dart';
@@ -50,7 +51,7 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0D1117),
+      backgroundColor: AppColors.onboardingBackground,
       body: IndexedStack(
         index: _currentIndex,
         children: _pages,
@@ -65,7 +66,7 @@ class _MainShellState extends State<MainShell> {
     return Container(
       height: 76.h + bottomInset,
       decoration: const BoxDecoration(
-        color: Color(0xFF0D1117),
+        color: AppColors.onboardingBackground,
         border: Border(
           top: BorderSide(
             color: Color(0x12FFFFFF), // rgba(255,255,255,0.07)
@@ -130,7 +131,7 @@ class _MainShellState extends State<MainShell> {
                         borderRadius: BorderRadius.circular(16.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFF0DA0CE).withValues(
+                            color: AppColors.onboardingCyan.withValues(
                               alpha: 0.2,
                             ),
                             blurRadius: 16,
@@ -149,8 +150,8 @@ class _MainShellState extends State<MainShell> {
                       height: 20.h,
                       colorFilter: ColorFilter.mode(
                         isActive
-                            ? const Color(0xFF0DA0CE)
-                            : const Color(0xFF4B5563),
+                            ? AppColors.onboardingCyan
+                            : AppColors.onboardingTextSecondary,
                         BlendMode.srcIn,
                       ),
                     ),

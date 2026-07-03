@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/messages/data/repositories/messages_repository.dart';
@@ -216,7 +217,7 @@ class _ChatPageState extends State<ChatPage> {
               ),
               alignment: Alignment.center,
               child: Icon(
-                Icons.chevron_left,
+                AppIcons.chevronLeft,
                 color: Colors.white,
                 size: 22.sp,
               ),
@@ -268,7 +269,7 @@ class _ChatPageState extends State<ChatPage> {
               ),
               alignment: Alignment.center,
               child: Icon(
-                Icons.delete_outline_rounded,
+                AppIcons.deleteOutlineRounded,
                 color: Colors.white.withValues(alpha: 0.8),
                 size: 18.sp,
               ),
@@ -331,7 +332,7 @@ class _ChatPageState extends State<ChatPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.chat_bubble_outline_rounded,
+            AppIcons.chatBubble,  
             color: AppColors.onboardingTextSecondary.withValues(alpha: 0.15),
             size: 54.r,
           ),

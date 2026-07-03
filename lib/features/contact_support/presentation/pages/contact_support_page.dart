@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/constants/support_constants.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
@@ -122,7 +123,7 @@ class ContactSupportPage extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: Icon(
-                Icons.chevron_left,
+                AppIcons.chevronLeft,
                 color: Colors.white,
                 size: 24.sp,
               ),
@@ -158,7 +159,7 @@ class ContactSupportPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
-            Icons.access_time_rounded,
+            AppIcons.accessTimeRounded,
             color: AppColors.onboardingGreen,
             size: 20.sp,
           ),
@@ -218,7 +219,7 @@ class ContactSupportPage extends StatelessWidget {
           child: Column(
             children: [
               _ContactTile(
-                icon: Icons.chat_bubble_outline_rounded,
+                icon: AppIcons.chatBubble,
                 iconColor: AppColors.onboardingCyan,
                 iconBgColor: AppColors.onboardingCyan.withValues(alpha: 0.1),
                 title: 'Live Chat',
@@ -226,7 +227,7 @@ class ContactSupportPage extends StatelessWidget {
                 showOnlineBadge: true,
                 onTap: () {
                   context.pushNamed(
-                    'chat',
+                    'chat-room',
                     pathParameters: {'chatRoomId': '1'},
                   );
                 },
@@ -236,7 +237,7 @@ class ContactSupportPage extends StatelessWidget {
                 height: 1.h,
               ),
               _ContactTile(
-                icon: Icons.mail_outline_rounded,
+                icon: AppIcons.mailOutlineRounded,
                 iconColor: AppColors.onboardingPurple,
                 iconBgColor: AppColors.onboardingPurple.withValues(alpha: 0.1),
                 title: 'Email Support',
@@ -255,7 +256,7 @@ class ContactSupportPage extends StatelessWidget {
                 height: 1.h,
               ),
               _ContactTile(
-                icon: Icons.phone_outlined,
+                icon: AppIcons.phoneOutline,
                 iconColor: AppColors.onboardingGreen,
                 iconBgColor: AppColors.onboardingGreen.withValues(alpha: 0.1),
                 title: 'Phone Support',
@@ -431,7 +432,7 @@ class _ContactTile extends StatelessWidget {
                 ),
               ),
               Icon(
-                Icons.chevron_right_rounded,
+                AppIcons.chevronRight,
                 color: Colors.white.withValues(alpha: 0.3),
                 size: 20.sp,
               ),

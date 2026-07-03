@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -85,7 +86,8 @@ class OnboardingBottomNav extends StatelessWidget {
                 ),
                 SizedBox(width: 8.w),
                 Icon(
-                  isLastPage ? Icons.arrow_forward : Icons.chevron_right,
+                  
+                  isLastPage ? AppIcons.arrowForward : AppIcons.chevronRight,
                   size: 18.w,
                   color: Colors.white,
                 ),

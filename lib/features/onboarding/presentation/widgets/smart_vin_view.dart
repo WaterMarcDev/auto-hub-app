@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/constants/app_images.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
@@ -68,11 +69,11 @@ class SmartVinView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24.h),
-          _buildFeatureBullet(Icons.qr_code_scanner, '17-digit VIN validation'),
+          _buildFeatureBullet(AppIcons.qrCodeScanner, '17-digit VIN validation'),
           SizedBox(height: 12.h),
-          _buildFeatureBullet(Icons.fact_check, 'Instant compatibility check'),
+          _buildFeatureBullet(AppIcons.factCheck, 'Instant compatibility check'),
           SizedBox(height: 12.h),
-          _buildFeatureBullet(Icons.verified, 'Exact-fit results only'),
+          _buildFeatureBullet(AppIcons.verified, 'Exact-fit results only'),
         ],
       ),
     );

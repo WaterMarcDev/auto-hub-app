@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/constants/app_images.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
@@ -68,11 +69,11 @@ class WreckToCashView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24.h),
-          _buildFeatureBullet(Icons.local_shipping, 'Free towing included'),
+          _buildFeatureBullet(AppIcons.localShipping, 'Free towing included'),
           SizedBox(height: 12.h),
-          _buildFeatureBullet(Icons.attach_money, 'Instant cash offers'),
+          _buildFeatureBullet(AppIcons.attachMoney, 'Instant cash offers'),
           SizedBox(height: 12.h),
-          _buildFeatureBullet(Icons.payments, 'Fast same-day payment'),
+          _buildFeatureBullet(AppIcons.payments, 'Fast same-day payment'),
         ],
       ),
     );

@@ -19,8 +19,8 @@ class AuthTextField extends StatelessWidget {
   final String hintText;
   final Widget prefixIcon;
   final bool isPassword;
-  final String? suffixIconPath;
-  final String? suffixIconPathActive;
+  final IconData? suffixIconPath;
+  final IconData? suffixIconPathActive;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
 
@@ -90,9 +90,9 @@ class AuthTextField extends StatelessWidget {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    SvgPicture.asset(suffixIconPath!),
+                    Icon(suffixIconPath!),
                     if (suffixIconPathActive != null)
-                      SvgPicture.asset(suffixIconPathActive!),
+                      Icon(suffixIconPathActive!),
                   ],
                 ),
               ),

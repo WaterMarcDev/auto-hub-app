@@ -10,7 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -106,7 +105,7 @@ class ProfilePage extends StatelessWidget {
         ..showSnackBar(
           const SnackBar(content: Text('This section is coming soon')),
         );
-    }, context);
+    },);
 
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,
@@ -198,12 +197,9 @@ class _TopBar extends StatelessWidget {
                     height: 18.75.h,
                     child: Transform.rotate(
                       angle: math.pi,
-                      child: SvgPicture.asset(
+                      child: const Icon(
                         AppIcons.chevronRight,
-                        colorFilter: const ColorFilter.mode(
-                          Colors.white,
-                          BlendMode.srcIn,
-                        ),
+                      
                       ),
                     ),
                   ),
@@ -233,10 +229,8 @@ class _TopBar extends StatelessWidget {
                 ),
               ),
               alignment: Alignment.center,
-              child: SvgPicture.asset(
+              child: const Icon(
                 AppIcons.profileEdit,
-                width: 15.w,
-                height: 15.h,
               ),
             ),
           ],
@@ -357,10 +351,9 @@ class _ProfileIdentityHeader extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset(
+              const Icon(
                 AppIcons.profileVerified,
-                width: 9.w,
-                height: 9.h,
+                
               ),
               SizedBox(width: 4.5.w),
               Text(
@@ -405,10 +398,9 @@ class _SignOutButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
+              const Icon(
                 AppIcons.profileLogout,
-                width: 15.w,
-                height: 15.h,
+  
               ),
               SizedBox(width: 10.w),
               Text(

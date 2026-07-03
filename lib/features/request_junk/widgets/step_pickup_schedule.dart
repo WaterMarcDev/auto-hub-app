@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -204,7 +205,7 @@ class StepPickupSchedule extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.camera_alt_outlined,
+                AppIcons.cameraAltOutlined,
                 color: AppColors.onboardingTextSecondary,
                 size: 20.r,
               ),
@@ -264,7 +265,7 @@ class StepPickupSchedule extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(4.r),
                   child: Icon(
-                    Icons.close,
+                    AppIcons.close,
                     color: Colors.white,
                     size: 16.r,
                   ),

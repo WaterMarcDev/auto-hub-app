@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +153,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
                         ),
                         alignment: Alignment.center,
                         child: Icon(
-                          Icons.close_rounded,
+                          AppIcons.close,
                           color: Colors.white.withValues(alpha: 0.6),
                           size: 16.w,
                         ),
@@ -178,7 +179,7 @@ class _AddCardBottomSheetState extends State<AddCardBottomSheet> {
                   child: Row(
                     children: [
                       Icon(
-                        Icons.lock_outline_rounded,
+                        AppIcons.lockOutlineRounded,
                         color: AppColors.onboardingGreen,
                         size: 16.w,
                       ),

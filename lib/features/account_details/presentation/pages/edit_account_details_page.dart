@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/account_details/data/repositories/account_repository.dart';
@@ -413,7 +414,7 @@ class _TopBar extends StatelessWidget {
                 ),
                 alignment: Alignment.center,
                 child: Icon(
-                  Icons.arrow_back_ios_new,
+                  AppIcons.chevronLeft,
                   color: Colors.white,
                   size: 16.w,
                 ),

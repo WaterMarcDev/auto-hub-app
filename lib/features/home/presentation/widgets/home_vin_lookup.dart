@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/features/vin/data/datasources/vin_remote_datasource.dart';
 import 'package:auto_hub_app/features/vin/data/repositories/vin_repository_impl.dart';
 import 'package:auto_hub_app/features/vin/domain/usecases/decode_vin_usecase.dart';
@@ -107,7 +108,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                 content: Row(
                   children: [
                     const Icon(
-                      Icons.error_outline_rounded,
+                      AppIcons.errorOutlineRounded,
                       color: Color(0xFFFF6B6B),
                       size: 18,
                     ),

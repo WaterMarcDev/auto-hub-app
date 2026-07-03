@@ -20,42 +20,42 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
 
   static const List<_DetailsRowData> _specRows = [
     _DetailsRowData(
-      icon: Icons.confirmation_number_outlined,
+      icon: AppIcons.confirmationNumber,
       label: 'Part Number',
       value: 'ALT-8912-HON',
     ),
     _DetailsRowData(
-      icon: Icons.category_outlined,
+      icon: AppIcons.category,
       label: 'Category',
       value: 'Electrical',
     ),
     _DetailsRowData(
-      icon: Icons.directions_car_outlined,
+      icon: AppIcons.directionsCar, 
       label: 'Compatible Make',
       value: 'Honda',
     ),
     _DetailsRowData(
-      icon: Icons.precision_manufacturing_outlined,
+      icon: AppIcons.precisionManufacturing,
       label: 'Compatible Model',
       value: 'Civic',
     ),
     _DetailsRowData(
-      icon: Icons.calendar_month_outlined,
+      icon: AppIcons.calendarMonth,
       label: 'Year Range',
       value: '2016-2021',
     ),
     _DetailsRowData(
-      icon: Icons.speed_outlined,
+      icon: AppIcons.speed,
       label: 'Donor Mileage',
       value: '48,000 mi',
     ),
     _DetailsRowData(
-      icon: Icons.scale_outlined,
+      icon: AppIcons.scale,
       label: 'Weight',
       value: '4.2 kg',
     ),
     _DetailsRowData(
-      icon: Icons.verified_user_outlined,
+      icon: AppIcons.verifiedUser,
       label: 'Warranty',
       value: '90 Days',
     ),
@@ -63,42 +63,43 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
 
   static const List<_DetailsRowData> _yardRows = [
     _DetailsRowData(
-      icon: Icons.warehouse_outlined,
+      icon: AppIcons.warehouse,
       label: 'Yard Name',
       value: 'Houston Auto Recyclers',
     ),
     _DetailsRowData(
-      icon: Icons.star_border_rounded,
+      icon: AppIcons.starBorder,
       label: 'Yard Rating',
       value: '4.8 (94)',
     ),
     _DetailsRowData(
-      icon: Icons.location_on_outlined,
+      icon: AppIcons.locationOn,
       label: 'Address',
       value: 'Houston, TX',
     ),
     _DetailsRowData(
-      icon: Icons.call_outlined,
+      icon: AppIcons.call,
       label: 'Contact',
       value: '(832) 555-0142',
     ),
     _DetailsRowData(
-      icon: Icons.schedule_outlined,
+      icon: AppIcons.schedule,
+      
       label: 'Business Hours',
       value: 'Mon-Sat 8AM-6PM',
     ),
     _DetailsRowData(
-      icon: Icons.local_shipping_outlined,
+      icon: AppIcons.localShipping,
       label: 'Pickup',
       value: 'Available',
     ),
     _DetailsRowData(
-      icon: Icons.delivery_dining_outlined,
+      icon: AppIcons.deliveryDining,
       label: 'Delivery',
       value: 'Nationwide',
     ),
     _DetailsRowData(
-      icon: Icons.verified_outlined,
+      icon: AppIcons.verified,
       label: 'Verified Seller',
       value: 'Yes',
     ),
@@ -226,22 +227,17 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                       context.go('/');
                     }
                   },
-                  child: SvgPicture.asset(
-                    AppIcons.arrowLeft,
-                    width: 18.w,
-                    height: 18.h,
-                    colorFilter: const ColorFilter.mode(
-                      Colors.white,
-                      BlendMode.srcIn,
-                    ),
-                  ),
+                  child: const Icon(
+                    AppIcons.arrowLeft
+                  )
                 ),
                 Row(
                   children: [
                     _HeroActionButton(
                       onTap: () {},
                       child: Icon(
-                        Icons.share_outlined,
+                        AppIcons.share,
+                        
                         size: 16.sp,
                         color: Colors.white,
                       ),
@@ -249,14 +245,8 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                     SizedBox(width: 8.w),
                     _HeroActionButton(
                       onTap: () {},
-                      child: SvgPicture.asset(
+                      child: const Icon(
                         AppIcons.heart,
-                        width: 16.w,
-                        height: 16.h,
-                        colorFilter: const ColorFilter.mode(
-                          Colors.white,
-                          BlendMode.srcIn,
-                        ),
                       ),
                     ),
                   ],
@@ -406,10 +396,9 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
               padding: EdgeInsets.symmetric(horizontal: 14.w),
               child: Row(
                 children: [
-                  SvgPicture.asset(
+                  const Icon(
                     AppIcons.star,
-                    width: 14.w,
-                    height: 14.h,
+          
                   ),
                   SizedBox(width: 8.w),
                   Text(
@@ -461,17 +450,17 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _QuickFactItem(
-            icon: Icons.electrical_services_outlined,
+            icon: AppIcons.electricalServices,
             value: 'Electrical',
             label: 'Category',
           ),
           _QuickFactItem(
-            icon: Icons.calendar_today_outlined,
+            icon: AppIcons.calendarToday,
             value: '2016-2021',
             label: 'Years',
           ),
           _QuickFactItem(
-            icon: Icons.shield_outlined,
+            icon: AppIcons.shield,
             value: '90 Days',
             label: 'Warranty',
           ),
@@ -496,7 +485,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
-            Icons.directions_car_outlined,
+            AppIcons.directionsCar,
             size: 16.sp,
             color: AppColors.onboardingCyan,
           ),
@@ -587,14 +576,9 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                 ),
               ),
               SizedBox(width: 2.w),
-              SvgPicture.asset(
+              const Icon(
                 AppIcons.chevronRight,
-                width: 12.w,
-                height: 12.h,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.onboardingCyan,
-                  BlendMode.srcIn,
-                ),
+               
               ),
             ],
           ),
@@ -629,14 +613,9 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                   ),
                 ),
                 SizedBox(width: 2.w),
-                SvgPicture.asset(
+                const Icon(
                   AppIcons.arrowUpRight,
-                  width: 11.w,
-                  height: 11.h,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.onboardingCyan,
-                    BlendMode.srcIn,
-                  ),
+                  
                 ),
               ],
             ),
@@ -761,7 +740,7 @@ class _MetaLine extends StatelessWidget {
     required this.textStyle,
   });
 
-  final String iconPath;
+  final IconData iconPath;
   final String text;
   final TextStyle textStyle;
 
@@ -769,14 +748,8 @@ class _MetaLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(
+        Icon(
           iconPath,
-          width: 12.w,
-          height: 12.h,
-          colorFilter: const ColorFilter.mode(
-            Color(0xFF8B929A),
-            BlendMode.srcIn,
-          ),
         ),
         SizedBox(width: 6.w),
         Text(text, style: textStyle),
