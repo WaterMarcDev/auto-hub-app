@@ -80,7 +80,7 @@ class AuthToggleTab extends StatelessWidget {
                           style: AppTextStyles.labelLarge.copyWith(
                             color: isSignIn
                                 ? Colors.white
-                                : const Color(0xFF484F58),
+                                : AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -101,7 +101,7 @@ class AuthToggleTab extends StatelessWidget {
                           style: AppTextStyles.labelLarge.copyWith(
                             color: !isSignIn
                                 ? Colors.white
-                                : const Color(0xFF484F58),
+                                : AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,
                           ),
