@@ -64,14 +64,14 @@ class AddressTextField extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
               borderSide: BorderSide(
-                color: Colors.white.withValues(alpha: 0.08),
+                color: AppColors.colorWhite.withValues(alpha: 0.08),
                 width: 0.8,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
               borderSide: BorderSide(
-                color: Colors.white.withValues(alpha: 0.08),
+                color: AppColors.colorWhite.withValues(alpha: 0.08),
                 width: 0.8,
               ),
             ),

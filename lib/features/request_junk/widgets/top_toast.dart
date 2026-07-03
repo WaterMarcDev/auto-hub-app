@@ -98,7 +98,7 @@ class _TopToastState extends State<TopToast>
             color: AppColors.onboardingSurface,
             borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.08),
+              color: AppColors.colorWhite.withValues(alpha: 0.08),
             ),
             boxShadow: [
               BoxShadow(

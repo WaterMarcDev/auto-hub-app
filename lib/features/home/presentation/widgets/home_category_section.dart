@@ -34,7 +34,7 @@ class HomeCategorySection extends StatelessWidget {
                 style: GoogleFonts.inter(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w800,
-                  color: const Color(0xFFF0F6FC),
+                  color: AppColors.onboardingTextPrimary,
                   letterSpacing: -0.3,
                 ),
               ),
@@ -45,7 +45,7 @@ class HomeCategorySection extends StatelessWidget {
                     style: GoogleFonts.inter(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w600,
-                      color: const Color(0xFF0DA0CE),
+                      color: AppColors.onboardingCyan,
                     ),
                   ),
                   SizedBox(width: 2.w),
@@ -54,7 +54,7 @@ class HomeCategorySection extends StatelessWidget {
                     width: 12.w,
                     height: 12.h,
                     colorFilter: const ColorFilter.mode(
-                      Color(0xFF0DA0CE),
+                      AppColors.onboardingCyan,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -94,10 +94,10 @@ class _CategoryCard extends StatelessWidget {
     return Container(
       width: 76.w,
       decoration: BoxDecoration(
-        color: const Color(0xFF161B22),
+        color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: const Color(0x12FFFFFF),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
         boxShadow: [
@@ -121,7 +121,7 @@ class _CategoryCard extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 11.sp,
               fontWeight: FontWeight.w700,
-              color: const Color(0xFFF0F6FC),
+              color: AppColors.onboardingTextPrimary,
             ),
           ),
           SizedBox(height: 1.h),

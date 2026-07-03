@@ -17,7 +17,7 @@ class AddressCard extends StatelessWidget {
         color: AppColors.onboardingSurface,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
       ),

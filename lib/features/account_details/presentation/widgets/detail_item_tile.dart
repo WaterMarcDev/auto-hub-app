@@ -36,7 +36,7 @@ class DetailItemTile extends StatelessWidget {
         border: showDivider
             ? Border(
                 bottom: BorderSide(
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: AppColors.colorWhite.withValues(alpha: 0.05),
                   width: 0.8,
                 ),
               )
@@ -50,7 +50,9 @@ class DetailItemTile extends StatelessWidget {
               width: 36.w,
               height: 36.h,
               decoration: BoxDecoration(
-                color: iconBackgroundColor ?? const Color(0x1F0DA0CE),
+                color:
+                    iconBackgroundColor ??
+                    AppColors.onboardingCyan.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12.r),
               ),
               alignment: Alignment.center,

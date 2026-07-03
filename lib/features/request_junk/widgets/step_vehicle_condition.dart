@@ -120,7 +120,7 @@ class StepVehicleCondition extends StatelessWidget {
             border: Border.all(
               color: isSelected
                   ? AppColors.onboardingCyan
-                  : Colors.white.withValues(alpha: 0.08),
+                  : AppColors.colorWhite.withValues(alpha: 0.08),
               width: isSelected ? 1.5 : 1.0,
             ),
             boxShadow: [
@@ -189,7 +189,7 @@ class StepVehicleCondition extends StatelessWidget {
               : AppColors.onboardingSurface,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: value ? activeColor : Colors.white.withValues(alpha: 0.08),
+            color: value ? activeColor : AppColors.colorWhite.withValues(alpha: 0.08),
             width: value ? 1.5 : 1.0,
           ),
           boxShadow: [

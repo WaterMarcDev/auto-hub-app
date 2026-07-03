@@ -30,7 +30,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
       value: 'Electrical',
     ),
     _DetailsRowData(
-      icon: AppIcons.directionsCar, 
+      icon: AppIcons.directionsCar,
       label: 'Compatible Make',
       value: 'Honda',
     ),
@@ -84,7 +84,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
     ),
     _DetailsRowData(
       icon: AppIcons.schedule,
-      
+
       label: 'Business Hours',
       value: 'Mon-Sat 8AM-6PM',
     ),
@@ -199,13 +199,13 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
             fit: BoxFit.cover,
           ),
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0x59000000),
-                  Color(0x00000000),
+                  AppColors.colorBlack.withValues(alpha: 0.35),
+                  Colors.transparent,
                   AppColors.onboardingBackground,
                 ],
                 stops: [0, 0.4, 1],
@@ -227,9 +227,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                       context.go('/');
                     }
                   },
-                  child: const Icon(
-                    AppIcons.arrowLeft
-                  )
+                  child: const Icon(AppIcons.arrowLeft),
                 ),
                 Row(
                   children: [
@@ -237,9 +235,9 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                       onTap: () {},
                       child: Icon(
                         AppIcons.share,
-                        
+
                         size: 16.sp,
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                       ),
                     ),
                     SizedBox(width: 8.w),
@@ -320,7 +318,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                     iconPath: AppIcons.tag,
                     text: 'ALT-8912-HON',
                     textStyle: GoogleFonts.cousine(
-                      color:   AppColors.textTertiary,
+                      color: AppColors.textTertiary,
                       fontSize: 11.sp,
                       height: 1.5,
                     ),
@@ -375,7 +373,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                 Text(
                   'Warranty: 90 Days',
                   style: AppTextStyles.bodySmall.copyWith(
-                    color:   AppColors.textTertiary,
+                    color: AppColors.textTertiary,
                     fontSize: 11.sp,
                     height: 1.5,
                   ),
@@ -386,10 +384,10 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
               width: 110.w,
               height: 42.h,
               decoration: BoxDecoration(
-                color: const Color(0xFFFBBF24).withValues(alpha: 0.08),
+                color: AppColors.warning.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
-                  color: const Color(0xFFFBBF24).withValues(alpha: 0.15),
+                  color: AppColors.warning.withValues(alpha: 0.15),
                   width: 0.8,
                 ),
               ),
@@ -398,13 +396,12 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                 children: [
                   const Icon(
                     AppIcons.star,
-          
                   ),
                   SizedBox(width: 8.w),
                   Text(
                     '4.8',
                     style: AppTextStyles.titleLarge.copyWith(
-                      color: const Color(0xFFFBBF24),
+                      color: AppColors.warning,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w800,
                       height: 1,
@@ -414,7 +411,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                   Text(
                     '(94)',
                     style: AppTextStyles.bodySmall.copyWith(
-                      color:   AppColors.textTertiary,
+                      color: AppColors.textTertiary,
                       fontSize: 12.sp,
                     ),
                   ),
@@ -434,7 +431,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
         boxShadow: [
@@ -527,7 +524,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
         boxShadow: [
@@ -578,7 +575,6 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
               SizedBox(width: 2.w),
               const Icon(
                 AppIcons.chevronRight,
-               
               ),
             ],
           ),
@@ -615,7 +611,6 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                 SizedBox(width: 2.w),
                 const Icon(
                   AppIcons.arrowUpRight,
-                  
                 ),
               ],
             ),
@@ -628,7 +623,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
             color: AppColors.onboardingSurfaceLight,
             borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.07),
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
               width: 0.8,
             ),
             boxShadow: [
@@ -671,7 +666,7 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
                     Text(
                       'Toyota Camry',
                       style: AppTextStyles.bodySmall.copyWith(
-                        color:  AppColors.textTertiary,
+                        color: AppColors.textTertiary,
                         fontSize: 10.sp,
                         height: 1.5,
                       ),
@@ -715,7 +710,7 @@ class _HeroActionButton extends StatelessWidget {
           color: AppColors.onboardingBackground.withValues(alpha: 0.7),
           shape: BoxShape.circle,
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.1),
+            color: AppColors.colorWhite.withValues(alpha: 0.1),
             width: 0.8,
           ),
           boxShadow: [
@@ -802,7 +797,7 @@ class _QuickFactItem extends StatelessWidget {
           Text(
             label,
             style: AppTextStyles.bodySmall.copyWith(
-              color:   AppColors.textTertiary,
+              color: AppColors.textTertiary,
               fontSize: 10.sp,
             ),
           ),
@@ -876,8 +871,8 @@ class _DetailsToggleTab extends StatelessWidget {
                           duration: const Duration(milliseconds: 250),
                           style: AppTextStyles.labelLarge.copyWith(
                             color: currentIndex == 0
-                                ? Colors.white
-                                :   AppColors.textTertiary,
+                                ? AppColors.colorWhite
+                                : AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -896,8 +891,8 @@ class _DetailsToggleTab extends StatelessWidget {
                           duration: const Duration(milliseconds: 250),
                           style: AppTextStyles.labelLarge.copyWith(
                             color: currentIndex == 1
-                                ? Colors.white
-                                :   AppColors.textTertiary,
+                                ? AppColors.colorWhite
+                                : AppColors.textTertiary,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -929,7 +924,7 @@ class _DetailsCard extends StatelessWidget {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
         boxShadow: [
@@ -967,7 +962,7 @@ class _DetailsInfoRow extends StatelessWidget {
         border: showDivider
             ? Border(
                 bottom: BorderSide(
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: AppColors.colorWhite.withValues(alpha: 0.05),
                   width: 0.8,
                 ),
               )
@@ -990,7 +985,7 @@ class _DetailsInfoRow extends StatelessWidget {
                 child: Icon(
                   row.icon,
                   size: 13.sp,
-                  color: const Color(0xFF2B3445),
+                  color: AppColors.iconSlate,
                 ),
               ),
               SizedBox(width: 12.w),

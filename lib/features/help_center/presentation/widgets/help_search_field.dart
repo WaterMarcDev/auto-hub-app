@@ -21,14 +21,14 @@ class HelpSearchField extends StatelessWidget {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.08),
+          color: AppColors.colorWhite.withValues(alpha: 0.08),
           width: 0.8,
         ),
       ),
       child: TextField(
         onChanged: onChanged,
         style: AppTextStyles.bodyMedium.copyWith(
-          color: Colors.white,
+          color: AppColors.colorWhite,
           fontSize: 14.sp,
         ),
         decoration: InputDecoration(

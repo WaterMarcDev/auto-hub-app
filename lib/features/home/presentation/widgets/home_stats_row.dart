@@ -15,19 +15,19 @@ class HomeStatsRow extends StatelessWidget {
           _StatCard(
             value: '18K+',
             label: 'Parts Listed',
-            color: const Color(0xFF0DA0CE),
+            color: AppColors.onboardingCyan,
           ),
           SizedBox(width: 11.w),
           _StatCard(
             value: '320+',
             label: 'Yards',
-            color: const Color(0xFF34D399),
+            color: AppColors.onboardingGreen,
           ),
           SizedBox(width: 11.w),
           _StatCard(
             value: '94K+',
             label: 'Buyers',
-            color: const Color(0xFFA78BFA),
+            color: AppColors.onboardingPurple,
           ),
         ],
       ),
@@ -52,10 +52,10 @@ class _StatCard extends StatelessWidget {
       child: Container(
         height: 72.h,
         decoration: BoxDecoration(
-          color: const Color(0xFF161B22),
+          color: AppColors.onboardingSurfaceLight,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: const Color(0x12FFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
           boxShadow: [

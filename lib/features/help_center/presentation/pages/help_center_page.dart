@@ -117,7 +117,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
                                       content: Text(
                                         'User Guide is opening...',
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: AppColors.colorWhite,
                                           fontSize: 14.sp,
                                         ),
                                       ),
@@ -165,14 +165,14 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1.0,
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.chevronLeft,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 size: 24.sp,
               ),
             ),
@@ -225,7 +225,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
           color: AppColors.onboardingSurface,
           borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.07),
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
         ),
@@ -280,7 +280,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
             color: AppColors.onboardingSurface,
             borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.07),
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
               width: 0.8,
             ),
           ),
@@ -290,7 +290,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
             padding: EdgeInsets.zero,
             itemCount: articles.length,
             separatorBuilder: (context, index) => Divider(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: AppColors.colorWhite.withValues(alpha: 0.05),
               height: 1.h,
             ),
             itemBuilder: (context, index) {
@@ -320,7 +320,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
                         content: Text(
                           'Thank you for your feedback!',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             fontSize: 14.sp,
                           ),
                         ),
@@ -352,7 +352,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
               content: Text(
                 'Ticket submitted successfully! We\'ll get back to you soon.',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.colorWhite,
                   fontSize: 14.sp,
                 ),
               ),

@@ -39,7 +39,7 @@ class AuthButton extends StatelessWidget {
             : null,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.06),
+          color: AppColors.colorWhite.withValues(alpha: 0.06),
           width: 1.w,
         ),
         boxShadow: showPrimary
@@ -61,7 +61,7 @@ class AuthButton extends StatelessWidget {
             child: Text(
               text,
               style: AppTextStyles.labelLarge.copyWith(
-                color: showPrimary ? Colors.white : AppColors.textTertiary,
+                color: showPrimary ? AppColors.colorWhite : AppColors.textTertiary,
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w700,
               ),

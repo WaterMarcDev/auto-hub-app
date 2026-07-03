@@ -27,7 +27,7 @@ class SalvageYardCard extends StatelessWidget {
         color: AppColors.onboardingSurface,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.06),
+          color: AppColors.colorWhite.withValues(alpha: 0.06),
           width: 1.0,
         ),
       ),

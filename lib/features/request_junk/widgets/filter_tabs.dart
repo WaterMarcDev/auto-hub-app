@@ -47,7 +47,7 @@ class FilterTabs extends StatelessWidget {
                 border: Border.all(
                   color: isActive
                       ? AppColors.onboardingCyan
-                      : Colors.white.withValues(alpha: 0.08),
+                      : AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 1.0,
                 ),
               ),

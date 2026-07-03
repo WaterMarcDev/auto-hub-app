@@ -170,14 +170,14 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
                   color: AppColors.onboardingSurface,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.07),
+                    color: AppColors.colorWhite.withValues(alpha: 0.07),
                     width: 0.8,
                   ),
                 ),
                 alignment: Alignment.center,
                 child: Icon(
                   AppIcons.chevronLeft,
-                  color: Colors.white,
+                  color: AppColors.colorWhite,
                   size: 24.sp,
                 ),
               ),
@@ -206,7 +206,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
         boxShadow: [
@@ -226,7 +226,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
             child: Text(
               '${_addresses.length} SAVED ADDRESSES',
               style: AppTextStyles.labelLarge.copyWith(
-                color: const Color(0xFF484F58),
+                color: AppColors.textTertiary,
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w700,
                 letterSpacing: 0.8,
@@ -238,7 +238,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: _addresses.length,
             separatorBuilder: (context, index) => Divider(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: AppColors.colorWhite.withValues(alpha: 0.05),
               height: 1,
               thickness: 0.8,
             ),
@@ -304,7 +304,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
       ),
@@ -319,7 +319,7 @@ class _YourAddressesPageState extends State<YourAddressesPage> {
               shape: BoxShape.circle,
             ),
             child: Icon(
-              AppIcons.locationOffOutlined, 
+              AppIcons.locationOffOutlined,
               color: AppColors.onboardingCyan,
               size: 28.sp,
             ),

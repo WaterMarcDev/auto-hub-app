@@ -35,7 +35,7 @@ class CategoryChip extends StatelessWidget {
               border: Border.all(
                 color: isSelected
                     ? AppColors.onboardingCyan
-                    : Colors.white.withValues(alpha: 0.08),
+                    : AppColors.colorWhite.withValues(alpha: 0.08),
                 width: 1.2,
               ),
             ),
@@ -44,7 +44,7 @@ class CategoryChip extends StatelessWidget {
               style: AppTextStyles.bodyMedium.copyWith(
                 color: isSelected
                     ? AppColors.onboardingCyan
-                    : Colors.white.withValues(alpha: 0.7),
+                    : AppColors.colorWhite.withValues(alpha: 0.7),
                 fontSize: 14.sp,
                 fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
               ),

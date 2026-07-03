@@ -31,7 +31,7 @@ class SettingsTopBar extends StatelessWidget {
                   color: AppColors.onboardingSurface,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.07),
+                    color: AppColors.colorWhite.withValues(alpha: 0.07),
                     width: 0.8,
                   ),
                 ),

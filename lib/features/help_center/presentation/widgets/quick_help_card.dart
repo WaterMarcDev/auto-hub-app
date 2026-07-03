@@ -28,7 +28,7 @@ class QuickHelpCard extends StatelessWidget {
         color: AppColors.onboardingSurface,
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.08),
+          color: AppColors.colorWhite.withValues(alpha: 0.08),
           width: 0.8,
         ),
       ),
@@ -61,7 +61,7 @@ class QuickHelpCard extends StatelessWidget {
                 Text(
                   title,
                   style: AppTextStyles.titleLarge.copyWith(
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w700,
                   ),

@@ -103,7 +103,9 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: AppColors.onboardingSurfaceLight,
         title: Text(
           'Clear Chat?',
-          style: AppTextStyles.headlineSmall.copyWith(color: Colors.white),
+          style: AppTextStyles.headlineSmall.copyWith(
+            color: AppColors.colorWhite,
+          ),
         ),
         content: Text(
           'Are you sure you want to clear this conversation? This action cannot be undone.',
@@ -116,7 +118,9 @@ class _ChatPageState extends State<ChatPage> {
             onPressed: () => context.pop(),
             child: Text(
               'Cancel',
-              style: AppTextStyles.bodyMedium.copyWith(color: Colors.white),
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: AppColors.colorWhite,
+              ),
             ),
           ),
           TextButton(
@@ -185,11 +189,11 @@ class _ChatPageState extends State<ChatPage> {
   Widget _buildAppBar(BuildContext context, LiveChatConversation roomInfo) {
     return Container(
       height: 70.h,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.onboardingBackground,
         border: Border(
           bottom: BorderSide(
-            color: Color(0x12FFFFFF), // rgba(255,255,255,0.07)
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
         ),
@@ -212,13 +216,13 @@ class _ChatPageState extends State<ChatPage> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.chevronLeft,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 size: 22.sp,
               ),
             ),
@@ -234,7 +238,7 @@ class _ChatPageState extends State<ChatPage> {
                 Text(
                   roomInfo.name,
                   style: AppTextStyles.headlineSmall.copyWith(
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w800,
                   ),
@@ -264,13 +268,13 @@ class _ChatPageState extends State<ChatPage> {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                 ),
               ),
               alignment: Alignment.center,
               child: Icon(
                 AppIcons.deleteOutlineRounded,
-                color: Colors.white.withValues(alpha: 0.8),
+                color: AppColors.colorWhite.withValues(alpha: 0.8),
                 size: 18.sp,
               ),
             ),
@@ -300,7 +304,7 @@ class _ChatPageState extends State<ChatPage> {
               style: AppTextStyles.bodyMedium.copyWith(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w900,
-                color: Colors.white,
+                color: AppColors.colorWhite,
               ),
             ),
           ),
@@ -332,7 +336,7 @@ class _ChatPageState extends State<ChatPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            AppIcons.chatBubble,  
+            AppIcons.chatBubble,
             color: AppColors.onboardingTextSecondary.withValues(alpha: 0.15),
             size: 54.r,
           ),

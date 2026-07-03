@@ -199,7 +199,7 @@ class _BrowsePageState extends State<BrowsePage> {
         _searchType == SearchType.vin && _vinController.text.length == 17;
 
     return Scaffold(
-      backgroundColor: const Color(0xFF12161A),
+      backgroundColor: AppColors.surfaceDark,
       body: SafeArea(
         child: Column(
           children: [
@@ -240,7 +240,10 @@ class _BrowsePageState extends State<BrowsePage> {
                 ],
               ),
             ),
-            const Divider(color: Color(0x12FFFFFF), height: 1),
+            Divider(
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
+              height: 1,
+            ),
 
             // Scrollable content area
             Expanded(

@@ -56,7 +56,7 @@ class _SearchInputsState extends State<SearchInputs> {
           child: Container(
             height: 52.h,
             decoration: BoxDecoration(
-              color: const Color(0xFF1A1F26),
+              color: AppColors.surfaceDarkVariant,
               borderRadius: BorderRadius.circular(26.r),
               boxShadow: [
                 BoxShadow(
@@ -71,7 +71,7 @@ class _SearchInputsState extends State<SearchInputs> {
               cursorColor: AppColors.info,
               textAlignVertical: TextAlignVertical.center,
               style: GoogleFonts.inter(
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 fontSize: 14.sp,
               ),
               decoration: InputDecoration(
@@ -113,7 +113,7 @@ class _SearchInputsState extends State<SearchInputs> {
             width: 52.w,
             height: 52.h,
             decoration: BoxDecoration(
-              color: const Color(0xFF1A1F26),
+              color: AppColors.surfaceDarkVariant,
               borderRadius: BorderRadius.circular(18.r),
               boxShadow: [
                 BoxShadow(
@@ -176,7 +176,7 @@ class _SearchInputsState extends State<SearchInputs> {
           duration: const Duration(milliseconds: 200),
           height: 52.h,
           decoration: BoxDecoration(
-            color: const Color(0xFF1A1F26),
+            color: AppColors.surfaceDarkVariant,
             borderRadius: BorderRadius.circular(16.r),
             border: borderC == Colors.transparent
                 ? null

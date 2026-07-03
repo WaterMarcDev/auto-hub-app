@@ -52,12 +52,12 @@ class JunkRequestStepper extends StatelessWidget {
                 color: AppColors.onboardingSurface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                 ),
               ),
               child: const Icon(
                 AppIcons.chevronLeft,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 size: 24,
               ),
             ),

@@ -18,7 +18,7 @@ class VinResultPage extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
-        backgroundColor: const Color(0xFF0D1117),
+        backgroundColor: AppColors.onboardingBackground,
         body: SafeArea(
           child: Column(
             children: [
@@ -65,10 +65,13 @@ class _AppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 56.h,
-      decoration: const BoxDecoration(
-        color: Color(0xFF0D1117),
+      decoration: BoxDecoration(
+        color: AppColors.onboardingBackground,
         border: Border(
-          bottom: BorderSide(color: Color(0x12FFFFFF), width: 0.8),
+          bottom: BorderSide(
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
+            width: 0.8,
+          ),
         ),
       ),
       padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -81,16 +84,16 @@ class _AppBar extends StatelessWidget {
               width: 36.w,
               height: 36.h,
               decoration: BoxDecoration(
-                color: const Color(0xFF161B22),
+                color: AppColors.onboardingSurfaceLight,
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(
-                  color: const Color(0x14FFFFFF),
+                  color: AppColors.colorWhite.withValues(alpha: 0.08),
                   width: 0.8,
                 ),
               ),
               child: const Icon(
                 AppIcons.chevronLeft,
-                color: Color(0xFF8B929A),
+                color: AppColors.colorGray,
                 size: 16,
               ),
             ),
@@ -106,7 +109,7 @@ class _AppBar extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w700,
-                    color: const Color(0xFFF0F6FC),
+                    color: AppColors.onboardingTextPrimary,
                     letterSpacing: -0.3,
                   ),
                 ),
@@ -114,7 +117,7 @@ class _AppBar extends StatelessWidget {
                   vin,
                   style: GoogleFonts.spaceMono(
                     fontSize: 9.sp,
-                    color:  AppColors.textTertiary,
+                    color: AppColors.textTertiary,
                     letterSpacing: 1.2,
                   ),
                 ),
@@ -125,10 +128,10 @@ class _AppBar extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
             decoration: BoxDecoration(
-              color: const Color(0xFF34D399).withValues(alpha: 0.12),
+              color: AppColors.onboardingGreen.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(
-                color: const Color(0xFF34D399).withValues(alpha: 0.3),
+                color: AppColors.onboardingGreen.withValues(alpha: 0.3),
                 width: 0.8,
               ),
             ),
@@ -138,8 +141,8 @@ class _AppBar extends StatelessWidget {
                 Container(
                   width: 6.w,
                   height: 6.h,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF34D399),
+                  decoration: BoxDecoration(
+                    color: AppColors.onboardingGreen,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -149,7 +152,7 @@ class _AppBar extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xFF34D399),
+                    color: AppColors.onboardingGreen,
                   ),
                 ),
               ],
@@ -179,11 +182,11 @@ class _DecodedBadge extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFF0F1A28), Color(0xFF0A1220)],
+          colors: [AppColors.gradientCardStart, AppColors.gradientDarkMid],
         ),
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: const Color(0xFF0DA0CE).withValues(alpha: 0.2),
+          color: AppColors.onboardingCyan.withValues(alpha: 0.2),
           width: 0.8,
         ),
       ),
@@ -200,7 +203,7 @@ class _DecodedBadge extends StatelessWidget {
                     vertical: 3.h,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF0DA0CE).withValues(alpha: 0.15),
+                    color: AppColors.onboardingCyan.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(6.r),
                   ),
                   child: Text(
@@ -208,7 +211,7 @@ class _DecodedBadge extends StatelessWidget {
                     style: GoogleFonts.inter(
                       fontSize: 11.sp,
                       fontWeight: FontWeight.w700,
-                      color: const Color(0xFF0DA0CE),
+                      color: AppColors.onboardingCyan,
                     ),
                   ),
                 ),
@@ -219,7 +222,7 @@ class _DecodedBadge extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xFF8B929A),
+                    color: AppColors.colorGray,
                   ),
                 ),
             ],
@@ -231,7 +234,7 @@ class _DecodedBadge extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 24.sp,
               fontWeight: FontWeight.w800,
-              color: const Color(0xFFF0F6FC),
+              color: AppColors.onboardingTextPrimary,
               letterSpacing: -0.5,
             ),
           ),
@@ -245,7 +248,7 @@ class _DecodedBadge extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: const Color(0xFF8B929A),
+                color: AppColors.colorGray,
               ),
             ),
           ],
@@ -280,10 +283,10 @@ class _SectionCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFF161B22),
+        color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: const Color(0x14FFFFFF),
+          color: AppColors.colorWhite.withValues(alpha: 0.08),
           width: 0.8,
         ),
       ),
@@ -319,7 +322,7 @@ class _SectionCard extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w700,
-                    color: const Color(0xFFF0F6FC),
+                    color: AppColors.onboardingTextPrimary,
                     letterSpacing: -0.1,
                   ),
                 ),
@@ -330,7 +333,7 @@ class _SectionCard extends StatelessWidget {
           // Divider
           Container(
             height: 0.8,
-            color: const Color(0x0FFFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.06),
             margin: EdgeInsets.symmetric(horizontal: 16.w),
           ),
           // Data rows
@@ -348,9 +351,12 @@ class _SectionCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 11.h),
       decoration: isLast
           ? null
-          : const BoxDecoration(
+          : BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: Color(0x08FFFFFF), width: 0.8),
+                bottom: BorderSide(
+                  color: AppColors.colorWhite.withValues(alpha: 0.03),
+                  width: 0.8,
+                ),
               ),
             ),
       child: Row(
@@ -361,7 +367,7 @@ class _SectionCard extends StatelessWidget {
             style: GoogleFonts.inter(
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
-              color: const Color(0xFF8B929A),
+              color: AppColors.colorGray,
             ),
           ),
           Flexible(
@@ -371,7 +377,7 @@ class _SectionCard extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
-                color: const Color(0xFFF0F6FC),
+                color: AppColors.onboardingTextPrimary,
               ),
             ),
           ),
@@ -401,7 +407,7 @@ class _VehicleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return _SectionCard(
       iconPath: 'assets/icons/ic_wrench.svg',
-      iconColor: const Color(0xFF0DA0CE),
+      iconColor: AppColors.onboardingCyan,
       title: 'Vehicle Overview',
       rows: [
         _DataRow('Year', result.year),
@@ -425,7 +431,7 @@ class _EngineCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return _SectionCard(
       iconPath: 'assets/icons/ic_sparkles.svg',
-      iconColor: const Color(0xFFFBBF24),
+      iconColor: AppColors.warning,
       title: 'Engine',
       rows: [
         _DataRow(
@@ -449,7 +455,7 @@ class _DrivetrainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return _SectionCard(
       iconPath: 'assets/icons/ic_tag.svg',
-      iconColor: const Color(0xFFA78BFA),
+      iconColor: AppColors.onboardingPurple,
       title: 'Drivetrain',
       rows: [
         _DataRow('Drive Type', result.driveType),
@@ -468,7 +474,7 @@ class _OriginCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return _SectionCard(
       iconPath: 'assets/icons/ic_map_pin.svg',
-      iconColor: const Color(0xFF34D399),
+      iconColor: AppColors.onboardingGreen,
       title: 'Manufacture Origin',
       rows: [
         _DataRow('Manufacturer', result.manufacturerName),
@@ -500,12 +506,12 @@ class _CtaButton extends StatelessWidget {
           gradient: const LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [Color(0xFF0DA0CE), Color(0xFF0B8FB5)],
+            colors: [AppColors.onboardingCyan, AppColors.onboardingCyanDark],
           ),
           borderRadius: BorderRadius.circular(16.r),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF0DA0CE).withValues(alpha: 0.3),
+              color: AppColors.onboardingCyan.withValues(alpha: 0.3),
               blurRadius: 20,
               offset: const Offset(0, 6),
             ),
@@ -519,7 +525,7 @@ class _CtaButton extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w700,
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 letterSpacing: -0.2,
               ),
             ),
@@ -529,7 +535,7 @@ class _CtaButton extends StatelessWidget {
               width: 16.w,
               height: 16.h,
               colorFilter: const ColorFilter.mode(
-                Colors.white,
+                AppColors.colorWhite,
                 BlendMode.srcIn,
               ),
             ),

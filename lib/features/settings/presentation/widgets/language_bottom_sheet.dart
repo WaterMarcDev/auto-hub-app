@@ -30,7 +30,7 @@ class LanguageBottomSheet extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(28.r)),
         border: Border(
           top: BorderSide(
-            color: Colors.white.withValues(alpha: 0.08),
+            color: AppColors.colorWhite.withValues(alpha: 0.08),
             width: 0.8,
           ),
         ),
@@ -44,7 +44,7 @@ class LanguageBottomSheet extends StatelessWidget {
             width: 40.w,
             height: 4.h,
             decoration: BoxDecoration(
-              color: const Color(0xFF2D333B),
+              color: AppColors.colorLightGray,
               borderRadius: BorderRadius.circular(2.r),
             ),
           ),
@@ -72,14 +72,14 @@ class LanguageBottomSheet extends StatelessWidget {
                     color: AppColors.onboardingSurface,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.07),
+                      color: AppColors.colorWhite.withValues(alpha: 0.07),
                       width: 0.8,
                     ),
                   ),
                   alignment: Alignment.center,
                   child: Icon(
                     Icons.close_rounded,
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     size: 16.sp,
                   ),
                 ),
@@ -94,7 +94,7 @@ class LanguageBottomSheet extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: languages.length,
             separatorBuilder: (context, index) => Divider(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: AppColors.colorWhite.withValues(alpha: 0.05),
               thickness: 0.8,
               height: 1.h,
             ),
@@ -126,8 +126,9 @@ class LanguageBottomSheet extends StatelessWidget {
                                 ? AppColors.onboardingCyan
                                 : AppColors.onboardingTextPrimary,
                             fontSize: 15.sp,
-                            fontWeight:
-                                isSelected ? FontWeight.w700 : FontWeight.w500,
+                            fontWeight: isSelected
+                                ? FontWeight.w700
+                                : FontWeight.w500,
                           ),
                         ),
                       ),
@@ -140,7 +141,7 @@ class LanguageBottomSheet extends StatelessWidget {
                           border: Border.all(
                             color: isSelected
                                 ? AppColors.onboardingCyan
-                                : const Color(0xFF2D333B),
+                                : AppColors.colorLightGray,
                             width: 2.w,
                           ),
                         ),

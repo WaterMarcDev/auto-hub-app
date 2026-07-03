@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,10 +22,10 @@ class EmptyPartsView extends StatelessWidget {
           width: 88.r,
           height: 88.r,
           decoration: BoxDecoration(
-            color: const Color(0xFF1A1F26),
+            color: AppColors.surfaceDarkVariant,
             borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
-              color: const Color(0x12FFFFFF),
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
               width: 1,
             ),
           ),
@@ -32,7 +33,7 @@ class EmptyPartsView extends StatelessWidget {
           child: Icon(
             Icons.search,
             size: 40.r,
-            color: const Color(0xFF8B929A),
+            color: AppColors.onboardingTextSecondary,
           ),
         ),
         SizedBox(height: 24.h),
@@ -41,7 +42,7 @@ class EmptyPartsView extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 18.sp,
             fontWeight: FontWeight.w700,
-            color: Colors.white,
+            color: AppColors.colorWhite,
           ),
         ),
         SizedBox(height: 8.h),
@@ -50,7 +51,7 @@ class EmptyPartsView extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
-            color: const Color(0xFF8B929A),
+            color: AppColors.onboardingTextSecondary,
           ),
           textAlign: TextAlign.center,
         ),
@@ -60,11 +61,11 @@ class EmptyPartsView extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 14.h),
             decoration: BoxDecoration(
-              color: const Color(0xFF00A8CC),
+              color: AppColors.accentTeal,
               borderRadius: BorderRadius.circular(30.r),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF00A8CC).withOpacity(0.3),
+                  color: AppColors.accentTeal.withOpacity(0.3),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -75,7 +76,7 @@ class EmptyPartsView extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
+                color: AppColors.colorWhite,
               ),
             ),
           ),

@@ -95,21 +95,21 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(
-                backgroundColor: const Color(0xFF1C2330),
+                backgroundColor: AppColors.onboardingSurface,
                 behavior: SnackBarBehavior.floating,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.r),
-                  side: const BorderSide(
-                    color: Color(0x33FF6B6B),
+                  side: BorderSide(
+                    color: AppColors.colorRed.withValues(alpha: 0.2),
                     width: 0.8,
                   ),
                 ),
                 margin: EdgeInsets.fromLTRB(20.w, 0, 20.w, 16.h),
                 content: Row(
                   children: [
-                    const Icon(
+                    Icon(
                       AppIcons.errorOutlineRounded,
-                      color: Color(0xFFFF6B6B),
+                      color: AppColors.colorRed,
                       size: 18,
                     ),
                     SizedBox(width: 8.w),
@@ -118,7 +118,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                         state.message,
                         style: GoogleFonts.inter(
                           fontSize: 12.sp,
-                          color: const Color(0xFFF0F6FC),
+                          color: AppColors.onboardingTextPrimary,
                         ),
                       ),
                     ),
@@ -145,12 +145,12 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
-            color: const Color(0xFF0DA0CE).withValues(alpha: 0.2),
+            color: AppColors.onboardingCyan.withValues(alpha: 0.2),
             width: 0.8,
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF0DA0CE).withValues(alpha: 0.12),
+              color: AppColors.onboardingCyan.withValues(alpha: 0.12),
               blurRadius: 24,
               offset: const Offset(0, 4),
             ),
@@ -158,7 +158,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
           gradient: const LinearGradient(
             begin: Alignment(-0.81, -1.0),
             end: Alignment(0.81, 1.0),
-            colors: [Color(0xFF0A1220), Color(0xFF08101A)],
+            colors: [AppColors.gradientDarkMid, AppColors.gradientDarkSurface],
           ),
         ),
         padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 16.h),
@@ -172,7 +172,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                   width: 28.w,
                   height: 28.h,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF0DA0CE).withValues(alpha: 0.12),
+                    color: AppColors.onboardingCyan.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(14.r),
                   ),
                   alignment: Alignment.center,
@@ -181,7 +181,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                     width: 14.w,
                     height: 14.h,
                     colorFilter: const ColorFilter.mode(
-                      Color(0xFF0DA0CE),
+                      AppColors.onboardingCyan,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -195,7 +195,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                       style: GoogleFonts.inter(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w700,
-                        color: const Color(0xFFF0F6FC),
+                        color: AppColors.onboardingTextPrimary,
                         letterSpacing: -0.2,
                       ),
                     ),
@@ -205,7 +205,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                       style: GoogleFonts.inter(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w400,
-                        color: const Color(0xFF8B929A),
+                        color: AppColors.onboardingTextSecondary,
                       ),
                     ),
                   ],
@@ -224,7 +224,7 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
               keyboardType: TextInputType.text,
               style: GoogleFonts.spaceMono(
                 fontSize: 13.sp,
-                color: const Color(0xFFF0F6FC),
+                color: AppColors.onboardingTextPrimary,
                 letterSpacing: 1.5,
               ),
               inputFormatters: [
@@ -238,61 +238,61 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                 hintText: 'Enter 17-digit VIN...',
                 hintStyle: GoogleFonts.spaceMono(
                   fontSize: 13.sp,
-                  color: const Color(0x80F0F6FC),
+                  color: AppColors.onboardingTextPrimary.withValues(alpha: 0.5),
                   letterSpacing: 1.0,
                 ),
                 filled: true,
-                fillColor: const Color(0xFF1C2330),
+                fillColor: AppColors.onboardingSurface,
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: 16.w,
                   vertical: 13.h,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: const BorderSide(
-                    color: Color(0x14FFFFFF),
+                  borderSide: BorderSide(
+                    color: AppColors.colorWhite.withValues(alpha: 0.08),
                     width: 0.8,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: const BorderSide(
-                    color: Color(0x14FFFFFF),
+                  borderSide: BorderSide(
+                    color: AppColors.colorWhite.withValues(alpha: 0.08),
                     width: 0.8,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
                   borderSide: BorderSide(
-                    color: const Color(0xFF0DA0CE).withValues(alpha: 0.5),
+                    color: AppColors.onboardingCyan.withValues(alpha: 0.5),
                     width: 1.0,
                   ),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: const BorderSide(
-                    color: Color(0x80FF6B6B),
+                  borderSide: BorderSide(
+                    color: AppColors.colorRed.withValues(alpha: 0.5),
                     width: 0.8,
                   ),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: const BorderSide(
-                    color: Color(0xFFFF6B6B),
+                  borderSide: BorderSide(
+                    color: AppColors.colorRed,
                     width: 1.0,
                   ),
                 ),
                 disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: const BorderSide(
-                    color: Color(0x0AFFFFFF),
+                  borderSide: BorderSide(
+                    color: AppColors.colorWhite.withValues(alpha: 0.04),
                     width: 0.8,
                   ),
                 ),
                 errorText: _inlineError,
                 errorStyle: GoogleFonts.inter(
                   fontSize: 10.sp,
-                  color: const Color(0xFFFF6B6B),
+                  color: AppColors.colorRed,
                 ),
               ),
             ),
@@ -310,8 +310,8 @@ class _HomeVinLookupBodyState extends State<_HomeVinLookupBody> {
                     fontWeight: FontWeight.w400,
                     color: _isComplete
                         ? (_isValid
-                              ? const Color(0xFF34D399)
-                              : const Color(0xFFFF6B6B))
+                              ? AppColors.onboardingGreen
+                              : AppColors.colorRed)
                         : AppColors.textTertiary,
                   ),
                 ),
@@ -356,12 +356,12 @@ class _FindPartsButton extends StatelessWidget {
             gradient: const LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [Color(0xFF0DA0CE), Color(0xFF0B8FB5)],
+              colors: [AppColors.onboardingCyan, AppColors.onboardingCyanDark],
             ),
             borderRadius: BorderRadius.circular(14.r),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF0DA0CE).withValues(alpha: 0.25),
+                color: AppColors.onboardingCyan.withValues(alpha: 0.25),
                 blurRadius: 12,
                 offset: const Offset(0, 3),
               ),
@@ -374,7 +374,9 @@ class _FindPartsButton extends StatelessWidget {
                     height: 16.h,
                     child: const CircularProgressIndicator(
                       strokeWidth: 2,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        AppColors.colorWhite,
+                      ),
                     ),
                   ),
                 )
@@ -386,7 +388,7 @@ class _FindPartsButton extends StatelessWidget {
                       width: 12.w,
                       height: 12.h,
                       colorFilter: const ColorFilter.mode(
-                        Colors.white,
+                        AppColors.colorWhite,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -396,7 +398,7 @@ class _FindPartsButton extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                       ),
                     ),
                   ],
@@ -412,10 +414,10 @@ class _FindPartsButton extends StatelessWidget {
         height: 36.h,
         width: 110.w,
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.05),
+          color: AppColors.colorWhite.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(14.r),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.06),
+            color: AppColors.colorWhite.withValues(alpha: 0.06),
             width: 0.8,
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:auto_hub_app/core/constants/app_icons.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/profile/presentation/models/profile_menu_models.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class ProfileMenuItemTile extends StatelessWidget {
             border: showDivider
                 ? Border(
                     bottom: BorderSide(
-                      color: Colors.white.withValues(alpha: 0.05),
+                      color: AppColors.colorWhite.withValues(alpha: 0.05),
                       width: 0.8,
                     ),
                   )
@@ -55,7 +56,7 @@ class ProfileMenuItemTile extends StatelessWidget {
                 child: Text(
                   item.title,
                   style: AppTextStyles.bodyMedium.copyWith(
-                    color: const Color(0xFFF0F6FC),
+                    color: AppColors.onboardingTextPrimary,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
                   ),
@@ -63,7 +64,7 @@ class ProfileMenuItemTile extends StatelessWidget {
               ),
               Icon(
                 AppIcons.chevronRight,
-                color: const Color(0xFF8B929A),
+                color: AppColors.colorGray,
                 size: 20.sp,
               ),
             ],

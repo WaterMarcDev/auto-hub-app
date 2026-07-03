@@ -33,7 +33,7 @@ class MessageOptionsOverlay extends StatelessWidget {
             color: AppColors.onboardingSurface,
             borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
-              color: Colors.white.withValues(alpha: 0.08),
+              color: AppColors.colorWhite.withValues(alpha: 0.08),
               width: 0.8,
             ),
             boxShadow: [
@@ -51,7 +51,7 @@ class MessageOptionsOverlay extends StatelessWidget {
               Text(
                 'Message Options',
                 style: AppTextStyles.headlineSmall.copyWith(
-                  color: Colors.white,
+                  color: AppColors.colorWhite,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w800,
                   letterSpacing: -0.5,
@@ -62,7 +62,7 @@ class MessageOptionsOverlay extends StatelessWidget {
                 icon:AppIcons.doneAll, 
                 iconColor: AppColors.onboardingCyan,
                 title: 'Mark All as Read',
-                titleColor: Colors.white,
+                titleColor: AppColors.colorWhite,
                 onTap: () {
                   context.pop();
                   onMarkAllAsRead();

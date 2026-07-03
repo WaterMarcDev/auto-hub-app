@@ -36,7 +36,7 @@ class ConversationTile extends StatelessWidget {
                         Text(
                           conversation.name,
                           style: AppTextStyles.bodyMedium.copyWith(
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -80,7 +80,7 @@ class ConversationTile extends StatelessWidget {
                             child: Text(
                               '${conversation.unreadCount}',
                               style: AppTextStyles.bodySmall.copyWith(
-                                color: Colors.white,
+                                color: AppColors.colorWhite,
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w800,
                               ),
@@ -119,7 +119,7 @@ class ConversationTile extends StatelessWidget {
               style: AppTextStyles.bodyMedium.copyWith(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w900,
-                color: Colors.white,
+                color: AppColors.colorWhite,
               ),
             ),
           ),

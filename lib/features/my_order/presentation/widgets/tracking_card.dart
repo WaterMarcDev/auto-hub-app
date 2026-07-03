@@ -18,7 +18,7 @@ class TrackingCard extends StatelessWidget {
         color: AppColors.onboardingSurface,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.07),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
       ),
@@ -62,7 +62,7 @@ class TrackingCard extends StatelessWidget {
                   SnackBar(
                     content: Text(
                       'Tracking number copied to clipboard',
-                      style: GoogleFonts.inter(color: Colors.white),
+                      style: GoogleFonts.inter(color: AppColors.colorWhite),
                     ),
                     backgroundColor: AppColors.primary,
                     duration: const Duration(seconds: 2),

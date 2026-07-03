@@ -64,14 +64,14 @@ class StartNewRequestButton extends StatelessWidget {
                   Icon(
                     AppIcons.localShipping,
                   
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     size: 20.r,
                   ),
                   SizedBox(width: 8.w),
                   Text(
                     'Start New Junk Request',
                     style: AppTextStyles.button.copyWith(
-                      color: Colors.white,
+                      color: AppColors.colorWhite,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
                     ),

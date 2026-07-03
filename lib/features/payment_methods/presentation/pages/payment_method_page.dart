@@ -184,7 +184,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
               color: AppColors.onboardingSurfaceLight,
               borderRadius: BorderRadius.circular(16.r),
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.08),
+                color: AppColors.colorWhite.withValues(alpha: 0.08),
                 width: 1.w,
               ),
               boxShadow: [
@@ -205,7 +205,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
         Text(
           'Payment Methods',
           style: AppTextStyles.headlineMedium.copyWith(
-            color: Colors.white,
+            color: AppColors.colorWhite,
             fontWeight: FontWeight.w800,
             fontSize: 20.sp,
           ),
@@ -322,7 +322,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
         Text(
           'No Payment Methods Saved',
           style: AppTextStyles.headlineSmall.copyWith(
-            color: Colors.white,
+            color: AppColors.colorWhite,
             fontWeight: FontWeight.bold,
           ),
         ),

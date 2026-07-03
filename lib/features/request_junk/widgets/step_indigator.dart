@@ -1,4 +1,5 @@
 import 'package:auto_hub_app/core/constants/app_icons.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class StepIndicator extends StatelessWidget {
@@ -58,11 +59,9 @@ class StepIndicator extends StatelessWidget {
             top: 18,
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final progressWidth =
-                    steps.length > 1
-                        ? (constraints.maxWidth / (steps.length - 1)) *
-                            currentStep
-                        : 0.0;
+                final progressWidth = steps.length > 1
+                    ? (constraints.maxWidth / (steps.length - 1)) * currentStep
+                    : 0.0;
                 return Row(
                   children: [
                     AnimatedContainer(
@@ -94,50 +93,45 @@ class StepIndicator extends StatelessWidget {
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(
-                      color:
-                          isActive || isCompleted
-                              ? (isActive ? surfColor : complColor)
-                              : surfColor,
+                      color: isActive || isCompleted
+                          ? (isActive ? surfColor : complColor)
+                          : surfColor,
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color:
-                            isActive || isCompleted
-                                ? primaryColor
-                                : outlineColor,
+                        color: isActive || isCompleted
+                            ? primaryColor
+                            : outlineColor,
                         width: 2,
                       ),
-                      boxShadow:
-                          isActive
-                              ? [
-                                BoxShadow(
-                                  color: primaryColor.withValues(alpha: 0.2),
-                                  blurRadius: 10,
-                                  spreadRadius: 2,
-                                ),
-                              ]
-                              : null,
+                      boxShadow: isActive
+                          ? [
+                              BoxShadow(
+                                color: primaryColor.withValues(alpha: 0.2),
+                                blurRadius: 10,
+                                spreadRadius: 2,
+                              ),
+                            ]
+                          : null,
                     ),
                     child: Center(
-                      child:
-                          isCompleted
-                              ? const Icon(
-                                AppIcons.check,
-                                color: Colors.white,
-                                size: 18,
-                              )
-                              : Text(
-                                '${index + 1}',
-                                style: TextStyle(
-                                  color:
-                                      isActive || isCompleted
-                                          ? (isActive
-                                              ? actTxtColor
-                                              : Colors.white)
-                                          : inactiveTxtColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                ),
+                      child: isCompleted
+                          ? const Icon(
+                              AppIcons.check,
+                              color: AppColors.colorWhite,
+                              size: 18,
+                            )
+                          : Text(
+                              '${index + 1}',
+                              style: TextStyle(
+                                color: isActive || isCompleted
+                                    ? (isActive
+                                          ? actTxtColor
+                                          : AppColors.colorWhite)
+                                    : inactiveTxtColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
                               ),
+                            ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -145,14 +139,12 @@ class StepIndicator extends StatelessWidget {
                     steps[index],
                     style: TextStyle(
                       fontSize: 11,
-                      fontWeight:
-                          isActive || isCompleted
-                              ? FontWeight.w600
-                              : FontWeight.normal,
-                      color:
-                          isActive || isCompleted
-                              ? primaryColor
-                              : inactiveTxtColor,
+                      fontWeight: isActive || isCompleted
+                          ? FontWeight.w600
+                          : FontWeight.normal,
+                      color: isActive || isCompleted
+                          ? primaryColor
+                          : inactiveTxtColor,
                     ),
                   ),
                 ],

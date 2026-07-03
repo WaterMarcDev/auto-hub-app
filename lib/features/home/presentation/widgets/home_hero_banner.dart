@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,14 +28,14 @@ class HomeHeroBanner extends StatelessWidget {
               // Gradient overlay
               Positioned.fill(
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color(0xCC000000),
-                        Color(0x80000000),
-                        Color(0x33000000),
+                        AppColors.colorBlack.withValues(alpha: 0.8),
+                        AppColors.colorBlack.withValues(alpha: 0.5),
+                        AppColors.colorBlack.withValues(alpha: 0.2),
                       ],
                       stops: [0.077, 0.542, 0.923],
                     ),
@@ -58,14 +59,14 @@ class HomeHeroBanner extends StatelessWidget {
                           height: 34.h,
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
                           decoration: BoxDecoration(
-                            color: const Color(
-                              0xFF0DA0CE,
-                            ).withValues(alpha: 0.13),
+                            color: AppColors.onboardingCyan.withValues(
+                              alpha: 0.13,
+                            ),
                             borderRadius: BorderRadius.circular(14.r),
                             border: Border.all(
-                              color: const Color(
-                                0xFF0DA0CE,
-                              ).withValues(alpha: 0.33),
+                              color: AppColors.onboardingCyan.withValues(
+                                alpha: 0.33,
+                              ),
                               width: 0.8,
                             ),
                           ),
@@ -75,7 +76,7 @@ class HomeHeroBanner extends StatelessWidget {
                             style: GoogleFonts.inter(
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w700,
-                              color: const Color(0xFF0DA0CE),
+                              color: AppColors.onboardingCyan,
                             ),
                           ),
                         ),
@@ -87,7 +88,9 @@ class HomeHeroBanner extends StatelessWidget {
                               style: GoogleFonts.inter(
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.white.withValues(alpha: 0.6),
+                                color: AppColors.colorWhite.withValues(
+                                  alpha: 0.6,
+                                ),
                               ),
                             ),
                             SizedBox(width: 2.w),
@@ -109,7 +112,7 @@ class HomeHeroBanner extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w800,
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                         letterSpacing: -0.5,
                       ),
                     ),
@@ -120,7 +123,7 @@ class HomeHeroBanner extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
-                        color: Colors.white.withValues(alpha: 0.55),
+                        color: AppColors.colorWhite.withValues(alpha: 0.55),
                       ),
                     ),
                     SizedBox(height: 14.h),
@@ -132,14 +135,17 @@ class HomeHeroBanner extends StatelessWidget {
                         gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [Color(0xFF0DA0CE), Color(0xFF0B8FB5)],
+                          colors: [
+                            AppColors.onboardingCyan,
+                            AppColors.onboardingCyanDark,
+                          ],
                         ),
                         borderRadius: BorderRadius.circular(14.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(
-                              0xFF0DA0CE,
-                            ).withValues(alpha: 0.45),
+                            color: AppColors.onboardingCyan.withValues(
+                              alpha: 0.45,
+                            ),
                             blurRadius: 12,
                             offset: const Offset(0, 4),
                           ),
@@ -153,7 +159,7 @@ class HomeHeroBanner extends StatelessWidget {
                             style: GoogleFonts.inter(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white,
+                              color: AppColors.colorWhite,
                             ),
                           ),
                           SizedBox(width: 4.w),
@@ -182,13 +188,13 @@ class HomeHeroBanner extends StatelessWidget {
                       width: 6.w,
                       height: 18.h,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF0DA0CE),
+                        color: AppColors.onboardingCyan,
                         borderRadius: BorderRadius.circular(10.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(
-                              0xFF0DA0CE,
-                            ).withValues(alpha: 0.8),
+                            color: AppColors.onboardingCyan.withValues(
+                              alpha: 0.8,
+                            ),
                             blurRadius: 8,
                           ),
                         ],
@@ -199,7 +205,7 @@ class HomeHeroBanner extends StatelessWidget {
                       width: 4.w,
                       height: 4.h,
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.3),
+                        color: AppColors.colorWhite.withValues(alpha: 0.3),
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -208,7 +214,7 @@ class HomeHeroBanner extends StatelessWidget {
                       width: 4.w,
                       height: 4.h,
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.3),
+                        color: AppColors.colorWhite.withValues(alpha: 0.3),
                         shape: BoxShape.circle,
                       ),
                     ),

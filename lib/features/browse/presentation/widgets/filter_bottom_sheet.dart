@@ -127,8 +127,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   void _toggleFilter(List<String> currentList, String option, String allLabel) {
     setState(() {
       if (option == allLabel) {
-        currentList..clear()
-        ..add(allLabel);
+        currentList
+          ..clear()
+          ..add(allLabel);
       } else {
         currentList.remove(allLabel);
         if (currentList.remove(option)) {
@@ -150,7 +151,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         color: AppColors.onboardingBackground,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
         border: Border.all(
-          color: const Color(0x12FFFFFF),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
         ),
       ),
       child: SafeArea(
@@ -165,7 +166,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 width: 40.w,
                 height: 4.h,
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.1),
+                  color: AppColors.colorWhite.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(2.r),
                 ),
               ),
@@ -181,7 +182,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     style: GoogleFonts.inter(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: AppColors.colorWhite,
                     ),
                   ),
                   GestureDetector(
@@ -198,7 +199,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 ],
               ),
             ),
-            const Divider(color: Color(0x12FFFFFF), height: 1),
+            Divider(
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
+              height: 1,
+            ),
             // Content (Scrollable)
             Flexible(
               child: SingleChildScrollView(
@@ -248,7 +252,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
                         activeTrackColor: AppColors.info,
-                        inactiveTrackColor: Colors.white.withValues(alpha: 0.1),
+                        inactiveTrackColor: AppColors.colorWhite.withValues(
+                          alpha: 0.1,
+                        ),
                         thumbColor: AppColors.info,
                         overlayColor: AppColors.info.withValues(alpha: 0.2),
                         trackHeight: 4.h,
@@ -332,7 +338,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           height: 20.h,
                           width: 20.h,
                           child: const CircularProgressIndicator(
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             strokeWidth: 2,
                           ),
                         )
@@ -341,7 +347,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           style: GoogleFonts.inter(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                           ),
                         ),
                 ),

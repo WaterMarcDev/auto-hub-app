@@ -79,7 +79,7 @@ class _SortChip extends StatelessWidget {
           border: Border.all(
             color: isSelected
                 ? Colors.transparent
-                : Colors.white.withValues(alpha: 0.07),
+                : AppColors.colorWhite.withValues(alpha: 0.07),
           ),
         ),
         child: Row(
@@ -89,7 +89,7 @@ class _SortChip extends StatelessWidget {
               Icon(
                 icon,
                 size: 14.sp,
-                color: isSelected ? Colors.white : AppColors.warning,
+                color: isSelected ? AppColors.colorWhite : AppColors.warning,
               ),
               SizedBox(width: 4.w),
             ],
@@ -98,7 +98,7 @@ class _SortChip extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 13.sp,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                color: isSelected ? Colors.white : AppColors.textSecondary,
+                color: isSelected ? AppColors.colorWhite : AppColors.textSecondary,
               ),
             ),
           ],

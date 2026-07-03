@@ -38,9 +38,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          Color(0xFF2E5D8A), // Royal blue variant
-          Color(0xFF162E4B), // Deep navy
-          Color(0xFF0F2440), // Dark space blue
+          AppColors.primaryLight,
+          AppColors.cardVisaNavy,
+          AppColors.primaryDark, // Dark space blue
         ],
         stops: [0.0, 0.6, 1.0],
       );
@@ -49,9 +49,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          Color(0xFF55C1E7), // Light cyan blue
-          Color(0xFF007BC1), // Amex blue
-          Color(0xFF00457C), // Dark blue
+          AppColors.cardAmexLight,
+          AppColors.cardAmexBlue,
+          AppColors.cardAmexDark,
         ],
         stops: [0.0, 0.5, 1.0],
       );
@@ -60,9 +60,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          Color(0xFFFF6B35), // Vibrant coral
-          Color(0xFFE55A2B), // Deep orange
-          Color(0xFF9E3613), // Crimson orange
+          AppColors.secondary, // Vibrant coral
+          AppColors.secondaryDark,
+          AppColors.cardMastercardCrimson,
         ],
         stops: [0.0, 0.5, 1.0],
       );
@@ -71,9 +71,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          Color(0xFF555555),
-          Color(0xFF333333),
-          Color(0xFF111111),
+          AppColors.cardDefaultLight,
+          AppColors.cardDefaultMid,
+          AppColors.cardDefaultDark,
         ],
         stops: [0.0, 0.5, 1.0],
       );
@@ -103,8 +103,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
               ),
               if (widget.card.isDefault)
                 BoxShadow(
-                  color: (isVisa ? Colors.blue : Colors.orange)
-                      .withValues(alpha: 0.15),
+                  color: (isVisa ? Colors.blue : Colors.orange).withValues(
+                    alpha: 0.15,
+                  ),
                   blurRadius: 24.r,
                   spreadRadius: 2.r,
                 ),
@@ -123,8 +124,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        Colors.white.withValues(alpha: 0.08),
-                        Colors.white.withValues(alpha: 0.0),
+                        AppColors.colorWhite.withValues(alpha: 0.08),
+                        AppColors.colorWhite.withValues(alpha: 0.0),
                       ],
                     ),
                   ),
@@ -140,8 +141,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                     shape: BoxShape.circle,
                     gradient: RadialGradient(
                       colors: [
-                        Colors.white.withValues(alpha: 0.06),
-                        Colors.white.withValues(alpha: 0.0),
+                        AppColors.colorWhite.withValues(alpha: 0.06),
+                        AppColors.colorWhite.withValues(alpha: 0.0),
                       ],
                     ),
                   ),
@@ -158,10 +159,10 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Colors.white.withValues(alpha: 0.15),
-                          Colors.white.withValues(alpha: 0.02),
-                          Colors.white.withValues(alpha: 0.0),
-                          Colors.white.withValues(alpha: 0.05),
+                          AppColors.colorWhite.withValues(alpha: 0.15),
+                          AppColors.colorWhite.withValues(alpha: 0.02),
+                          AppColors.colorWhite.withValues(alpha: 0.0),
+                          AppColors.colorWhite.withValues(alpha: 0.05),
                         ],
                         stops: const [0.0, 0.3, 0.6, 1.0],
                       ),
@@ -183,7 +184,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                         Text(
                           widget.card.brand.toUpperCase(),
                           style: AppTextStyles.headlineSmall.copyWith(
-                            color: Colors.white,
+                            color: AppColors.colorWhite,
                             fontWeight: FontWeight.w900,
                             letterSpacing: 2.w,
                           ),
@@ -195,10 +196,14 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                               vertical: 5.h,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.15),
+                              color: AppColors.colorWhite.withValues(
+                                alpha: 0.15,
+                              ),
                               borderRadius: BorderRadius.circular(20.r),
                               border: Border.all(
-                                color: Colors.white.withValues(alpha: 0.25),
+                                color: AppColors.colorWhite.withValues(
+                                  alpha: 0.25,
+                                ),
                                 width: 1.w,
                               ),
                             ),
@@ -214,7 +219,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                                 Text(
                                   'DEFAULT',
                                   style: AppTextStyles.labelSmall.copyWith(
-                                    color: Colors.white,
+                                    color: AppColors.colorWhite,
                                     fontSize: 9.sp,
                                     fontWeight: FontWeight.w700,
                                     letterSpacing: 0.5.w,
@@ -236,7 +241,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                     Text(
                       widget.card.maskedNumber,
                       style: AppTextStyles.headlineMedium.copyWith(
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 3.w,
                         fontSize: 20.sp,
@@ -261,7 +266,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                             Text(
                               'CARD HOLDER',
                               style: AppTextStyles.bodySmall.copyWith(
-                                color: Colors.white.withValues(alpha: 0.5),
+                                color: AppColors.colorWhite.withValues(
+                                  alpha: 0.5,
+                                ),
                                 fontSize: 9.sp,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 0.8.w,
@@ -271,7 +278,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                             Text(
                               widget.card.cardHolder,
                               style: AppTextStyles.bodyMedium.copyWith(
-                                color: Colors.white,
+                                color: AppColors.colorWhite,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.sp,
                               ),
@@ -284,7 +291,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                             Text(
                               'EXPIRES',
                               style: AppTextStyles.bodySmall.copyWith(
-                                color: Colors.white.withValues(alpha: 0.5),
+                                color: AppColors.colorWhite.withValues(
+                                  alpha: 0.5,
+                                ),
                                 fontSize: 9.sp,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 0.8.w,
@@ -294,7 +303,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                             Text(
                               widget.card.expiry,
                               style: AppTextStyles.bodyMedium.copyWith(
-                                color: Colors.white,
+                                color: AppColors.colorWhite,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.sp,
                               ),
@@ -324,9 +333,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0xFFFFF099), // Bright yellow-gold
-            Color(0xFFE5B942), // Metallic gold
-            Color(0xFFB5841D), // Dark bronze-gold
+            AppColors.chipGoldLight,
+            AppColors.chipGoldMetallic,
+            AppColors.chipGoldDark,
           ],
         ),
         boxShadow: [
@@ -344,25 +353,37 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
             left: 10.w,
             top: 0,
             bottom: 0,
-            child: Container(width: 1.w, color: const Color(0xFF6B510B).withValues(alpha: 0.5)),
+            child: Container(
+              width: 1.w,
+              color: AppColors.chipGoldLine.withValues(alpha: 0.5),
+            ),
           ),
           Positioned(
             right: 10.w,
             top: 0,
             bottom: 0,
-            child: Container(width: 1.w, color: const Color(0xFF6B510B).withValues(alpha: 0.5)),
+            child: Container(
+              width: 1.w,
+              color: AppColors.chipGoldLine.withValues(alpha: 0.5),
+            ),
           ),
           Positioned(
             left: 0,
             right: 0,
             top: 9.h,
-            child: Container(height: 1.h, color: const Color(0xFF6B510B).withValues(alpha: 0.5)),
+            child: Container(
+              height: 1.h,
+              color: AppColors.chipGoldLine.withValues(alpha: 0.5),
+            ),
           ),
           Positioned(
             left: 0,
             right: 0,
             bottom: 9.h,
-            child: Container(height: 1.h, color: const Color(0xFF6B510B).withValues(alpha: 0.5)),
+            child: Container(
+              height: 1.h,
+              color: AppColors.chipGoldLine.withValues(alpha: 0.5),
+            ),
           ),
           // Center core element
           Center(
@@ -370,10 +391,10 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
               width: 10.w,
               height: 8.h,
               decoration: BoxDecoration(
-                color: const Color(0xFFC79532),
+                color: AppColors.chipGoldCenter,
                 borderRadius: BorderRadius.circular(2.r),
                 border: Border.all(
-                  color: const Color(0xFF6B510B).withValues(alpha: 0.4),
+                  color: AppColors.chipGoldLine.withValues(alpha: 0.4),
                   width: 0.5.w,
                 ),
               ),

@@ -159,7 +159,7 @@ class _NewJunkRequestState extends State<NewJunkRequest> {
               currentStep: _currentStep - 1,
               steps: const ['Vehicle', 'Condition', 'Pickup'],
               activeColor: AppColors.onboardingCyan,
-              inactiveColor: Colors.white.withValues(alpha: 0.08),
+              inactiveColor: AppColors.colorWhite.withValues(alpha: 0.08),
               inactiveTextColor: AppColors.onboardingTextSecondary,
               activeTextColor: AppColors.onboardingCyan,
               surfaceColor: AppColors.onboardingSurface,
@@ -274,7 +274,7 @@ class _NewJunkRequestState extends State<NewJunkRequest> {
           color: AppColors.onboardingSurface,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.08),
+            color: AppColors.colorWhite.withValues(alpha: 0.08),
           ),
         ),
         child: Material(
@@ -312,7 +312,7 @@ class _NewJunkRequestState extends State<NewJunkRequest> {
                 ],
               )
             : null,
-        color: isEnabled ? null : Colors.white.withValues(alpha: 0.06),
+        color: isEnabled ? null : AppColors.colorWhite.withValues(alpha: 0.06),
       ),
       child: Material(
         color: Colors.transparent,
@@ -324,7 +324,7 @@ class _NewJunkRequestState extends State<NewJunkRequest> {
               label,
               style: AppTextStyles.button.copyWith(
                 color: isEnabled
-                    ? Colors.white
+                    ? AppColors.colorWhite
                     : AppColors.onboardingTextSecondary.withValues(alpha: 0.5),
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w700,

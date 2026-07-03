@@ -138,14 +138,14 @@ class StepPickupSchedule extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
             borderSide: BorderSide(
-              color: Colors.white.withValues(alpha: 0.08),
+              color: AppColors.colorWhite.withValues(alpha: 0.08),
               width: 1,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
             borderSide: BorderSide(
-              color: Colors.white.withValues(alpha: 0.08),
+              color: AppColors.colorWhite.withValues(alpha: 0.08),
               width: 1,
             ),
           ),
@@ -191,7 +191,7 @@ class StepPickupSchedule extends StatelessWidget {
       borderRadius: BorderRadius.circular(16.r),
       child: CustomPaint(
         painter: DashedBorderPainter(
-          color: Colors.white.withValues(alpha: 0.15),
+          color: AppColors.colorWhite.withValues(alpha: 0.15),
           strokeWidth: 1,
           borderRadius: 16.r,
           dashWidth: 6,
@@ -266,7 +266,7 @@ class StepPickupSchedule extends StatelessWidget {
                   padding: EdgeInsets.all(4.r),
                   child: Icon(
                     AppIcons.close,
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     size: 16.r,
                   ),
                 ),
@@ -285,7 +285,7 @@ class StepPickupSchedule extends StatelessWidget {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.06),
+          color: AppColors.colorWhite.withValues(alpha: 0.06),
           width: 1,
         ),
       ),

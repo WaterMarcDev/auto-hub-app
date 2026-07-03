@@ -102,7 +102,7 @@ class _AddressFormState extends State<AddressForm> {
                 width: 44.w,
                 height: 4.h,
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.15),
+                  color: AppColors.colorWhite.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(2.r),
                 ),
               ),
@@ -131,7 +131,7 @@ class _AddressFormState extends State<AddressForm> {
                           color: AppColors.onboardingSurfaceLight,
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.05),
+                            color: AppColors.colorWhite.withValues(alpha: 0.05),
                             width: 0.8,
                           ),
                         ),
@@ -300,7 +300,7 @@ class _AddressFormState extends State<AddressForm> {
                             child: Text(
                               isEditMode ? 'Save Changes' : 'Add Address',
                               style: AppTextStyles.button.copyWith(
-                                color: Colors.white,
+                                color: AppColors.colorWhite,
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w700,
                               ),

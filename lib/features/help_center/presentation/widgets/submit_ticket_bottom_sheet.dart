@@ -73,7 +73,7 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                   width: 44.w,
                   height: 4.h,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.12),
+                    color: AppColors.colorWhite.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(2.r),
                   ),
                 ),
@@ -99,10 +99,10 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                       width: 36.r,
                       height: 36.r,
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.05),
+                        color: AppColors.colorWhite.withValues(alpha: 0.05),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.08),
+                          color: AppColors.colorWhite.withValues(alpha: 0.08),
                           width: 0.8,
                         ),
                       ),
@@ -160,12 +160,12 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                       decoration: BoxDecoration(
                         color: isSelected
                             ? AppColors.onboardingCyan.withValues(alpha: 0.08)
-                            : Colors.white.withValues(alpha: 0.03),
+                            : AppColors.colorWhite.withValues(alpha: 0.03),
                         borderRadius: BorderRadius.circular(14.r),
                         border: Border.all(
                           color: isSelected
                               ? AppColors.onboardingCyan
-                              : Colors.white.withValues(alpha: 0.08),
+                              : AppColors.colorWhite.withValues(alpha: 0.08),
                           width: 1.0,
                         ),
                       ),
@@ -201,14 +201,14 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                   color: AppColors.onboardingSurfaceLight,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.08),
+                    color: AppColors.colorWhite.withValues(alpha: 0.08),
                     width: 0.8,
                   ),
                 ),
                 child: TextFormField(
                   controller: _subjectController,
                   style: AppTextStyles.bodyMedium.copyWith(
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     fontSize: 14.sp,
                   ),
                   decoration: InputDecoration(
@@ -256,7 +256,7 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                   color: AppColors.onboardingSurfaceLight,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.08),
+                    color: AppColors.colorWhite.withValues(alpha: 0.08),
                     width: 0.8,
                   ),
                 ),
@@ -265,7 +265,7 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                   maxLines: 4,
                   minLines: 4,
                   style: AppTextStyles.bodyMedium.copyWith(
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                     fontSize: 14.sp,
                   ),
                   decoration: InputDecoration(
@@ -305,7 +305,7 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                   onPressed: _submitTicket,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.onboardingCyan,
-                    foregroundColor: Colors.white,
+                    foregroundColor: AppColors.colorWhite,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16.r),
@@ -316,7 +316,7 @@ class _SubmitTicketBottomSheetState extends State<SubmitTicketBottomSheet> {
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: AppColors.colorWhite,
                     ),
                   ),
                 ),

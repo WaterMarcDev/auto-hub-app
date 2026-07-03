@@ -44,7 +44,7 @@ class BaseConfirmationDialog extends StatelessWidget {
           color: AppColors.onboardingSurface,
           borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.08),
+            color: AppColors.colorWhite.withValues(alpha: 0.08),
             width: 0.8,
           ),
           boxShadow: [
@@ -85,7 +85,7 @@ class BaseConfirmationDialog extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: AppTextStyles.headlineSmall.copyWith(
-                color: Colors.white,
+                color: AppColors.colorWhite,
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w800,
                 letterSpacing: -0.4,
@@ -120,7 +120,7 @@ class BaseConfirmationDialog extends StatelessWidget {
                         color: AppColors.onboardingBackground,
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.05),
+                          color: AppColors.colorWhite.withValues(alpha: 0.05),
                           width: 0.8,
                         ),
                       ),
@@ -162,7 +162,7 @@ class BaseConfirmationDialog extends StatelessWidget {
                       child: Text(
                         confirmText,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.colorWhite,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                         ),

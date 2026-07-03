@@ -11,11 +11,11 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 72.h,
-      decoration: const BoxDecoration(
-        color: Color(0xFF161B22),
+      decoration: BoxDecoration(
+        color: AppColors.onboardingSurfaceLight,
         border: Border(
           bottom: BorderSide(
-            color: Color(0x0FFFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.06),
             width: 0.8,
           ),
         ),
@@ -49,7 +49,10 @@ class HomeAppBar extends StatelessWidget {
                       gradient: const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [Color(0xFF0DA0CE), Color(0xFF0B8FB5)],
+                        colors: [
+                          AppColors.onboardingCyan,
+                          AppColors.onboardingCyanDark,
+                        ],
                       ),
                       borderRadius: BorderRadius.circular(10.r),
                     ),
@@ -59,7 +62,7 @@ class HomeAppBar extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w800,
-                        color: Colors.white,
+                        color: AppColors.colorWhite,
                       ),
                     ),
                   ),
@@ -69,7 +72,7 @@ class HomeAppBar extends StatelessWidget {
                     style: GoogleFonts.inter(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w800,
-                      color: const Color(0xFFF0F6FC),
+                      color: AppColors.onboardingTextPrimary,
                       letterSpacing: -0.5,
                     ),
                   ),
@@ -87,10 +90,10 @@ class HomeAppBar extends StatelessWidget {
                     width: 36.w,
                     height: 36.h,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF1C2330),
+                      color: AppColors.onboardingSurface,
                       borderRadius: BorderRadius.circular(16.r),
                       border: Border.all(
-                        color: const Color(0x12FFFFFF),
+                        color: AppColors.colorWhite.withValues(alpha: 0.07),
                         width: 0.8,
                       ),
                     ),
@@ -110,13 +113,13 @@ class HomeAppBar extends StatelessWidget {
                       width: 8.w,
                       height: 8.h,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF0DA0CE),
+                        color: AppColors.onboardingCyan,
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(
-                              0xFF0DA0CE,
-                            ).withValues(alpha: 0.6),
+                            color: AppColors.onboardingCyan.withValues(
+                              alpha: 0.6,
+                            ),
                             blurRadius: 6,
                           ),
                         ],
@@ -134,12 +137,15 @@ class HomeAppBar extends StatelessWidget {
                   gradient: const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [Color(0xFF0DA0CE), Color(0xFF0B8FB5)],
+                    colors: [
+                      AppColors.onboardingCyan,
+                      AppColors.onboardingCyanDark,
+                    ],
                   ),
                   borderRadius: BorderRadius.circular(16.r),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF0DA0CE).withValues(alpha: 0.35),
+                      color: AppColors.onboardingCyan.withValues(alpha: 0.35),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -151,7 +157,7 @@ class HomeAppBar extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w800,
-                    color: Colors.white,
+                    color: AppColors.colorWhite,
                   ),
                 ),
               ),

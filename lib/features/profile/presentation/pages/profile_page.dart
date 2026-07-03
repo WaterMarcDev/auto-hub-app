@@ -25,25 +25,31 @@ class ProfilePage extends StatelessWidget {
           ProfileMenuItemData(
             title: 'My Orders',
             iconPath: AppIcons.profileActivity,
-            iconBackgroundColor: const Color(0x1F0DA0CE),
+            iconBackgroundColor: AppColors.onboardingCyan.withValues(
+              alpha: 0.12,
+            ),
             onTap: () => context.push('/my-orders'),
           ),
           ProfileMenuItemData(
             title: 'Saved Parts',
             iconPath: AppIcons.profileHeart,
-            iconBackgroundColor: const Color(0x1FA78BFA),
+            iconBackgroundColor: AppColors.onboardingPurple.withValues(
+              alpha: 0.12,
+            ),
             onTap: onMenuTap,
           ),
           ProfileMenuItemData(
             title: 'My Junk Requests',
             iconPath: AppIcons.profileCard,
-            iconBackgroundColor: const Color(0x1F34D399),
+            iconBackgroundColor: AppColors.onboardingGreen.withValues(
+              alpha: 0.12,
+            ),
             onTap: () => context.pushNamed('my-request-junk'),
           ),
           ProfileMenuItemData(
             title: 'Messages',
             iconPath: AppIcons.profileChat,
-            iconBackgroundColor: const Color(0x1FFBBF24),
+            iconBackgroundColor: AppColors.warning.withValues(alpha: 0.12),
             onTap: () => context.push('/live-chats'),
           ),
         ],
@@ -54,25 +60,33 @@ class ProfilePage extends StatelessWidget {
           ProfileMenuItemData(
             title: 'Account Details',
             iconPath: AppIcons.profileActivity,
-            iconBackgroundColor: const Color(0x1F0DA0CE),
+            iconBackgroundColor: AppColors.onboardingCyan.withValues(
+              alpha: 0.12,
+            ),
             onTap: () => context.push('/account-details'),
           ),
           ProfileMenuItemData(
             title: 'Your Addresses',
             iconPath: AppIcons.profileHeart,
-            iconBackgroundColor: const Color(0x1FA78BFA),
+            iconBackgroundColor: AppColors.onboardingPurple.withValues(
+              alpha: 0.12,
+            ),
             onTap: () => context.push('/your-addresses'),
           ),
           ProfileMenuItemData(
             title: 'Payment Methods',
             iconPath: AppIcons.profileCard,
-            iconBackgroundColor: const Color(0x1F34D399),
+            iconBackgroundColor: AppColors.onboardingGreen.withValues(
+              alpha: 0.12,
+            ),
             onTap: () => context.pushNamed('payment-methods'),
           ),
           ProfileMenuItemData(
             title: 'Settings',
             iconPath: AppIcons.profileSettings,
-            iconBackgroundColor: const Color(0x1A8B929A),
+            iconBackgroundColor: AppColors.onboardingTextSecondary.withValues(
+              alpha: 0.1,
+            ),
             onTap: () => context.push('/settings'),
           ),
         ],
@@ -83,13 +97,13 @@ class ProfilePage extends StatelessWidget {
           ProfileMenuItemData(
             title: 'Help Center',
             iconPath: AppIcons.profileHelp,
-            iconBackgroundColor: const Color(0x1F60A5FA),
+            iconBackgroundColor: AppColors.facebookBlue.withValues(alpha: 0.12),
             onTap: () => context.pushNamed('help-center'),
           ),
           ProfileMenuItemData(
             title: 'Contact Support',
             iconPath: AppIcons.profileChat,
-            iconBackgroundColor: const Color(0x1FFBBF24),
+            iconBackgroundColor: AppColors.warning.withValues(alpha: 0.12),
             onTap: () => context.pushNamed('contact-support'),
           ),
         ],
@@ -99,13 +113,16 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sections = _buildSections(context, () {
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(
-          const SnackBar(content: Text('This section is coming soon')),
-        );
-    },);
+    final sections = _buildSections(
+      context,
+      () {
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            const SnackBar(content: Text('This section is coming soon')),
+          );
+      },
+    );
 
     return Scaffold(
       backgroundColor: AppColors.onboardingBackground,
@@ -158,7 +175,7 @@ class ProfilePage extends StatelessWidget {
                         'AutoHub Express v2.4.1 · Salvage & Parts',
                         textAlign: TextAlign.center,
                         style: AppTextStyles.bodySmall.copyWith(
-                          color: const Color(0xFF2D333B),
+                          color: AppColors.colorLightGray,
                           fontSize: 10.sp,
                         ),
                       ),
@@ -199,7 +216,6 @@ class _TopBar extends StatelessWidget {
                       angle: math.pi,
                       child: const Icon(
                         AppIcons.chevronRight,
-                      
                       ),
                     ),
                   ),
@@ -224,7 +240,7 @@ class _TopBar extends StatelessWidget {
                 color: AppColors.onboardingSurface,
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.07),
+                  color: AppColors.colorWhite.withValues(alpha: 0.07),
                   width: 0.8,
                 ),
               ),
@@ -292,7 +308,7 @@ class _ProfileIdentityHeader extends StatelessWidget {
                     style: GoogleFonts.inter(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.w900,
-                      color: Colors.white,
+                      color: AppColors.colorWhite,
                       height: 1.5,
                     ),
                   ),
@@ -353,7 +369,6 @@ class _ProfileIdentityHeader extends StatelessWidget {
             children: [
               const Icon(
                 AppIcons.profileVerified,
-                
               ),
               SizedBox(width: 4.5.w),
               Text(
@@ -400,7 +415,6 @@ class _SignOutButton extends StatelessWidget {
             children: [
               const Icon(
                 AppIcons.profileLogout,
-  
               ),
               SizedBox(width: 10.w),
               Text(

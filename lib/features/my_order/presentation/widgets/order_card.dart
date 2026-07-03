@@ -56,7 +56,7 @@ class OrderCard extends StatelessWidget {
           color: AppColors.onboardingSurfaceLight,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.05),
+            color: AppColors.colorWhite.withValues(alpha: 0.05),
             width: 0.8,
           ),
           boxShadow: [

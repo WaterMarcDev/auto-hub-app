@@ -26,7 +26,7 @@ class ManageCardsWidget extends StatelessWidget {
         color: AppColors.onboardingSurface,
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.04),
+          color: AppColors.colorWhite.withValues(alpha: 0.04),
         ),
         boxShadow: [
           BoxShadow(
@@ -59,7 +59,7 @@ class ManageCardsWidget extends StatelessWidget {
             separatorBuilder: (context, index) => Padding(
               padding: EdgeInsets.symmetric(vertical: 16.h),
               child: Divider(
-                color: Colors.white.withValues(alpha: 0.08),
+                color: AppColors.colorWhite.withValues(alpha: 0.08),
                 height: 1.h,
               ),
             ),
@@ -78,7 +78,7 @@ class ManageCardsWidget extends StatelessWidget {
                       color: AppColors.onboardingSurfaceLight,
                       borderRadius: BorderRadius.circular(12.r),
                       border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.05),
+                        color: AppColors.colorWhite.withValues(alpha: 0.05),
                       ),
                     ),
                     alignment: Alignment.center,
