@@ -27,7 +27,7 @@ class ProfilePage extends StatelessWidget {
             title: 'My Orders',
             iconPath: AppIcons.profileActivity,
             iconBackgroundColor: const Color(0x1F0DA0CE),
-            onTap: onMenuTap,
+            onTap: () => context.push('/my-orders'),
           ),
           ProfileMenuItemData(
             title: 'Saved Parts',
