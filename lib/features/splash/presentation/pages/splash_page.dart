@@ -92,7 +92,7 @@ class _SplashPageState extends State<SplashPage>
           end: Alignment.bottomRight,
           colors: [
             AppColors.onboardingCyan,
-            Color(0xFF0B8FB5),
+            AppColors.onboardingCyanDark,
           ],
         ),
       ),

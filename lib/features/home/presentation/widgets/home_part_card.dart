@@ -54,7 +54,7 @@ class HomePartCardHorizontal extends StatelessWidget {
         color: AppColors.onboardingSurfaceLight,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: const Color(0x12FFFFFF),
+          color: AppColors.colorWhite.withValues(alpha: 0.07),
           width: 0.8,
         ),
         boxShadow: [
@@ -95,7 +95,7 @@ class HomePartCardVertical extends StatelessWidget {
           color: AppColors.onboardingSurfaceLight,
           borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
-            color: const Color(0x12FFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
           boxShadow: [
@@ -143,14 +143,14 @@ class _PartImageSection extends StatelessWidget {
           // Gradient overlay
           Positioned.fill(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0x1A000000),
-                    Color(0x00000000),
-                    Color(0xB3000000),
+                    AppColors.colorBlack.withValues(alpha: 0.1),
+                    Colors.transparent,
+                    AppColors.colorBlack.withValues(alpha: 0.7),
                   ],
                   stops: [0.0, 0.35, 1.0],
                 ),

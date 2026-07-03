@@ -32,7 +32,7 @@ class MessagesRepository {
         lastMessage: 'Yes, the alternator is still available.',
         time: '1d ago',
         initials: 'PJ',
-        avatarColor: Color(0xFFA78BFA),
+        avatarColor: AppColors.onboardingPurple,
         unreadCount: 1,
         chatRoomId: '2',
       ),
@@ -41,7 +41,7 @@ class MessagesRepository {
         lastMessage: "We'll arrive between 9-11am.",
         time: '3d ago',
         initials: 'QT',
-        avatarColor: Color(0xFF34D399),
+        avatarColor: AppColors.onboardingGreen,
         chatRoomId: '3',
       ),
       const LiveChatConversation(

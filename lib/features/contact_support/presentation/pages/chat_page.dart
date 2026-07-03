@@ -48,6 +48,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
       });
     }
   }
+
   void _sendMessage(String text) async {
     final newMessage = ChatMessage(
       text: text,
@@ -163,11 +164,11 @@ class _LiveChatPageState extends State<LiveChatPage> {
   Widget _buildAppBar(BuildContext context, ChatRoomInfo roomInfo) {
     return Container(
       height: 70.h,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.onboardingBackground,
         border: Border(
           bottom: BorderSide(
-            color: Color(0x12FFFFFF), // rgba(255,255,255,0.07)
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
         ),

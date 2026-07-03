@@ -199,13 +199,13 @@ class _PartDetailsPageState extends State<PartDetailsPage> {
             fit: BoxFit.cover,
           ),
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0x59000000),
-                  Color(0x00000000),
+                  AppColors.colorBlack.withValues(alpha: 0.35),
+                  Colors.transparent,
                   AppColors.onboardingBackground,
                 ],
                 stops: [0, 0.4, 1],

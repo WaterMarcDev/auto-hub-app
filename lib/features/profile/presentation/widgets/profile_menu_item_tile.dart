@@ -64,7 +64,7 @@ class ProfileMenuItemTile extends StatelessWidget {
               ),
               Icon(
                 AppIcons.chevronRight,
-                color: const Color(0xFF8B929A),
+                color: AppColors.colorGray,
                 size: 20.sp,
               ),
             ],

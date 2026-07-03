@@ -28,14 +28,14 @@ class HomeHeroBanner extends StatelessWidget {
               // Gradient overlay
               Positioned.fill(
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color(0xCC000000),
-                        Color(0x80000000),
-                        Color(0x33000000),
+                        AppColors.colorBlack.withValues(alpha: 0.8),
+                        AppColors.colorBlack.withValues(alpha: 0.5),
+                        AppColors.colorBlack.withValues(alpha: 0.2),
                       ],
                       stops: [0.077, 0.542, 0.923],
                     ),
@@ -59,14 +59,14 @@ class HomeHeroBanner extends StatelessWidget {
                           height: 34.h,
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
                           decoration: BoxDecoration(
-                            color: 
-                              AppColors.onboardingCyan
-                            .withValues(alpha: 0.13),
+                            color: AppColors.onboardingCyan.withValues(
+                              alpha: 0.13,
+                            ),
                             borderRadius: BorderRadius.circular(14.r),
                             border: Border.all(
-                              color: 
-                                AppColors.onboardingCyan
-                              .withValues(alpha: 0.33),
+                              color: AppColors.onboardingCyan.withValues(
+                                alpha: 0.33,
+                              ),
                               width: 0.8,
                             ),
                           ),
@@ -88,7 +88,9 @@ class HomeHeroBanner extends StatelessWidget {
                               style: GoogleFonts.inter(
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w500,
-                                color: AppColors.colorWhite.withValues(alpha: 0.6),
+                                color: AppColors.colorWhite.withValues(
+                                  alpha: 0.6,
+                                ),
                               ),
                             ),
                             SizedBox(width: 2.w),
@@ -133,14 +135,17 @@ class HomeHeroBanner extends StatelessWidget {
                         gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [AppColors.onboardingCyan, AppColors.onboardingCyanDark],
+                          colors: [
+                            AppColors.onboardingCyan,
+                            AppColors.onboardingCyanDark,
+                          ],
                         ),
                         borderRadius: BorderRadius.circular(14.r),
                         boxShadow: [
                           BoxShadow(
-                            color: 
-                              AppColors.onboardingCyan
-                            .withValues(alpha: 0.45),
+                            color: AppColors.onboardingCyan.withValues(
+                              alpha: 0.45,
+                            ),
                             blurRadius: 12,
                             offset: const Offset(0, 4),
                           ),
@@ -187,9 +192,9 @@ class HomeHeroBanner extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.r),
                         boxShadow: [
                           BoxShadow(
-                            color: 
-                              AppColors.onboardingCyan
-                            .withValues(alpha: 0.8),
+                            color: AppColors.onboardingCyan.withValues(
+                              alpha: 0.8,
+                            ),
                             blurRadius: 8,
                           ),
                         ],

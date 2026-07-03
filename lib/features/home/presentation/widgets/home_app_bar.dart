@@ -11,11 +11,11 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 72.h,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.onboardingSurfaceLight,
         border: Border(
           bottom: BorderSide(
-            color: Color(0x0FFFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.06),
             width: 0.8,
           ),
         ),
@@ -93,7 +93,7 @@ class HomeAppBar extends StatelessWidget {
                       color: AppColors.onboardingSurface,
                       borderRadius: BorderRadius.circular(16.r),
                       border: Border.all(
-                        color: const Color(0x12FFFFFF),
+                        color: AppColors.colorWhite.withValues(alpha: 0.07),
                         width: 0.8,
                       ),
                     ),

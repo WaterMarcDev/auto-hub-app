@@ -299,7 +299,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           'Build 2026.03.31 · Flutter',
                           textAlign: TextAlign.center,
                           style: AppTextStyles.bodySmall.copyWith(
-                            color: const Color(0xFF2D333B),
+                            color: AppColors.colorLightGray,
                             fontSize: 10.sp,
                           ),
                         ),

@@ -50,7 +50,9 @@ class DetailItemTile extends StatelessWidget {
               width: 36.w,
               height: 36.h,
               decoration: BoxDecoration(
-                color: iconBackgroundColor ?? const Color(0x1F0DA0CE),
+                color:
+                    iconBackgroundColor ??
+                    AppColors.onboardingCyan.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12.r),
               ),
               alignment: Alignment.center,

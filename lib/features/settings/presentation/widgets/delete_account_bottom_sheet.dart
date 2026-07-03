@@ -33,7 +33,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
             width: 40.w,
             height: 4.h,
             decoration: BoxDecoration(
-              color: const Color(0xFF2D333B),
+              color: AppColors.colorLightGray,
               borderRadius: BorderRadius.circular(2.r),
             ),
           ),
@@ -129,10 +129,22 @@ class DeleteAccountBottomSheet extends StatelessWidget {
             ),
             child: Column(
               children: [
-                _buildBulletPoint('Your profile and account data', showDivider: true),
-                _buildBulletPoint('All order history and receipts', showDivider: true),
-                _buildBulletPoint('Saved parts and wishlists', showDivider: true),
-                _buildBulletPoint('All conversations and messages', showDivider: true),
+                _buildBulletPoint(
+                  'Your profile and account data',
+                  showDivider: true,
+                ),
+                _buildBulletPoint(
+                  'All order history and receipts',
+                  showDivider: true,
+                ),
+                _buildBulletPoint(
+                  'Saved parts and wishlists',
+                  showDivider: true,
+                ),
+                _buildBulletPoint(
+                  'All conversations and messages',
+                  showDivider: true,
+                ),
                 _buildBulletPoint('Junk request history', showDivider: false),
               ],
             ),

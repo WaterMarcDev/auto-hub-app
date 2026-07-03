@@ -55,7 +55,7 @@ class _StatCard extends StatelessWidget {
           color: AppColors.onboardingSurfaceLight,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: const Color(0x12FFFFFF),
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
           boxShadow: [

@@ -103,7 +103,9 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: AppColors.onboardingSurfaceLight,
         title: Text(
           'Clear Chat?',
-          style: AppTextStyles.headlineSmall.copyWith(color: AppColors.colorWhite),
+          style: AppTextStyles.headlineSmall.copyWith(
+            color: AppColors.colorWhite,
+          ),
         ),
         content: Text(
           'Are you sure you want to clear this conversation? This action cannot be undone.',
@@ -116,7 +118,9 @@ class _ChatPageState extends State<ChatPage> {
             onPressed: () => context.pop(),
             child: Text(
               'Cancel',
-              style: AppTextStyles.bodyMedium.copyWith(color: AppColors.colorWhite),
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: AppColors.colorWhite,
+              ),
             ),
           ),
           TextButton(
@@ -185,11 +189,11 @@ class _ChatPageState extends State<ChatPage> {
   Widget _buildAppBar(BuildContext context, LiveChatConversation roomInfo) {
     return Container(
       height: 70.h,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.onboardingBackground,
         border: Border(
           bottom: BorderSide(
-            color: Color(0x12FFFFFF), // rgba(255,255,255,0.07)
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
         ),
@@ -332,7 +336,7 @@ class _ChatPageState extends State<ChatPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            AppIcons.chatBubble,  
+            AppIcons.chatBubble,
             color: AppColors.onboardingTextSecondary.withValues(alpha: 0.15),
             size: 54.r,
           ),

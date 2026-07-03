@@ -106,14 +106,14 @@ class MockChatRepository implements ChatRepository {
         return const ChatRoomInfo(
           name: 'PartSeller_Jay',
           initials: 'PJ',
-          avatarColor: Color(0xFFA78BFA),
+          avatarColor: AppColors.onboardingPurple,
           isOnline: false,
         );
       case '3':
         return const ChatRoomInfo(
           name: 'QuickTow Inc.',
           initials: 'QT',
-          avatarColor: Color(0xFF34D399),
+          avatarColor: AppColors.onboardingGreen,
           isOnline: false,
         );
       case '4':

@@ -38,8 +38,9 @@ class _ChatInputBarState extends State<ChatInputBar> {
 
   @override
   void dispose() {
-    _controller..removeListener(_textListener)
-    ..dispose();
+    _controller
+      ..removeListener(_textListener)
+      ..dispose();
     super.dispose();
   }
 
@@ -67,7 +68,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
         color: AppColors.onboardingBackground,
         border: Border(
           top: BorderSide(
-            color: const Color(0x12FFFFFF), // rgba(255,255,255,0.07)
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8.w,
           ),
         ),

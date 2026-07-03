@@ -25,7 +25,7 @@ class EmptyPartsView extends StatelessWidget {
             color: AppColors.surfaceDarkVariant,
             borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
-              color: const Color(0x12FFFFFF),
+              color: AppColors.colorWhite.withValues(alpha: 0.07),
               width: 1,
             ),
           ),

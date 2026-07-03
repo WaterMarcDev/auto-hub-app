@@ -248,12 +248,14 @@ class SavedPage extends StatelessWidget {
                                 end: Alignment(0.62, 1.0),
                                 colors: [
                                   AppColors.onboardingCyan,
-                                  Color(0xFF0B8FB5),
+                                  AppColors.onboardingCyanDark,
                                 ],
                               ),
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: Color(0x660DA0CE),
+                                  color: AppColors.onboardingCyan.withValues(
+                                    alpha: 0.4,
+                                  ),
                                   blurRadius: 24,
                                   offset: Offset(0, 6),
                                 ),

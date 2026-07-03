@@ -63,11 +63,11 @@ class _ChatInputBarState extends State<ChatInputBar> {
         16.w,
         (paddingBottom > 0 ? paddingBottom : 12.h) + bottomInset,
       ),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.onboardingBackground,
         border: Border(
           top: BorderSide(
-            color: Color(0x12FFFFFF), // rgba(255,255,255,0.07)
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
         ),
@@ -170,7 +170,6 @@ class _ChatInputBarState extends State<ChatInputBar> {
               alignment: Alignment.center,
               child: const Icon(
                 AppIcons.send,
-                
               ),
             ),
           ),

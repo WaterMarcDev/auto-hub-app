@@ -82,7 +82,7 @@ class ProductCard extends StatelessWidget {
                         alignment: Alignment.center,
                         child: const Icon(
                           Icons.image_not_supported_outlined,
-                          color: Color(0xFF8B929A),
+                          color: AppColors.colorGray,
                           size: 40,
                         ),
                       );

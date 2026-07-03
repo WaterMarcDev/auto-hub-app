@@ -65,17 +65,17 @@ class _MainShellState extends State<MainShell> {
 
     return Container(
       height: 76.h + bottomInset,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.onboardingBackground,
         border: Border(
           top: BorderSide(
-            color: Color(0x12FFFFFF), // rgba(255,255,255,0.07)
+            color: AppColors.colorWhite.withValues(alpha: 0.07),
             width: 0.8,
           ),
         ),
         boxShadow: [
           BoxShadow(
-            color: Color(0x80000000), // rgba(0,0,0,0.5)
+            color: AppColors.colorBlack.withValues(alpha: 0.5),
             blurRadius: 32,
             offset: Offset(0, -4),
           ),
@@ -120,12 +120,14 @@ class _MainShellState extends State<MainShell> {
                       width: 40.w,
                       height: 40.h,
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            Color(0x330DA0CE), // rgba(13,160,206,0.2)
-                            Color(0x1F0B8FB5), // rgba(11,143,181,0.12)
+                            AppColors.onboardingCyan.withValues(alpha: 0.2),
+                            AppColors.onboardingCyanDark.withValues(
+                              alpha: 0.12,
+                            ),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(16.r),
@@ -168,9 +170,11 @@ class _MainShellState extends State<MainShell> {
                         decoration: BoxDecoration(
                           color: AppColors.onboardingCyan,
                           borderRadius: BorderRadius.circular(2.r),
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
-                              color: Color(0xCC0DA0CE), // rgba(13,160,206,0.8)
+                              color: AppColors.onboardingCyan.withValues(
+                                alpha: 0.8,
+                              ),
                               blurRadius: 8,
                             ),
                           ],
