@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 
 class BrowsePage extends StatefulWidget {
   const BrowsePage({super.key});

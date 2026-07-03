@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_hub_app/core/theme/app_colors.dart';
 
 class HomeStatsRow extends StatelessWidget {
   const HomeStatsRow({super.key});
@@ -83,7 +84,7 @@ class _StatCard extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
-                color: const Color(0xFF484F58),
+                color: AppColors.textTertiary,
               ),
             ),
           ],
