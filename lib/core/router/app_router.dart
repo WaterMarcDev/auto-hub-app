@@ -3,6 +3,7 @@ import 'package:auto_hub_app/features/account_details/presentation/pages/account
 import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
+import 'package:auto_hub_app/features/help_center/presentation/pages/help_center_page.dart';
 import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
 import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart' ;
 import 'package:auto_hub_app/features/my_order/presentation/pages/my_orders.dart';
@@ -157,6 +158,11 @@ final GoRouter appRouter = GoRouter(
       path: '/new-junk-request',
       name: 'new-junk-request',
       builder: (context, state) => const NewJunkRequest(),
+    ),
+    GoRoute(
+      path: '/help-center',
+      name: 'help-center',
+      builder: (context, state) => const HelpCenterPage(),
     ),
   ],
 );

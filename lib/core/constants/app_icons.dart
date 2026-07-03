@@ -25,6 +25,7 @@ class AppIcons {
   static const IconData checkCircleRounded = Icons.check_circle_rounded;
   static const IconData chevronLeft = Icons.chevron_left;
   static const IconData chevronRight = Icons.chevron_right;
+  static const IconData chevronRightRounded = Icons.chevron_right_rounded;
   static const IconData close = Icons.close;
   static const IconData confirmationNumber = Icons.confirmation_number_outlined;
   static const IconData creditCardOffRounded = Icons.credit_card_off_rounded;
@@ -51,6 +52,7 @@ class AppIcons {
   static const IconData infoOutline = Icons.info_outline;
   static const IconData infoOutlineRounded = Icons.info_outline_rounded;
   static const IconData junkCalendar = Icons.calendar_today_outlined;
+  static const IconData keyboardArrowDownRounded = Icons.keyboard_arrow_down_rounded;
   static const IconData localShipping = Icons.local_shipping_outlined;
   static const IconData locationOffOutlined = Icons.location_off_outlined;
   static const IconData locationOn = Icons.location_on_outlined;
@@ -61,6 +63,7 @@ class AppIcons {
   static const IconData mailOutlineRounded = Icons.mail_outline_rounded;
   static const IconData manageDeleteOutline = Icons.delete_outline;
   static const IconData mapPin = Icons.location_on_outlined;
+  static const IconData menuBookOutlined = Icons.menu_book_outlined;
   static const IconData moreVert = Icons.more_vert;
   static const IconData payments = Icons.payments;
   static const IconData phoneOutline = Icons.phone_outlined;
@@ -80,6 +83,7 @@ class AppIcons {
   static const IconData scale = Icons.scale_outlined;
   static const IconData schedule = Icons.schedule;
   static const IconData search = Icons.search;
+  static const IconData searchOffRounded = Icons.search_off_rounded;
   static const IconData security = Icons.security;
   static const IconData send = Icons.send;
   static const IconData share = Icons.share_outlined;
