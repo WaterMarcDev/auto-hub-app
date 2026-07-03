@@ -204,7 +204,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                 children: [
                                   Text(
                                     '${settings.selectedLanguageFlag} ',
-                                    style: const TextStyle(fontSize: 16.sp),
+                                    style: TextStyle(fontSize: 16.sp),
                                   ),
                                   Text(
                                     settings.selectedLanguage,

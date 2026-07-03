@@ -3,22 +3,17 @@ import 'package:auto_hub_app/features/account_details/presentation/pages/account
 import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
-import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart' as contact_support_chat;
 import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
 import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart' ;
-import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart' as contact_support_chat;
-import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
-import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
-import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart';
 import 'package:auto_hub_app/features/my_order/presentation/pages/my_orders.dart';
 import 'package:auto_hub_app/features/my_order/presentation/pages/order_details_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/payment_methods/presentation/pages/payment_method_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
-import 'package:auto_hub_app/features/settings/presentation/pages/settings_page.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/junk_detail_page.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/my_request_junk.dart';
 import 'package:auto_hub_app/features/request_junk/presentation/pages/new_junk_request.dart';
+import 'package:auto_hub_app/features/settings/presentation/pages/settings_page.dart';
 import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
@@ -99,14 +94,7 @@ final GoRouter appRouter = GoRouter(
         return ChatPage(chatRoomId: chatRoomId);
       },
     ),
-    GoRoute(
-      path: '/chat/:chatRoomId',
-      name: 'chat-room',
-      builder: (context, state) {
-        final chatRoomId = state.pathParameters['chatRoomId'] ?? '1';
-        return ChatPage(chatRoomId: chatRoomId);
-      },
-    ),
+    
     // contact_support feature
     GoRoute(
       path: '/contact-support',
@@ -123,7 +111,7 @@ final GoRouter appRouter = GoRouter(
       GoRoute(
       path: '/contact-support-chat',
       name: 'contact-support-chat',
-      builder: (context, state) => const contact_support_chat.ChatPage(),
+      builder: (context, state) => const LiveChatPage(),
     ),
     // account
     GoRoute(
@@ -144,11 +132,12 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/settings',
       name: 'settings',
-      builder: (context, state) => const SettingsPage(),
+      builder: (context, state) => const SettingsPage(),),
+
      GoRoute(
       path: '/payment-methods',
       name: 'payment-methods',
-      builder: (context, state) => const PaymentMethodPage(),
+      builder: (context, state) => const PaymentMethodPage(),),
       GoRoute(
       path: '/my-request-junk',
       name: 'my-request-junk',

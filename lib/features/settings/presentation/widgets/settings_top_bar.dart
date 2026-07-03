@@ -3,7 +3,6 @@ import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class SettingsTopBar extends StatelessWidget {
@@ -37,19 +36,8 @@ class SettingsTopBar extends StatelessWidget {
                   ),
                 ),
                 alignment: Alignment.center,
-                child: SvgPicture.asset(
+                child: const Icon(
                   AppIcons.arrowLeft,
-                  width: 16.w,
-                  height: 16.h,
-                  colorFilter: const ColorFilter.mode(
-                    Colors.white,
-                    BlendMode.srcIn,
-                  ),
-                  errorBuilder: (context, error, stackTrace) => Icon(
-                    Icons.arrow_back_ios_new,
-                    color: Colors.white,
-                    size: 14.sp,
-                  ),
                 ),
               ),
             ),
