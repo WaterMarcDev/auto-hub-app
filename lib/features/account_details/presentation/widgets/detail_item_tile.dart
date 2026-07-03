@@ -20,7 +20,7 @@ class DetailItemTile extends StatelessWidget {
 
   final String label;
   final String? value;
-  final String? iconPath;
+  final IconData? iconPath;
   final Color? iconColor;
   final Color? iconBackgroundColor;
   final Color? labelColor;
@@ -54,19 +54,10 @@ class DetailItemTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.r),
               ),
               alignment: Alignment.center,
-              child: SvgPicture.asset(
+              child: Icon(
                 iconPath!,
-                width: 16.w,
-                height: 16.h,
-                colorFilter: ColorFilter.mode(
-                  iconColor ?? AppColors.onboardingCyan,
-                  BlendMode.srcIn,
-                ),
-                errorBuilder: (context, error, stackTrace) => Icon(
-                  Icons.error_outline,
-                  color: AppColors.error,
-                  size: 16.w,
-                ),
+                color: iconColor ?? AppColors.onboardingTextPrimary,
+                size: 18.sp,
               ),
             ),
             SizedBox(width: 14.w),

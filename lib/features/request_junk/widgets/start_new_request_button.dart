@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,8 @@ class StartNewRequestButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.local_shipping,
+                    AppIcons.localShipping,
+                  
                     color: Colors.white,
                     size: 20.r,
                   ),

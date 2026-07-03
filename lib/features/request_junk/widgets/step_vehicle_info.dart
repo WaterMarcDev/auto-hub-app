@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/vin/data/datasources/vin_remote_datasource.dart';
@@ -263,7 +264,7 @@ class _StepVehicleInfoState extends State<StepVehicleInfo> {
                       child: Row(
                         children: [
                           const Icon(
-                            Icons.check_circle_outline_rounded,
+                            AppIcons.checkCircleOutline,
                             color: AppColors.onboardingGreen,
                             size: 20,
                           ),
@@ -316,7 +317,7 @@ class _StepVehicleInfoState extends State<StepVehicleInfo> {
                       child: Row(
                         children: [
                           const Icon(
-                            Icons.error_outline_rounded,
+                            AppIcons.errorOutlineRounded,
                             color: AppColors.error,
                             size: 20,
                           ),

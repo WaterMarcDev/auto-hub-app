@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/your_addresses/domain/entities/address.dart';
@@ -28,15 +29,15 @@ class AddressCard extends StatelessWidget {
     Color iconBgColor;
 
     if (isHome) {
-      typeIcon = Icons.home_outlined;
+      typeIcon = AppIcons.homeOutlined;
       iconColor = AppColors.onboardingCyan;
       iconBgColor = AppColors.onboardingCyan.withValues(alpha: 0.1);
     } else if (isWork) {
-      typeIcon = Icons.work_outline_rounded;
+      typeIcon = AppIcons.workOutlineRounded;
       iconColor = AppColors.onboardingTextSecondary;
       iconBgColor = AppColors.onboardingSurfaceLight;
     } else {
-      typeIcon = Icons.apartment_rounded;
+      typeIcon = AppIcons.apartmentRounded;
       iconColor = AppColors.onboardingTextSecondary;
       iconBgColor = AppColors.onboardingSurfaceLight;
     }
@@ -107,7 +108,7 @@ class AddressCard extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
-                                  Icons.check_circle_rounded,
+                                  AppIcons.checkCircleRounded,
                                   size: 9.sp,
                                   color: AppColors.onboardingGreen,
                                 ),
@@ -161,7 +162,7 @@ class AddressCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.check_circle_outline_rounded,
+                          AppIcons.checkCircleOutline,
                           size: 11.sp,
                           color: AppColors.onboardingGreen,
                         ),
@@ -208,7 +209,7 @@ class AddressCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.edit_outlined,
+                          AppIcons.editOutlined,
                           size: 13.sp,
                           color: AppColors.onboardingCyan,
                         ),
@@ -247,7 +248,7 @@ class AddressCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.delete_outline_rounded,
+                          AppIcons.deleteOutlineRounded,
                           size: 13.sp,
                           color: AppColors.error,
                         ),

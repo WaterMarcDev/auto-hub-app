@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,7 @@ class ChatBubble extends StatelessWidget {
                   ),
                   SizedBox(width: 4.w),
                   Icon(
-                    isSent ? Icons.done_all : Icons.done,
+                    isSent ? AppIcons.doneAll : AppIcons.done,
                     color: Colors.white.withValues(alpha: 0.7),
                     size: 14.sp,
                   ),

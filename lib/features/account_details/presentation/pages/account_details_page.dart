@@ -234,7 +234,7 @@ class _TopBar extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Icon(
-                      Icons.arrow_back_ios_new,
+                      AppIcons.chevronLeft,
                       color: Colors.white,
                       size: 16.w,
                     ),
@@ -267,20 +267,9 @@ class _TopBar extends StatelessWidget {
                   ),
                 ),
                 alignment: Alignment.center,
-                child: SvgPicture.asset(
+                child: const Icon(
                   AppIcons.profileEdit,
-                  width: 15.w,
-                  height: 15.h,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.onboardingCyan,
-                    BlendMode.srcIn,
-                  ),
-                  errorBuilder: (context, error, stackTrace) => Icon(
-                    Icons.edit_outlined,
-                    color: AppColors.onboardingCyan,
-                    size: 15.w,
-                  ),
-                ),
+                )
               ),
             ),
           ],

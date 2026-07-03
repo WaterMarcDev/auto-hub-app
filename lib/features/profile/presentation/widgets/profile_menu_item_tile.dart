@@ -44,10 +44,10 @@ class ProfileMenuItemTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14.r),
                 ),
                 alignment: Alignment.center,
-                child: SvgPicture.asset(
+                child: Icon(
                   item.iconPath,
-                  width: 15.w,
-                  height: 15.h,
+                  color: item.iconBackgroundColor.withValues(alpha: 1.0),
+                  size: 20.sp,
                 ),
               ),
               SizedBox(width: 12.w),
@@ -61,14 +61,10 @@ class ProfileMenuItemTile extends StatelessWidget {
                   ),
                 ),
               ),
-              SvgPicture.asset(
+              Icon(
                 AppIcons.chevronRight,
-                width: 15.w,
-                height: 15.h,
-                colorFilter: const ColorFilter.mode(
-                  Color(0xFF2D333B),
-                  BlendMode.srcIn,
-                ),
+                color: const Color(0xFF8B929A),
+                size: 20.sp,
               ),
             ],
           ),

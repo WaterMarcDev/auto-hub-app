@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/request_junk/models/junk_models.dart';
@@ -84,7 +85,7 @@ class RequestItemCard extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    Icons.directions_car_filled_outlined,
+                    AppIcons.directionsCar,
                     color: AppColors.onboardingTextSecondary,
                     size: 16.r,
                   ),
@@ -115,7 +116,8 @@ class RequestItemCard extends StatelessWidget {
                     ),
                   ),
                   Icon(
-                    Icons.chevron_right,
+                    AppIcons.chevronRight,
+                    
                     color: AppColors.onboardingTextSecondary.withValues(
                       alpha: 0.6,
                     ),

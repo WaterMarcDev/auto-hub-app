@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/payment_methods/domain/entities/payment_card.dart';
@@ -82,7 +83,8 @@ class ManageCardsWidget extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Icon(
-                      Icons.credit_card_rounded,
+                      AppIcons.creditCardOffRounded
+                      ,
                       color: isVisa ? Colors.blue.shade300 : Colors.orange.shade300,
                       size: 20.w,
                     ),
@@ -121,7 +123,8 @@ class ManageCardsWidget extends StatelessWidget {
                             if (!card.isDefault) ...[
                               _buildActionButton(
                                 label: 'Set Default',
-                                icon: Icons.check_circle_outline_rounded,
+                                icon:AppIcons.checkCircleOutline
+                                ,
                                 color: AppColors.onboardingGreen,
                                 backgroundColor: AppColors.onboardingGreen
                                     .withValues(alpha: 0.08),
@@ -133,7 +136,7 @@ class ManageCardsWidget extends StatelessWidget {
                             ],
                             _buildActionButton(
                               label: 'Remove',
-                              icon: Icons.delete_outline_rounded,
+                              icon: AppIcons.deleteOutlineRounded,
                               color: AppColors.error,
                               backgroundColor:
                                   AppColors.error.withValues(alpha: 0.08),

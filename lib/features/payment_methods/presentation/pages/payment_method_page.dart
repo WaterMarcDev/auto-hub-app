@@ -196,17 +196,9 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
               ],
             ),
             padding: EdgeInsets.all(10.w),
-            child: SvgPicture.asset(
-              AppIcons.arrowLeft,
-              colorFilter: const ColorFilter.mode(
-                Colors.white,
-                BlendMode.srcIn,
-              ),
-              errorBuilder: (context, error, stackTrace) => const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-            ),
+            child: const Icon(
+              AppIcons.arrowLeft
+            )
           ),
         ),
         SizedBox(width: 16.w),
@@ -321,7 +313,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
           ),
           alignment: Alignment.center,
           child: Icon(
-            Icons.credit_card_off_rounded,
+            AppIcons.creditCardOffRounded,
             color: AppColors.onboardingTextSecondary,
             size: 36.w,
           ),
@@ -366,7 +358,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.add_rounded,
+              AppIcons.addRounded,
               color: AppColors.onboardingCyan,
               size: 20.w,
             ),

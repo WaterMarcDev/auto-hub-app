@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/your_addresses/domain/entities/address.dart';
@@ -136,7 +137,7 @@ class _AddressFormState extends State<AddressForm> {
                         ),
                         alignment: Alignment.center,
                         child: Icon(
-                          Icons.close,
+                          AppIcons.close,
                           size: 16.sp,
                           color: AppColors.onboardingTextSecondary,
                         ),

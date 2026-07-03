@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 
 class StepIndicator extends StatelessWidget {
@@ -120,7 +121,7 @@ class StepIndicator extends StatelessWidget {
                       child:
                           isCompleted
                               ? const Icon(
-                                Icons.check,
+                                AppIcons.check,
                                 color: Colors.white,
                                 size: 18,
                               )

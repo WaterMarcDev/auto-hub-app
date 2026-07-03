@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/request_junk/models/junk_models.dart';
@@ -152,7 +153,7 @@ class _MyRequestJunkState extends State<MyRequestJunk> {
                 ),
               ),
               child: const Icon(
-                Icons.chevron_left,
+                AppIcons.chevronLeft,
                 color: Colors.white,
                 size: 24,
               ),

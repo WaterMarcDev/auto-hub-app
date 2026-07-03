@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/payment_methods/domain/entities/payment_card.dart';
@@ -205,7 +206,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
-                                  Icons.check_circle,
+                                  AppIcons.checkCircle,
                                   color: AppColors.onboardingGreen,
                                   size: 11.w,
                                 ),

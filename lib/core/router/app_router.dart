@@ -2,10 +2,10 @@ import 'package:auto_hub_app/core/shell/main_shell.dart';
 import 'package:auto_hub_app/features/account_details/presentation/pages/account_details_page.dart';
 import 'package:auto_hub_app/features/account_details/presentation/pages/edit_account_details_page.dart';
 import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
-import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
-import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart';
-import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
+import 'package:auto_hub_app/features/contact_support/presentation/pages/chat_page.dart' as contact_support_chat;
+import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
+import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart' ;
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:auto_hub_app/features/payment_methods/presentation/pages/payment_method_page.dart';
 import 'package:auto_hub_app/features/product/presentation/pages/part_details_page.dart';
@@ -83,10 +83,10 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/chat/:chatRoomId',
-      name: 'chat',
+      name: 'chat-room',
       builder: (context, state) {
         final chatRoomId = state.pathParameters['chatRoomId'] ?? '1';
-        return LiveChatPage(chatRoomId: chatRoomId);
+        return ChatPage(chatRoomId: chatRoomId);
       },),
       GoRoute(
       path: '/account-details',
@@ -96,15 +96,17 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/edit-account-details',
       name: 'edit-account-details',
-      builder: (context, state) => const EditAccountDetailsPage(),
+      builder: (context, state) => const EditAccountDetailsPage(),),
           GoRoute(
       path: '/your-addresses',
       name: 'your-addresses',
-      builder: (context, state) => const YourAddressesPage(),
+      builder: (context, state) => const YourAddressesPage(),),
       GoRoute(
       path: '/payment-methods',
       name: 'payment-methods',
       builder: (context, state) => const PaymentMethodPage(),
+      ),
+      GoRoute(
       path: '/my-request-junk',
       name: 'my-request-junk',
       builder: (context, state) => const MyRequestJunk(),
@@ -126,4 +128,3 @@ final GoRouter appRouter = GoRouter(
     ),
   ],
 );
-

@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -204,7 +205,7 @@ class StepVehicleCondition extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              value ? Icons.check_circle_outline : Icons.cancel_outlined,
+              value ? AppIcons.checkCircleOutline : AppIcons.cancelOutlined,
               color: value ? activeColor : inactiveColor,
               size: 20.r,
             ),

@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/constants/app_images.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
@@ -71,13 +72,13 @@ class QualityPartsView extends StatelessWidget {
 
           // Bullet points
           _buildFeatureBullet(
-            Icons.category,
+            AppIcons.category,
             '18,000+ parts across 8 categories',
           ),
           SizedBox(height: 12.h),
-          _buildFeatureBullet(Icons.verified, 'Every yard verified & rated'),
+          _buildFeatureBullet(AppIcons.verified, 'Every yard verified & rated'),
           SizedBox(height: 12.h),
-          _buildFeatureBullet(Icons.security, 'Warranty on every listing'),
+          _buildFeatureBullet(AppIcons.security, 'Warranty on every listing'),
         ],
       ),
     );

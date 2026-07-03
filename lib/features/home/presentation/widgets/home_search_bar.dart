@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +31,7 @@ class HomeSearchBar extends StatelessWidget {
           children: [
             SizedBox(width: 14.w),
             const Icon(
-              Icons.search,
+              AppIcons.search,
               color: Color(0x80F0F6FC),
               size: 16,
             ),

@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,7 +89,7 @@ class _AppBar extends StatelessWidget {
                 ),
               ),
               child: const Icon(
-                Icons.arrow_back_ios_new_rounded,
+                AppIcons.chevronLeft,
                 color: Color(0xFF8B929A),
                 size: 16,
               ),

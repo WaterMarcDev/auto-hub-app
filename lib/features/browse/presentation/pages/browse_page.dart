@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
@@ -13,7 +14,7 @@ class BrowsePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.search, color: Color(0xFF4B5563), size: 48),
+            const Icon(AppIcons.search, color: Color(0xFF4B5563), size: 48),
             const SizedBox(height: 12),
             Text(
               'Browse',

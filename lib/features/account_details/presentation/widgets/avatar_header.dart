@@ -96,7 +96,7 @@ class AvatarHeader extends StatelessWidget {
                       ),
                       alignment: Alignment.center,
                       child: Icon(
-                        Icons.camera_alt_outlined,
+                        AppIcons.cameraAltOutlined,
                         color: AppColors.onboardingCyan,
                         size: 14.sp,
                       ),
@@ -112,16 +112,8 @@ class AvatarHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset(
+              const Icon(
                 AppIcons.profileVerified,
-                width: 14.w,
-                height: 14.h,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.onboardingGreen,
-                  BlendMode.srcIn,
-                ),
-                errorBuilder: (context, error, stackTrace) =>
-                    const SizedBox.shrink(),
               ),
               SizedBox(width: 6.w),
               Text(

@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/widgets/base_confirmation_dialog.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class DeleteConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseConfirmationDialog(
-      icon: Icons.warning_amber_rounded,
+      icon: AppIcons.warningAmber,
       iconColor: AppColors.error,
       iconBgColor: AppColors.error.withValues(alpha: 0.1),
       title: 'Delete Conversation?',

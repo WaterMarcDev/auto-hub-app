@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -46,13 +47,14 @@ class PickupDetailsCard extends StatelessWidget {
             ),
           ),
           _buildPickupRow(
-            icon: Icons.calendar_today_outlined,
+            
+            icon: AppIcons.calendarToday,
             label: 'Date & Time',
             value: pickupDateTime,
           ),
           Divider(color: Colors.white.withValues(alpha: 0.06), height: 1.h),
           _buildPickupRow(
-            icon: Icons.local_shipping_outlined,
+            icon: AppIcons.localShipping,
             label: 'Tow Company',
             value: towCompany,
           ),

@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:auto_hub_app/features/messages/data/repositories/messages_repository.dart';
@@ -101,7 +102,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
                   ),
                   alignment: Alignment.center,
                   child: Icon(
-                    Icons.chevron_left,
+                    AppIcons.chevronLeft,
                     color: Colors.white,
                     size: 24.sp,
                   ),
@@ -164,7 +165,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
               ),
               alignment: Alignment.center,
               child: Icon(
-                Icons.more_vert,
+                AppIcons.moreVert,
                 color: Colors.white,
                 size: 22.sp,
               ),
@@ -267,7 +268,7 @@ class _LiveChatPageState extends State<LiveChatPage> {
         children: [
           SizedBox(height: 80.h),
           Icon(
-            Icons.chat_bubble_outline_rounded,
+            AppIcons.chatBubble,
             color: AppColors.onboardingTextSecondary.withValues(alpha: 0.15),
             size: 64.r,
           ),

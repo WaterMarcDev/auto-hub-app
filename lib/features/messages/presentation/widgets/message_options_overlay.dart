@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class MessageOptionsOverlay extends StatelessWidget {
               ),
               SizedBox(height: 18.h),
               _OptionTile(
-                icon: Icons.done_all,
+                icon:AppIcons.doneAll, 
                 iconColor: AppColors.onboardingCyan,
                 title: 'Mark All as Read',
                 titleColor: Colors.white,
@@ -69,7 +70,7 @@ class MessageOptionsOverlay extends StatelessWidget {
               ),
               SizedBox(height: 8.h),
               _OptionTile(
-                icon: Icons.delete_outline_rounded,
+                icon: AppIcons.deleteOutlineRounded,
                 iconColor: AppColors.error,
                 title: 'Delete All Conversations',
                 titleColor: AppColors.error,

@@ -10,7 +10,7 @@ class ProfileMenuItemData {
   });
 
   final String title;
-  final String iconPath;
+  final IconData iconPath;
   final Color iconBackgroundColor;
   final VoidCallback? onTap;
 }

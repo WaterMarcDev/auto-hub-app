@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -33,19 +34,20 @@ class AddressTypeSelector extends StatelessWidget {
             _buildTypeButton(
               type: 'home',
               label: 'Home',
-              icon: Icons.home_outlined,
+              icon: AppIcons.homeOutlined,
+             
             ),
             SizedBox(width: 10.w),
             _buildTypeButton(
               type: 'work',
               label: 'Work',
-              icon: Icons.work_outline_rounded,
-            ),
+              icon: AppIcons.workOutlineRounded,
+              ),
             SizedBox(width: 10.w),
             _buildTypeButton(
               type: 'other',
               label: 'Other',
-              icon: Icons.apartment_rounded,
+              icon: AppIcons.apartmentRounded,
             ),
           ],
         ),

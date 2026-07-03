@@ -1,3 +1,4 @@
+import 'package:auto_hub_app/core/constants/app_icons.dart';
 import 'package:auto_hub_app/core/theme/app_colors.dart';
 import 'package:auto_hub_app/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,7 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   ),
                   alignment: Alignment.center,
                   child: Icon(
-                    Icons.close,
+                    AppIcons.close,
                     color: Colors.white.withValues(alpha: 0.7),
                     size: 16.sp,
                   ),
@@ -95,7 +96,7 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
             ),
             alignment: Alignment.center,
             child: Icon(
-              Icons.headphones_outlined,
+              AppIcons.headphonesOutlined,
               color: AppColors.onboardingCyan,
               size: 30.sp,
             ),
@@ -126,8 +127,8 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   padding: EdgeInsets.symmetric(horizontal: 4.w),
                   child: Icon(
                     starIndex <= _currentRating
-                        ? Icons.star_rounded
-                        : Icons.star_outline_rounded,
+                        ? AppIcons.starRounded
+                        : AppIcons.starOutlineRounded,
                     color: AppColors.onboardingCyan,
                     size: 40.sp,
                   ),
