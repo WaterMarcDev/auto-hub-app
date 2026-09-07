@@ -5,7 +5,7 @@ import 'package:auto_hub_app/features/auth/presentation/pages/auth_screen.dart';
 import 'package:auto_hub_app/features/contact_support/presentation/pages/contact_support_page.dart';
 import 'package:auto_hub_app/features/help_center/presentation/pages/help_center_page.dart';
 import 'package:auto_hub_app/features/messages/presentation/pages/chat_page.dart';
-import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart' ;
+import 'package:auto_hub_app/features/messages/presentation/pages/live_chats_page.dart';
 import 'package:auto_hub_app/features/my_order/presentation/pages/my_orders.dart';
 import 'package:auto_hub_app/features/my_order/presentation/pages/order_details_page.dart';
 import 'package:auto_hub_app/features/onboarding/presentation/pages/onboarding_page.dart';
@@ -19,6 +19,7 @@ import 'package:auto_hub_app/features/splash/presentation/pages/splash_page.dart
 import 'package:auto_hub_app/features/vin/domain/entities/vin_decode_result.dart';
 import 'package:auto_hub_app/features/vin/presentation/pages/vin_result_page.dart';
 import 'package:auto_hub_app/features/your_addresses/presentation/pages/your_addresses_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 /// Application router configuration using GoRouter.
@@ -26,143 +27,237 @@ import 'package:go_router/go_router.dart';
 /// All routes are centrally defined here. Features register their
 /// routes via this configuration. Auth guards and redirects will
 /// be added here as features are built.
+
+/// Shared slide-from-right transition used for all pushed routes.
+///
+/// Using [CustomTransitionPage] + [pageBuilder] instead of [builder]
+/// prevents GoRouter's internal pop/restore cycle from exposing a
+/// blank canvas between frames (the source of the brief blank-screen
+/// flash that appears when navigating with [context.push]).
+Page<void> _slidePage({
+  required LocalKey key,
+  required Widget child,
+}) {
+  return CustomTransitionPage<void>(
+    key: key,
+    child: child,
+    reverseTransitionDuration: const Duration(milliseconds: 250),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(1.0, 0.0),
+          end: Offset.zero,
+        ).animate(
+          CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+        ),
+        child: child,
+      );
+    },
+  );
+}
+
+/// Shared fade transition used for top-level [go] routes such as
+/// splash → home. These replace the stack, so there is no need for
+/// a directional slide.
+Page<void> _fadePage({
+  required LocalKey key,
+  required Widget child,
+}) {
+  return CustomTransitionPage<void>(
+    key: key,
+    child: child,
+    transitionDuration: const Duration(milliseconds: 250),
+    reverseTransitionDuration: const Duration(milliseconds: 200),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(opacity: animation, child: child);
+    },
+  );
+}
+
 final GoRouter appRouter = GoRouter(
   initialLocation: '/splash',
   debugLogDiagnostics: true,
   routes: [
+    // ── Stack-replacing routes (fade) ────────────────────────────────────────
     GoRoute(
       path: '/splash',
       name: 'splash',
-      builder: (context, state) => const SplashPage(),
+      pageBuilder: (context, state) =>
+          _fadePage(key: state.pageKey, child: const SplashPage()),
     ),
     GoRoute(
       path: '/',
       name: 'home',
-      builder: (context, state) => const MainShell(),
-    ),
-    GoRoute(
-      path: '/part-details',
-      name: 'part-details',
-      builder: (context, state) => const PartDetailsPage(),
+      pageBuilder: (context, state) =>
+          _fadePage(key: state.pageKey, child: const MainShell()),
     ),
     GoRoute(
       path: '/onboarding',
       name: 'onboarding',
-      builder: (context, state) => const OnboardingPage(),
+      pageBuilder: (context, state) =>
+          _fadePage(key: state.pageKey, child: const OnboardingPage()),
     ),
     GoRoute(
       path: '/login',
       name: 'login',
-      builder: (context, state) => const AuthScreen(),
+      pageBuilder: (context, state) =>
+          _fadePage(key: state.pageKey, child: const AuthScreen()),
     ),
     GoRoute(
       path: '/signup',
       name: 'signup',
-      builder: (context, state) => const AuthScreen(initialTabIndex: 1),
+      pageBuilder: (context, state) => _fadePage(
+        key: state.pageKey,
+        child: const AuthScreen(initialTabIndex: 1),
+      ),
     ),
+
+    // ── Pushed routes (slide from right) ────────────────────────────────────
+
+    // product
+    GoRoute(
+      path: '/part-details',
+      name: 'part-details',
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const PartDetailsPage()),
+    ),
+
+    // vin
     GoRoute(
       path: '/vin-result',
       name: 'vin-result',
-      builder: (context, state) => VinResultPage(
-        result: state.extra! as VinDecodeResult,
+      pageBuilder: (context, state) => _slidePage(
+        key: state.pageKey,
+        child: VinResultPage(result: state.extra! as VinDecodeResult),
       ),
     ),
-    // my_order feature
+
+    // my_order
     GoRoute(
       path: '/my-orders',
       name: 'my-orders',
-      builder: (context, state) => const MyOrdersPage(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const MyOrdersPage()),
     ),
     GoRoute(
       path: '/order-details',
       name: 'order-details',
-      builder: (context, state) {
-        final orderId = state.extra! as String;
-        return OrderDetailsPage(orderId: orderId);
-      },
+      pageBuilder: (context, state) => _slidePage(
+        key: state.pageKey,
+        child: OrderDetailsPage(orderId: state.extra! as String),
+      ),
     ),
-    // messages feature
+
+    // messages
     GoRoute(
       path: '/live-chats',
       name: 'live-chats',
-      builder: (context, state) => const LiveChatPage(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const LiveChatPage()),
     ),
     GoRoute(
       path: '/chat',
       name: 'chat',
-      builder: (context, state) {
-        final chatRoomId = state.uri.queryParameters['chatRoomId'] ?? '';
-        return ChatPage(chatRoomId: chatRoomId);
-      },
-    ),
-    
-    // contact_support feature
-    GoRoute(
-      path: '/contact-support',
-      name: 'contact-support',
-      builder: (context, state) => const ContactSupportPage(),
+      pageBuilder: (context, state) => _slidePage(
+        key: state.pageKey,
+        child: ChatPage(
+          chatRoomId: state.uri.queryParameters['chatRoomId'] ?? '',
+        ),
+      ),
     ),
     GoRoute(
       path: '/chat/:chatRoomId',
       name: 'chat-room',
-      builder: (context, state) {
-        final chatRoomId = state.pathParameters['chatRoomId'] ?? '1';
-        return ChatPage(chatRoomId: chatRoomId);
-      },),
-      GoRoute(
+      pageBuilder: (context, state) => _slidePage(
+        key: state.pageKey,
+        child: ChatPage(
+          chatRoomId: state.pathParameters['chatRoomId'] ?? '1',
+        ),
+      ),
+    ),
+
+    // contact_support
+    GoRoute(
+      path: '/contact-support',
+      name: 'contact-support',
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const ContactSupportPage()),
+    ),
+    GoRoute(
       path: '/contact-support-chat',
       name: 'contact-support-chat',
-      builder: (context, state) => const LiveChatPage(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const LiveChatPage()),
     ),
+
     // account
     GoRoute(
       path: '/account-details',
       name: 'account-details',
-      builder: (context, state) => const AccountDetailsPage(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const AccountDetailsPage()),
     ),
     GoRoute(
       path: '/edit-account-details',
       name: 'edit-account-details',
-      builder: (context, state) => const EditAccountDetailsPage(),
+      pageBuilder: (context, state) => _slidePage(
+        key: state.pageKey,
+        child: const EditAccountDetailsPage(),
+      ),
     ),
     GoRoute(
       path: '/your-addresses',
       name: 'your-addresses',
-      builder: (context, state) => const YourAddressesPage(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const YourAddressesPage()),
     ),
     GoRoute(
       path: '/settings',
       name: 'settings',
-      builder: (context, state) => const SettingsPage(),),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const SettingsPage()),
+    ),
 
-     GoRoute(
+    // payment
+    GoRoute(
       path: '/payment-methods',
       name: 'payment-methods',
-      builder: (context, state) => const PaymentMethodPage(),),
-      GoRoute(
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const PaymentMethodPage()),
+    ),
+
+    // request_junk
+    GoRoute(
       path: '/my-request-junk',
       name: 'my-request-junk',
-      builder: (context, state) => const MyRequestJunk(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const MyRequestJunk()),
       routes: [
         GoRoute(
           path: 'junk',
           name: 'junk-detail',
-          builder: (context, state) {
-            final junkId = state.uri.queryParameters['junk'] ?? '';
-            return JunkDetailPage(junkId: junkId);
-          },
+          pageBuilder: (context, state) => _slidePage(
+            key: state.pageKey,
+            child: JunkDetailPage(
+              junkId: state.uri.queryParameters['junk'] ?? '',
+            ),
+          ),
         ),
       ],
     ),
     GoRoute(
       path: '/new-junk-request',
       name: 'new-junk-request',
-      builder: (context, state) => const NewJunkRequest(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const NewJunkRequest()),
     ),
+
+    // help
     GoRoute(
       path: '/help-center',
       name: 'help-center',
-      builder: (context, state) => const HelpCenterPage(),
+      pageBuilder: (context, state) =>
+          _slidePage(key: state.pageKey, child: const HelpCenterPage()),
     ),
   ],
 );
