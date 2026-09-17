@@ -6,6 +6,10 @@ analyzer:
     - "**/*.freezed.dart"
     - "**/*.inject.dart"
     - "**/*.config.dart"
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
 
 linter:
   rules:
